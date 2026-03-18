@@ -1,1301 +1,1286 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Istedamah LMS — Client Review</title>
+<title>استدامة للتعليم — مراجعة المشروع</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/white.min.css">
 <style>
-  :root {
-    --primary: #1a365d;
-    --accent: #0d9488;
-    --text: #1e293b;
-    --light-gray: #f1f5f9;
-    --mid-gray: #e2e8f0;
-    --white: #ffffff;
-    --danger: #dc2626;
-    --warning: #f59e0b;
-    --success: #16a34a;
-  }
+:root {
+  --brand: #1a9e8f;
+  --brand-dark: #0d7a70;
+  --brand-light: #e6f5f3;
+  --brand-vlight: #f0faf8;
+  --brand-gradient: linear-gradient(135deg, #1a9e8f 0%, #0d7a70 100%);
+  --edu-orange: #e8752a;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --white: #ffffff;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+  --success: #16a34a;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+}
 
-  .reveal {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--text);
-  }
+/* ===== REVEAL OVERRIDES ===== */
+.reveal {
+  font-family: 'Noto Sans Arabic', 'Noto Kufi Arabic', sans-serif;
+  color: var(--text);
+  direction: rtl;
+}
+.reveal .slides { direction: rtl; text-align: right; }
+.reveal h1,.reveal h2,.reveal h3,.reveal h4,.reveal h5 {
+  font-family: 'Noto Kufi Arabic', 'Noto Sans Arabic', sans-serif;
+  color: var(--brand-dark);
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.4;
+  text-align: right;
+}
+.reveal h1 { font-size: 2em; }
+.reveal h2 { font-size: 1.5em; margin-bottom: 0.5em; }
+.reveal h3 { font-size: 1.1em; color: var(--brand); margin-bottom: 0.3em; }
+.reveal p, .reveal li { font-size: 0.68em; line-height: 1.7; color: var(--text); }
+.reveal ul { list-style: none; padding: 0; margin: 0; }
+.reveal section { padding: 20px 40px !important; }
 
-  .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--primary);
-    text-transform: none;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
+/* ===== PROGRESS BAR ===== */
+.reveal .progress { height: 4px; color: var(--brand); }
+.reveal .progress span { background: var(--brand) !important; }
 
-  .reveal h1 { font-size: 2.2em; }
-  .reveal h2 { font-size: 1.6em; margin-bottom: 0.6em; }
-  .reveal h3 { font-size: 1.2em; color: var(--accent); margin-bottom: 0.4em; }
+/* ===== CONTENT SLIDE LAYOUT ===== */
+.slide-content { position: relative; }
+.slide-content::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 100%; height: 4px;
+  background: var(--brand-gradient);
+}
 
-  .reveal p, .reveal li {
-    font-size: 0.7em;
-    line-height: 1.6;
-    color: var(--text);
-  }
+/* Logo watermark */
+.slide-logo {
+  position: absolute;
+  top: 18px; right: 24px;
+  height: 36px; opacity: 0.85;
+  z-index: 10;
+}
+.slide-logo-white {
+  position: absolute;
+  top: 24px; right: 30px;
+  height: 40px; opacity: 0.9;
+  z-index: 10;
+}
 
-  .reveal ul { list-style: none; padding-left: 0; }
-  .reveal ul li { padding-left: 1.2em; position: relative; margin-bottom: 0.3em; }
-  .reveal ul li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.6em;
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
+/* Section pill */
+.section-pill {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.55em;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.pill-teal { background: var(--brand-light); color: var(--brand-dark); }
+.pill-orange { background: #fef3e8; color: var(--edu-orange); }
 
-  .reveal .slides section {
-    text-align: left;
-    padding: 20px 40px;
-  }
+/* Presenter tag */
+.presenter-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 0.5em;
+  background: var(--gray-100);
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
 
-  /* Title slide */
-  .title-slide {
-    text-align: center !important;
-  }
-  .title-slide h1 {
-    font-size: 2.6em !important;
-    margin-bottom: 0.1em;
-  }
-  .title-slide .subtitle {
-    font-size: 1.1em;
-    color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 0.5em;
-  }
-  .title-slide .date {
-    font-size: 0.8em;
-    color: #64748b;
-  }
-  .title-slide .divider {
-    width: 80px;
-    height: 4px;
-    background: var(--accent);
-    margin: 20px auto;
-    border-radius: 2px;
-  }
+/* ===== SECTION TITLE SLIDES ===== */
+.section-title {
+  background: var(--brand-gradient) !important;
+  color: var(--white) !important;
+  text-align: center !important;
+  position: relative;
+  overflow: hidden;
+}
+.section-title h1, .section-title h2, .section-title h3,
+.section-title p, .section-title .block-label {
+  color: var(--white) !important;
+  text-align: center !important;
+}
+.section-title .block-label {
+  font-size: 0.7em;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  display: block;
+}
+/* Decorative "i" bars on section slides */
+.section-title .deco-bars {
+  position: absolute;
+  bottom: -20px; left: 40px;
+  display: flex; gap: 10px;
+  opacity: 0.12;
+}
+.section-title .deco-bars .bar {
+  width: 14px;
+  border-radius: 7px;
+  background: #fff;
+}
+.section-title .deco-bars .dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  margin: 0 auto 4px;
+}
 
-  /* Block label */
-  .block-label {
-    display: inline-block;
-    background: var(--primary);
-    color: white;
-    font-size: 0.5em !important;
-    padding: 3px 14px;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
+/* ===== CARDS ===== */
+.card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  text-align: right;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.card h4 { font-size: 0.7em; color: var(--brand-dark); margin: 0 0 6px 0; }
+.card p { font-size: 0.58em; margin: 0; color: var(--text-light); line-height: 1.6; }
 
-  /* Cards */
-  .card {
-    background: var(--white);
-    border: 1px solid var(--mid-gray);
-    border-radius: 8px;
-    padding: 18px 22px;
-    margin: 8px 0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  }
-  .card h4 {
-    font-size: 0.75em;
-    margin: 0 0 6px 0;
-    color: var(--primary);
-  }
-  .card p, .card li {
-    font-size: 0.6em;
-    margin: 0;
-  }
+.card-grid { display: grid; gap: 14px; }
+.grid-2x2 { grid-template-columns: 1fr 1fr; }
+.grid-3x2 { grid-template-columns: 1fr 1fr 1fr; }
+.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
 
-  /* Two-column */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 10px;
-  }
-  .three-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-top: 10px;
-  }
+/* Card with number */
+.num-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: right;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.num-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.num-circle {
+  min-width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.75em;
+  flex-shrink: 0;
+}
+.num-card h4 { font-size: 0.68em; color: var(--brand-dark); margin: 0 0 4px 0; }
+.num-card p { font-size: 0.56em; margin: 0; color: var(--text-light); line-height: 1.6; }
 
-  /* Progress bar */
-  .progress-bar-container {
-    background: var(--mid-gray);
-    border-radius: 6px;
-    height: 32px;
-    overflow: hidden;
-    margin: 10px 0;
-    position: relative;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 0.65em;
-    transition: width 1s ease;
-  }
+/* ===== POC VALIDATION CARDS ===== */
+.poc-card {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  text-align: right;
+}
+.poc-row {
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--gray-100);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.poc-row:last-child { border-bottom: none; }
+.poc-label {
+  font-size: 0.52em;
+  font-weight: 700;
+  color: var(--brand-dark);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+.poc-value { font-size: 0.54em; color: var(--text); line-height: 1.6; }
+.poc-row.result { background: #f0fdf4; }
+.poc-row.result .poc-label { color: var(--success); }
+.poc-row.limitation { background: #fffbeb; }
+.poc-row.limitation .poc-label { color: var(--warning); }
 
-  /* POC layout */
-  .poc-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .poc-badge {
-    background: var(--accent);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 0.55em;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-  .poc-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .poc-section {
-    background: var(--light-gray);
-    border-left: 3px solid var(--accent);
-    padding: 10px 14px;
-    border-radius: 0 6px 6px 0;
-    margin: 4px 0;
-  }
-  .poc-section.risk {
-    border-left-color: var(--warning);
-  }
-  .poc-section.result {
-    border-left-color: var(--success);
-  }
-  .poc-section h4 {
-    font-size: 0.6em;
-    margin: 0 0 4px 0;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .poc-section p, .poc-section li {
-    font-size: 0.52em;
-    margin: 2px 0;
-    line-height: 1.5;
-  }
+/* ===== STAT CARDS ===== */
+.stat-card {
+  text-align: center;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 16px 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+}
+.stat-number {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-size: 1.5em;
+  font-weight: 800;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label { font-size: 0.52em; color: var(--text-light); }
 
-  /* Stat box */
-  .stat-box {
-    text-align: center;
-    padding: 14px;
-    background: var(--light-gray);
-    border-radius: 8px;
-  }
-  .stat-box .number {
-    font-size: 1.8em;
-    font-weight: 800;
-    color: var(--primary);
-    line-height: 1;
-  }
-  .stat-box .label {
-    font-size: 0.55em;
-    color: #64748b;
-    margin-top: 4px;
-  }
+/* ===== PROGRESS BAR COMPONENT ===== */
+.progress-bar-wrap {
+  background: var(--gray-200);
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+  margin: 10px 0;
+  position: relative;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: var(--brand-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.55em;
+  font-weight: 700;
+  transition: width 1.5s ease;
+}
 
-  /* Accent highlight */
-  .accent { color: var(--accent); font-weight: 600; }
-  .danger { color: var(--danger); }
-  .warning-text { color: var(--warning); }
+/* Feature bars */
+.feature-bar { margin: 6px 0; display: flex; align-items: center; gap: 10px; }
+.feature-bar-label { font-size: 0.52em; min-width: 110px; text-align: right; color: var(--text); }
+.feature-bar-track {
+  flex: 1; height: 12px; background: var(--gray-100);
+  border-radius: 6px; overflow: hidden;
+}
+.feature-bar-fill {
+  height: 100%; border-radius: 6px;
+  background: var(--brand-gradient);
+  transition: width 1.2s ease;
+}
+.feature-bar-count { font-size: 0.5em; color: var(--text-light); min-width: 40px; }
 
-  /* Scope table */
-  .scope-row {
-    display: flex;
-    align-items: center;
-    padding: 8px 14px;
-    border-bottom: 1px solid var(--mid-gray);
-    font-size: 0.6em;
-  }
-  .scope-row .label { flex: 1; font-weight: 600; }
-  .scope-row .yes {
-    color: var(--success);
-    font-weight: 700;
-  }
-  .scope-row .no {
-    color: var(--danger);
-    font-weight: 700;
-  }
+/* ===== STATUS BADGES ===== */
+.status-row { display: flex; gap: 12px; margin: 12px 0; justify-content: center; }
+.status-badge {
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 0.6em;
+  font-weight: 600;
+  text-align: center;
+}
+.badge-green { background: #dcfce7; color: #166534; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-gray { background: var(--gray-100); color: var(--text-light); }
 
-  /* Risk list */
-  .risk-item {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    margin: 6px 0;
-    font-size: 0.6em;
-  }
-  .risk-marker {
-    flex-shrink: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-top: 4px;
-  }
-  .risk-marker.high { background: var(--danger); }
-  .risk-marker.medium { background: var(--warning); }
-  .risk-marker.low { background: var(--success); }
+/* ===== TWO COLUMNS ===== */
+.two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.col-right { text-align: right; }
+.col-left { text-align: right; }
 
-  /* Platform stack */
-  .stack-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 14px;
-    background: var(--light-gray);
-    border-radius: 6px;
-    margin: 5px 0;
-    font-size: 0.6em;
-  }
-  .stack-tag {
-    background: var(--primary);
-    color: white;
-    padding: 2px 10px;
-    border-radius: 3px;
-    font-size: 0.85em;
-    font-weight: 600;
-    min-width: 70px;
-    text-align: center;
-  }
+/* Check/cross lists */
+.check-list, .cross-list { list-style: none; padding: 0; }
+.check-list li, .cross-list li {
+  font-size: 0.58em;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--gray-100);
+  line-height: 1.6;
+}
+.check-list li::before { content: '✓  '; color: var(--success); font-weight: 700; }
+.cross-list li::before { content: '✗  '; color: var(--danger); font-weight: 700; }
 
-  /* Thank you slide */
-  .thankyou-slide {
-    text-align: center !important;
-  }
-  .thankyou-slide h1 {
-    font-size: 2.4em !important;
-    color: var(--primary);
-  }
-  .thankyou-slide p {
-    font-size: 1em;
-    color: #64748b;
-    text-align: center;
-  }
-  .thankyou-slide .divider {
-    width: 80px;
-    height: 4px;
-    background: var(--accent);
-    margin: 24px auto;
-    border-radius: 2px;
-  }
+/* Risk dots */
+.risk-item { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; }
+.risk-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.dot-red { background: var(--danger); }
+.dot-amber { background: var(--warning); }
+.risk-item p { font-size: 0.55em; margin: 0; line-height: 1.6; }
 
-  /* Decision list */
-  .decision-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--mid-gray);
-  }
-  .decision-num {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    background: var(--primary);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.6em;
-  }
-  .decision-content {
-    flex: 1;
-  }
-  .decision-content strong {
-    font-size: 0.65em;
-    color: var(--primary);
-    display: block;
-    margin-bottom: 2px;
-  }
-  .decision-content p {
-    font-size: 0.55em;
-    margin: 0;
-    color: #64748b;
-  }
+/* ===== DECISION CARDS ===== */
+.decision-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: var(--shadow-sm);
+  border-right: 4px solid var(--brand);
+  display: flex; gap: 12px; align-items: flex-start;
+  text-align: right;
+  margin: 8px 0;
+  transition: transform 0.2s;
+}
+.decision-card:hover { transform: translateX(4px); }
+.decision-num {
+  min-width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.65em;
+  flex-shrink: 0;
+}
+.decision-card p { font-size: 0.58em; margin: 0; line-height: 1.6; }
+.decision-card strong { color: var(--brand-dark); }
 
-  /* Feature category bar */
-  .feature-cat {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 5px 0;
-    font-size: 0.58em;
-  }
-  .feature-cat .cat-label {
-    min-width: 140px;
-    font-weight: 600;
-    text-align: right;
-  }
-  .feature-cat .cat-bar {
-    flex: 1;
-    height: 18px;
-    background: var(--mid-gray);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .feature-cat .cat-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 4px;
-  }
-  .feature-cat .cat-count {
-    min-width: 40px;
-    font-weight: 600;
-    color: var(--primary);
-  }
+/* ===== INFRA MINI CARDS ===== */
+.infra-card {
+  background: var(--brand-vlight);
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: center;
+  border: 1px solid var(--brand-light);
+}
+.infra-card h4 {
+  font-size: 0.6em; color: var(--brand-dark);
+  margin: 0 0 4px 0;
+}
+.infra-card p { font-size: 0.48em; color: var(--text-light); margin: 2px 0; line-height: 1.5; }
 
-  /* Section divider */
-  .section-divider {
-    text-align: center !important;
-  }
-  .section-divider h2 {
-    font-size: 2em !important;
-  }
+/* ===== SLIDE ANIMATIONS ===== */
+.reveal .slides section .fragment.fade-up {
+  opacity: 0; transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+.reveal .slides section .fragment.fade-up.visible {
+  opacity: 1; transform: translateY(0);
+}
+@keyframes countUp { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+.animate-in { animation: countUp 0.6s ease forwards; }
 
-  /* Override reveal defaults */
-  .reveal .slides section .fragment.visible { opacity: 1; }
-  .reveal blockquote {
-    background: var(--light-gray);
-    border-left: 4px solid var(--accent);
-    padding: 12px 18px;
-    font-style: normal;
-    font-size: 0.7em;
-    width: 90%;
-    margin: 12px auto;
-    border-radius: 0 6px 6px 0;
-    box-shadow: none;
-  }
+/* ===== NAVIGATOR PANEL ===== */
+#slide-nav-toggle {
+  position: fixed;
+  bottom: 20px; left: 20px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 18px;
+  box-shadow: 0 4px 16px rgba(26,158,143,0.4);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#slide-nav-toggle:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(26,158,143,0.5); }
+
+#slide-nav {
+  position: fixed;
+  top: 0; left: -300px;
+  width: 280px; height: 100vh;
+  background: rgba(13,122,112,0.97);
+  z-index: 99;
+  transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
+  overflow-y: auto;
+  padding: 20px 0;
+  box-shadow: 4px 0 30px rgba(0,0,0,0.2);
+}
+#slide-nav.open { left: 0; }
+#slide-nav-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 98;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+#slide-nav-overlay.open { opacity: 1; pointer-events: auto; }
+
+.nav-header {
+  padding: 10px 20px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 8px;
+}
+.nav-header img { height: 32px; }
+.nav-header p { color: rgba(255,255,255,0.7); font-size: 11px; margin: 6px 0 0; }
+
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: right;
+  direction: rtl;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); }
+.nav-item.active { background: rgba(255,255,255,0.18); }
+.nav-item.section-header {
+  padding: 12px 20px 6px;
+  pointer-events: none;
+}
+.nav-num {
+  min-width: 24px; height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-item.active .nav-num { background: #fff; color: var(--brand-dark); }
+.nav-label {
+  color: rgba(255,255,255,0.85);
+  font-size: 12.5px;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  line-height: 1.4;
+}
+.nav-item.active .nav-label { color: #fff; font-weight: 600; }
+.nav-section-label {
+  color: rgba(255,255,255,0.5);
+  font-size: 10.5px;
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== TITLE SLIDE ===== */
+.title-slide {
+  background: var(--brand-gradient) !important;
+  text-align: center !important;
+  position: relative;
+  overflow: hidden;
+}
+.title-slide * { text-align: center !important; color: #fff !important; }
+.title-slide h1 { font-size: 2.4em; margin-bottom: 0px; font-weight: 900; }
+.title-slide h3 { font-size: 0.85em; font-weight: 400; opacity: 0.9; margin-bottom: 20px; }
+.title-slide .date { font-size: 0.7em; opacity: 0.7; margin-top: 20px; }
+.title-logo { height: 60px; margin-bottom: 16px; }
+
+/* Deco i-bars for title */
+.title-deco {
+  position: absolute;
+  bottom: -10px;
+  display: flex; gap: 12px;
+  opacity: 0.1;
+}
+.title-deco.right { right: 30px; }
+.title-deco.left { left: 30px; }
+.title-deco .i-shape { display: flex; flex-direction: column; align-items: center; }
+.title-deco .i-dot { width: 12px; height: 12px; border-radius: 50%; background: #fff; margin-bottom: 4px; }
+.title-deco .i-bar { width: 12px; border-radius: 6px; background: #fff; }
+
+/* ===== THANK YOU SLIDE ===== */
+.thanks-slide {
+  background: var(--brand-gradient) !important;
+  text-align: center !important;
+}
+.thanks-slide * { text-align: center !important; color: #fff !important; }
+.thanks-slide h1 { font-size: 2.2em; margin-bottom: 8px; }
+.thanks-slide p { font-size: 0.8em; opacity: 0.85; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .card-grid { grid-template-columns: 1fr !important; }
+  .two-cols { grid-template-columns: 1fr !important; }
+}
 </style>
 </head>
 <body>
+
+<!-- ===== NAVIGATOR PANEL ===== -->
+<div id="slide-nav-overlay" onclick="toggleNav()"></div>
+<nav id="slide-nav">
+  <div class="nav-header">
+    <img src="logo-white.png" alt="استدامة">
+    <p>فهرس الشرائح</p>
+  </div>
+  <div id="nav-items"></div>
+</nav>
+<button id="slide-nav-toggle" onclick="toggleNav()" title="فهرس الشرائح">☰</button>
+
+<!-- ===== PRESENTATION ===== -->
 <div class="reveal">
 <div class="slides">
 
 <!-- ============================================================ -->
-<!-- SLIDE 1: Title -->
+<!-- SLIDE 1: TITLE -->
 <!-- ============================================================ -->
-<section class="title-slide">
-  <h1>Istedamah LMS</h1>
-  <div class="divider"></div>
-  <div class="subtitle">Client Review</div>
-  <div class="date">March 2026</div>
-  <p style="font-size:0.6em; color:#94a3b8; margin-top:30px;">Learning Management System for Iraqi Students</p>
+<section class="title-slide" data-nav="الغلاف">
+  <div class="title-deco right">
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:50px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:70px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:90px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:80px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:60px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:40px"></div></div>
+  </div>
+  <div class="title-deco left">
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:40px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:60px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:85px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:70px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:50px"></div></div>
+  </div>
+  <img src="logo-white.png" class="title-logo" alt="استدامة">
+  <h1>استدامة للتعليم</h1>
+  <h3>مراجعة المشروع — منصة إدارة التعلم المتكاملة للعراق</h3>
+  <p class="date">مارس ٢٠٢٦</p>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Mohammad (Meeting Lead)</p>
-    <p><strong>Time:</strong> 1 minute</p>
-    <ul>
-      <li>Welcome everyone. Thank the client for their time.</li>
-      <li>Set expectations: ~45 minutes, 6 blocks, we will leave time for Q&amp;A at the end.</li>
-      <li>Introduce the team members who will present their sections.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Dive into details yet. Keep it brief and warm.</p>
+    Presenter: Mohammad — Meeting Lead<br>
+    Time: 30 seconds<br><br>
+    "Welcome everyone. This is our progress review for the Istedamah Education LMS project."<br>
+    Total meeting: ~45 minutes. Press S for speaker notes window.<br><br>
+    DO NOT: Rush past this slide. Let it breathe for 10 seconds.
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 2: The Problem -->
+<!-- SLIDE 2: THE PROBLEM -->
 <!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 1: Problem &amp; Context</div>
-  <h2>The Problem</h2>
-  <div class="two-col">
-    <div>
+<section data-nav="التحدي التعليمي">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">المحور الأول: السياق والتحدي</span>
+    <h2>التحدي التعليمي في العراق</h2>
+    <div class="card-grid grid-2x2" style="margin-top:14px;">
       <div class="card">
-        <h4>Unreliable Connectivity</h4>
-        <p>Iraqi students face frequent internet outages. Learning cannot depend on constant connectivity.</p>
+        <h4>البنية التحتية</h4>
+        <p>اتصال إنترنت غير مستقر في معظم المحافظات، خاصة خارج المدن الرئيسية</p>
       </div>
       <div class="card">
-        <h4>Limited Quality Digital Learning</h4>
-        <p>Existing platforms are not aligned with the Iraqi national curriculum. Content is generic or irrelevant.</p>
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <h4>Need for Curriculum Alignment</h4>
-        <p>Students and parents need content that maps directly to what is taught in school and what appears on exams.</p>
+        <h4>فجوة المحتوى الرقمي</h4>
+        <p>غياب منصات تعليمية رقمية تتوافق مع المنهج العراقي الرسمي</p>
       </div>
       <div class="card">
-        <h4>Academic Rigor Over Engagement</h4>
-        <p>Parents invest in outcomes: grades, exam readiness, academic progress. Not points, badges, or streaks.</p>
+        <h4>جودة التعليم</h4>
+        <p>الحاجة إلى أدوات تقييم ذكية ومحتوى أكاديمي متين بدلاً من تطبيقات ترفيهية سطحية</p>
       </div>
-    </div>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Mohammad (Meeting Lead)</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>Frame the problem from the student's and parent's perspective.</li>
-      <li>Emphasize that this is not a hypothetical problem — it is the daily reality for millions of Iraqi students.</li>
-      <li>Connectivity is not just slow, it is intermittent and unpredictable.</li>
-      <li>The market is flooded with edtech that does not serve this population.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Over-dramatize. State facts, not opinions. Do not compare to specific competitors by name.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 3: Our Approach -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 1: Problem &amp; Context</div>
-  <h2>Our Approach</h2>
-  <div class="three-col">
-    <div class="card" style="text-align:center;">
-      <h4>Offline-First</h4>
-      <p>Full learning experience without internet. Sync when connected.</p>
-    </div>
-    <div class="card" style="text-align:center;">
-      <h4>Curriculum-Aligned</h4>
-      <p>Content mapped to Iraqi national curriculum. Exam-relevant.</p>
-    </div>
-    <div class="card" style="text-align:center;">
-      <h4>AI-Enhanced</h4>
-      <p>Intelligent tutoring, exam generation, and handwriting scoring.</p>
-    </div>
-  </div>
-  <div style="margin-top:18px;">
-    <blockquote>
-      <strong>What Istedamah is NOT:</strong> Not a content dump. Not a shallow gamification app. Not a generic video platform. It is an academically rigorous learning system built for Iraqi infrastructure reality.
-    </blockquote>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Mohammad (Meeting Lead)</p>
-    <p><strong>Time:</strong> 2 minutes</p>
-    <ul>
-      <li>This slide sets the philosophy. Every decision we will show traces back to these four pillars.</li>
-      <li>Emphasize "offline-first" as a design philosophy, not a feature checkbox.</li>
-      <li>The "what we are NOT" framing is important — it shows discipline and focus.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Use buzzwords like "disrupting education." Stay grounded and specific.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 4: Research Methodology -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 2: What We Learned from Research</div>
-  <h2>Research Methodology</h2>
-  <div class="two-col">
-    <div>
       <div class="card">
-        <h4>What We Did</h4>
-        <ul>
-          <li>7 in-depth interviews</li>
-          <li>Exploratory research approach</li>
-          <li>Students and parents across educational stages</li>
-          <li>Focus on learning behavior, not feature wishlists</li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <h4>Honest Limitations</h4>
-        <ul>
-          <li>Small sample size — directional insight, not statistical proof</li>
-          <li>Urban-weighted sample</li>
-          <li>Self-reported behavior (not observed)</li>
-          <li>These are patterns, not validated truths</li>
-        </ul>
+        <h4>توقعات الأهل</h4>
+        <p>الأهل يستثمرون في النتائج الأكاديمية والتحصيل الدراسي، لا في مجرد "التفاعل"</p>
       </div>
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Islam (UX Research)</p>
-    <p><strong>Time:</strong> 2 minutes</p>
-    <ul>
-      <li>Frame this honestly: "We conducted 7 interviews. This gives us directional insight, not validated truth."</li>
-      <li>Explain why exploratory: we needed to understand behavior patterns, not validate a pre-existing hypothesis.</li>
-      <li>Be upfront about limitations BEFORE showing findings. This builds credibility.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Overstate the research. Do not say "our research proves..." — say "our research suggests..." or "we observed a pattern..."</p>
+    Presenter: Mohammad — 3 min<br><br>
+    Key points:<br>
+    - These are REAL constraints discovered through research, not assumptions<br>
+    - Each challenge directly shaped a product decision<br>
+    - Infrastructure: spotty internet is the #1 constraint<br>
+    - Content gap: no Iraqi-curriculum-aligned digital platform exists<br>
+    - Quality: market is full of shallow gamification apps<br>
+    - Parents: they pay for grades, not screen time<br><br>
+    Transition: "These challenges led us to conduct direct research with students..."<br><br>
+    DO NOT: Dwell on problems too long. This sets context, not despair.
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 5: 3 Strongest Patterns -->
+<!-- SLIDE 3: OUR APPROACH -->
 <!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 2: What We Learned from Research</div>
-  <h2>3 Strongest Patterns</h2>
-  <div class="card" style="margin-bottom:10px;">
-    <h4>1. Learning Behavior Varies by Educational Stage</h4>
-    <p>Primary, intermediate, and secondary students have fundamentally different learning behaviors, attention patterns, and motivations. A one-size-fits-all UX will fail.</p>
-  </div>
-  <div class="card" style="margin-bottom:10px;">
-    <h4>2. Video Attention Spans Differ by Stage</h4>
-    <p>Younger students need shorter, more structured video segments. Older students tolerate and prefer longer, deeper content. Content duration must adapt to stage.</p>
-  </div>
-  <div class="card">
-    <h4>3. Parents Buy Outcomes, Not Engagement</h4>
-    <p>Parents make the purchasing decision. They pay for grades, exam readiness, and measurable academic progress — not for gamification, streaks, or social features.</p>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Islam (UX Research)</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>Present exactly 3 patterns — no more. Each one should feel like a discovery, not a confirmation.</li>
-      <li>For each pattern, briefly state what we observed and what design change it caused.</li>
-      <li>Pattern 3 is the most important commercially — parents are the buyer, students are the user.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Present more than 3 patterns. Do not speculate beyond what interviews showed. Do not claim statistical significance.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 6: Design Decisions Changed -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 2: What We Learned from Research</div>
-  <h2>Design Decisions Changed by Research</h2>
-  <div class="two-col">
-    <div>
-      <div class="card" style="border-left: 3px solid var(--success);">
-        <h4 style="color: var(--success);">Changed: Stage-Based UX</h4>
-        <p><strong>Before:</strong> Single app experience for all ages</p>
-        <p><strong>After:</strong> Different UX flows, content lengths, and interaction patterns per educational stage</p>
-        <p><strong>Driven by:</strong> Pattern 1 + Pattern 2</p>
-      </div>
-      <div class="card" style="border-left: 3px solid var(--success);">
-        <h4 style="color: var(--success);">Changed: Outcome-First Dashboard</h4>
-        <p><strong>Before:</strong> Engagement metrics (time spent, streaks)</p>
-        <p><strong>After:</strong> Academic metrics (exam scores, topic mastery, grade trajectory)</p>
-        <p><strong>Driven by:</strong> Pattern 3</p>
-      </div>
-    </div>
-    <div>
-      <div class="card" style="border-left: 3px solid var(--warning);">
-        <h4 style="color: var(--warning);">Unproven Assumption</h4>
-        <p><strong>Assumption:</strong> Students will use AI tutoring independently without teacher/parent prompting</p>
-        <p><strong>Status:</strong> Not yet validated. Our interviews did not test this behavior. Requires observation in pilot.</p>
-        <p><strong>Risk:</strong> If students do not self-initiate AI chat, the feature needs a different entry point.</p>
-      </div>
-    </div>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Islam (UX Research)</p>
-    <p><strong>Time:</strong> 2 minutes</p>
-    <ul>
-      <li>Show 2 concrete changes + 1 honest unproven assumption. This is the format the internal review recommended.</li>
-      <li>The unproven assumption slide is critical — it shows intellectual honesty and invites client input.</li>
-      <li>Transition to Mahmoud: "These patterns drove our product decisions. Mahmoud will walk you through those."</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Claim all assumptions are validated. Do not hide uncertainty.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 7: Product Strategy -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 3: How Research Changed Product Decisions</div>
-  <h2>Product Strategy: 3 Decisions</h2>
-  <div class="card" style="margin-bottom:10px;">
-    <h4>1. Offline-First Is Essential, Not Optional</h4>
-    <p>This is not a "nice to have." Iraqi infrastructure makes this a hard requirement. Every feature must work offline or gracefully degrade. This drives our entire architecture.</p>
-  </div>
-  <div class="card" style="margin-bottom:10px;">
-    <h4>2. Exam-Driven Content, Not Passive Consumption</h4>
-    <p>Content is organized around what students need for exams. Every lesson connects to assessable outcomes. Practice questions, not just videos. Measurable progress, not watch time.</p>
-  </div>
-  <div class="card">
-    <h4>3. Stage-Based Experience</h4>
-    <p>Primary students get structured, guided paths. Intermediate students get more autonomy. Secondary students get exam-focused intensive tools. One product, three experiences.</p>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Mahmoud (Product Manager)</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>Speak from conviction: "We found 3 patterns. Because of that, we prioritize X, Y, Z."</li>
-      <li>Each decision should trace directly back to a research pattern or an infrastructure reality.</li>
-      <li>Be explicit: "Decision 1 is a conviction based on infrastructure reality. Decision 2 is a conviction based on parent interviews. Decision 3 is a hypothesis we will validate in pilot."</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Use strategy jargon. Do not say "we leverage synergies" or "our north star metric." Speak plainly.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 8: What We Are Building (and Not) -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 3: How Research Changed Product Decisions</div>
-  <h2>What We Are Building (and What We Are Not)</h2>
-  <div class="two-col">
-    <div>
-      <h3 style="color: var(--success);">Building</h3>
-      <div class="scope-row"><span class="label">Curriculum-aligned LMS</span><span class="yes">YES</span></div>
-      <div class="scope-row"><span class="label">AI tutoring (curriculum-grounded)</span><span class="yes">YES</span></div>
-      <div class="scope-row"><span class="label">Exam preparation &amp; practice</span><span class="yes">YES</span></div>
-      <div class="scope-row"><span class="label">Offline-first mobile apps</span><span class="yes">YES</span></div>
-      <div class="scope-row"><span class="label">AI exam generation &amp; scoring</span><span class="yes">YES</span></div>
-      <div class="scope-row"><span class="label">Video delivery (low bandwidth)</span><span class="yes">YES</span></div>
-    </div>
-    <div>
-      <h3 style="color: var(--danger);">Not Building</h3>
-      <div class="scope-row"><span class="label">Social network / chat</span><span class="no">NO</span></div>
-      <div class="scope-row"><span class="label">Generic video platform</span><span class="no">NO</span></div>
-      <div class="scope-row"><span class="label">Gamification-first experience</span><span class="no">NO</span></div>
-      <div class="scope-row"><span class="label">Live class streaming</span><span class="no">NO</span></div>
-      <div class="scope-row"><span class="label">Content creation tools</span><span class="no">NO</span></div>
-      <div class="scope-row"><span class="label">Teacher management system</span><span class="no">NO</span></div>
-    </div>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Mahmoud (Product Manager)</p>
-    <p><strong>Time:</strong> 2 minutes</p>
-    <ul>
-      <li>The "NO" column is just as important as the "YES" column. It shows discipline.</li>
-      <li>If the client asks about any "NO" item, explain why it is out of scope and what it would take to add it.</li>
-      <li>Frame the "NO" items as deliberate choices, not limitations.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Be defensive about what is excluded. These are strategic decisions, not gaps.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 9: Delivery Progress -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 3: How Research Changed Product Decisions</div>
-  <h2>Delivery Progress</h2>
-  <div style="margin: 16px 0;">
-    <div style="display:flex; justify-content:space-between; font-size:0.65em; margin-bottom:4px;">
-      <span><strong>87 of 94 features completed</strong></span>
-      <span class="accent">92.6%</span>
-    </div>
-    <div class="progress-bar-container">
-      <div class="progress-bar-fill" style="width:92.6%; background: linear-gradient(90deg, var(--accent), #14b8a6);">92.6% Complete</div>
-    </div>
-    <div style="display:flex; gap:20px; font-size:0.55em; margin-top:6px; color:#64748b;">
-      <span>87 Completed</span>
-      <span>1 In Progress</span>
-      <span>6 In Backlog</span>
-    </div>
-  </div>
-  <h3 style="margin-top:16px;">Feature Breakdown by Category</h3>
-  <div class="feature-cat"><span class="cat-label">Authentication</span><div class="cat-bar"><div class="cat-fill" style="width:100%"></div></div><span class="cat-count">6/6</span></div>
-  <div class="feature-cat"><span class="cat-label">Course Management</span><div class="cat-bar"><div class="cat-fill" style="width:100%"></div></div><span class="cat-count">12/12</span></div>
-  <div class="feature-cat"><span class="cat-label">Video &amp; Content</span><div class="cat-bar"><div class="cat-fill" style="width:100%"></div></div><span class="cat-count">10/10</span></div>
-  <div class="feature-cat"><span class="cat-label">AI Services</span><div class="cat-bar"><div class="cat-fill" style="width:88%"></div></div><span class="cat-count">7/8</span></div>
-  <div class="feature-cat"><span class="cat-label">Offline &amp; Sync</span><div class="cat-bar"><div class="cat-fill" style="width:100%"></div></div><span class="cat-count">8/8</span></div>
-  <div class="feature-cat"><span class="cat-label">Exams &amp; Assessment</span><div class="cat-bar"><div class="cat-fill" style="width:100%"></div></div><span class="cat-count">14/14</span></div>
-  <div class="feature-cat"><span class="cat-label">Student Features</span><div class="cat-bar"><div class="cat-fill" style="width:100%"></div></div><span class="cat-count">18/18</span></div>
-  <div class="feature-cat"><span class="cat-label">Engagement</span><div class="cat-bar"><div class="cat-fill" style="width:67%"></div></div><span class="cat-count">12/18</span></div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Mahmoud (Product Manager)</p>
-    <p><strong>Time:</strong> 2 minutes</p>
-    <ul>
-      <li>Let the progress bar speak for itself. 92.6% is strong but be clear about what remains.</li>
-      <li>The 1 in-progress feature is the AI Exam Corrector (multi-image grading).</li>
-      <li>The 6 backlog items are engagement features (badges, leaderboards, certificates, notifications) — these are intentionally lower priority.</li>
-      <li>Engagement category has the most remaining items — this is by design, not by accident.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Inflate numbers or redefine "done." If it is not tested, do not count it as complete.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 10: Platform Coverage -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 3: How Research Changed Product Decisions</div>
-  <h2>Platform Coverage</h2>
-  <div class="two-col">
-    <div>
-      <h3>Client Applications</h3>
-      <div class="stack-item"><span class="stack-tag">Web</span> Laravel + React (Admin &amp; Student Portal)</div>
-      <div class="stack-item"><span class="stack-tag">Android</span> Kotlin (Student App — feature-complete)</div>
-      <div class="stack-item"><span class="stack-tag">iOS</span> Swift (Student App — core sync + navigation)</div>
-    </div>
-    <div>
-      <h3>Backend Services</h3>
-      <div class="stack-item"><span class="stack-tag">API</span> Laravel (Core Platform API)</div>
-      <div class="stack-item"><span class="stack-tag">AI</span> Go + Gemini (AI Tutoring &amp; Assessment)</div>
-      <div class="stack-item"><span class="stack-tag">Realtime</span> WebSocket Server (Live Features)</div>
-      <div class="stack-item"><span class="stack-tag">Infra</span> GCP (Cloud Run, Cloud SQL, CDN)</div>
-    </div>
-  </div>
-  <div style="margin-top:14px;">
-    <div class="card" style="background: #fefce8; border-left: 3px solid var(--warning);">
-      <h4 style="color: var(--warning);">iOS Feature Gap</h4>
-      <p>Android is ahead on UI features (video player, notes hub, exams screen). iOS has core offline sync and navigation but needs video player, notes, and exams screens.</p>
-    </div>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Mahmoud (Product Manager)</p>
-    <p><strong>Time:</strong> 2 minutes</p>
-    <ul>
-      <li>Show the full stack to demonstrate the breadth of engineering work.</li>
-      <li>Be transparent about the iOS gap — this is known and planned, not a surprise.</li>
-      <li>Transition to Block 4: "Now Fadi will walk you through what we de-risked technically."</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Hide the iOS gap. Present it as a known, planned item with clear path to resolution.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 11: POC 1 — Offline Sync -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 4: Technical De-Risking</div>
-  <div class="poc-header">
-    <span class="poc-badge">POC 1</span>
-    <h2 style="margin:0; font-size:1.3em;">Offline Sync Validation</h2>
-  </div>
-  <div class="poc-grid">
-    <div class="poc-section">
-      <h4>Hypothesis</h4>
-      <p>Students can complete learning activities offline and sync reliably when connectivity returns.</p>
-    </div>
-    <div class="poc-section">
-      <h4>Why This Matters</h4>
-      <p>Iraq has unreliable internet. Learning cannot depend on constant connectivity. This is the foundation of everything else.</p>
-    </div>
-    <div class="poc-section result">
-      <h4>What We Tested &amp; Result</h4>
-      <ul>
-        <li>PowerSync integration on iOS/Swift</li>
-        <li>17 tables synced with full offline CRUD</li>
-        <li>Server-wins conflict resolution strategy</li>
-        <li>8 integration tests proving data integrity, hierarchy integrity, and write-path uploads</li>
-      </ul>
-    </div>
-    <div class="poc-section risk">
-      <h4>Limitations &amp; Production Implications</h4>
-      <ul>
-        <li>Conflict resolution is server-wins only — complex merge conflicts not yet handled</li>
-        <li>Android upload path still needs implementation</li>
-        <li>Architecture proven for read-heavy offline use</li>
-        <li>Write conflicts need policy decisions for exam submissions</li>
-      </ul>
-    </div>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Robera</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>Use scenario narration: "A student starts a lesson at home. The internet drops. They complete their quiz. Later, when they walk near a cafe with wifi, the app syncs automatically. Their progress is saved."</li>
-      <li>State edge cases explicitly: "Server-wins means if the student submits offline and the server has a newer record, the server version takes priority."</li>
-      <li>Be the most trustworthy engineer in the room: calm, bounded, precise.</li>
-      <li>Mention the 8 integration tests by name if asked — they prove data integrity.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Overstate offline capabilities. Do not say "fully offline" without qualifying what "fully" means. Do not hide the Android gap.</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 12: POC 2 — AI Curriculum Chatbot -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 4: Technical De-Risking</div>
-  <div class="poc-header">
-    <span class="poc-badge">POC 2</span>
-    <h2 style="margin:0; font-size:1.3em;">AI Curriculum Chatbot</h2>
-  </div>
-  <div class="poc-grid">
-    <div class="poc-section">
-      <h4>Hypothesis</h4>
-      <p>AI can provide curriculum-specific tutoring grounded in actual course content.</p>
-    </div>
-    <div class="poc-section">
-      <h4>Why This Matters</h4>
-      <p>Students need help outside class hours. Generic AI gives wrong curriculum answers. Tutoring must be grounded in what is actually taught.</p>
-    </div>
-    <div class="poc-section result">
-      <h4>What We Tested &amp; Result</h4>
-      <ul>
-        <li>RAG-based chatbot using Gemini 2.5 Flash</li>
-        <li>Curriculum search tool for content grounding</li>
-        <li>SSE streaming for real-time responses</li>
-        <li>Arabic + English language support</li>
-        <li>Falls back to web search when curriculum has no answer</li>
-      </ul>
-    </div>
-    <div class="poc-section risk">
-      <h4>Limitations &amp; Production Implications</h4>
-      <ul>
-        <li>Quality depends on indexed curriculum completeness</li>
-        <li>No formal accuracy measurement yet</li>
-        <li>Hallucination control relies on prompt engineering, not verified retrieval</li>
-        <li>Promising for supplementary help, NOT yet validated for high-stakes academic guidance</li>
-        <li>Needs accuracy benchmarking against curriculum experts</li>
-      </ul>
-    </div>
-  </div>
-  <aside class="notes">
-    <p><strong>Presenter:</strong> Ali</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>Demo flow: "A student asks 'Explain photosynthesis from Chapter 3.' The system searches the curriculum content first, finds the relevant lesson, and generates an answer grounded in that content."</li>
-      <li>Emphasize the curriculum-grounding. This is not ChatGPT — it is tied to what the student is actually learning.</li>
-      <li>Be honest about accuracy: "We have not yet formally measured accuracy against curriculum expert answers."</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Claim the AI is production-ready. Do not say "it never hallucinates." Be explicit: "Hallucination control is prompt-based, not retrieval-verified."</p>
-  </aside>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 13: POC 3 — AI Exam Generation & Scoring -->
-<!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 4: Technical De-Risking</div>
-  <div class="poc-header">
-    <span class="poc-badge">POC 3</span>
-    <h2 style="margin:0; font-size:1.3em;">AI Assessment Engine</h2>
-  </div>
-  <div class="poc-grid">
-    <div class="poc-section">
-      <h4>Hypothesis</h4>
-      <p>AI can generate curriculum-aligned questions AND reliably score handwritten answers.</p>
-    </div>
-    <div class="poc-section result">
-      <h4>What We Tested &amp; Result</h4>
-      <ul>
-        <li>Question generation: MCQ, T/F, typed, photo upload</li>
-        <li>Difficulty distribution: 40% easy / 40% medium / 20% hard</li>
-        <li>Photo scoring: Gemini 2.5 Pro vision for handwritten Arabic + English</li>
-        <li>Confidence scoring: 0.0 - 1.0 scale</li>
-        <li>Rubric-based criteria scoring</li>
-      </ul>
-    </div>
-    <div class="poc-section">
-      <h4>Test Coverage</h4>
-      <div style="display:flex; gap:20px; margin-top:6px;">
-        <div class="stat-box" style="flex:1;">
-          <div class="number">78.4%</div>
-          <div class="label">Generation Coverage</div>
+<section data-nav="مقاربتنا">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">المحور الأول: السياق والتحدي</span>
+    <h2>مقاربتنا: ثلاثة مبادئ أساسية</h2>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;">
+      <div class="num-card">
+        <div class="num-circle">١</div>
+        <div>
+          <h4>العمل بدون إنترنت أولاً</h4>
+          <p>المنصة تعمل بالكامل بدون اتصال، والمزامنة تحدث تلقائياً عند توفر الإنترنت</p>
         </div>
-        <div class="stat-box" style="flex:1;">
-          <div class="number">92.2%</div>
-          <div class="label">Photo Scoring Coverage</div>
+      </div>
+      <div class="num-card">
+        <div class="num-circle">٢</div>
+        <div>
+          <h4>التركيز على الأداء الأكاديمي</h4>
+          <p>محتوى مرتبط بالمنهج، اختبارات ذكية، تقييم بالذكاء الاصطناعي — لا ألعاب سطحية</p>
+        </div>
+      </div>
+      <div class="num-card">
+        <div class="num-circle">٣</div>
+        <div>
+          <h4>تجربة مخصصة حسب المرحلة الدراسية</h4>
+          <p>تجربة مختلفة لكل مرحلة دراسية بناءً على سلوك التعلم الفعلي للطالب</p>
         </div>
       </div>
     </div>
-    <div class="poc-section risk">
-      <h4>Limitations</h4>
-      <ul>
-        <li>Generation trustworthiness at scale not validated with curriculum experts</li>
-        <li>No automated consistency checks against prior exam styles</li>
-        <li>Photo scoring: confidence &lt;0.4 = unreliable</li>
-        <li>Needs: curriculum-anchored retrieval, answer grounding, human sampling protocol</li>
-        <li>Photo scoring viable for practice; needs expert review for high-stakes exams</li>
-      </ul>
-    </div>
   </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Ali</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>Two distinct capabilities: generation and scoring. Present them clearly as separate.</li>
-      <li>Generation: "The system can create exam questions at different difficulty levels, aligned to curriculum topics."</li>
-      <li>Scoring: "Students photograph their handwritten answer. The AI reads the handwriting and scores it against a rubric."</li>
-      <li>Be clear about the confidence threshold: below 0.4, the system should flag for human review.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Claim this replaces teacher grading. It supplements practice. High-stakes exams need expert review.</p>
+    Presenter: Mohammad — 2 min<br><br>
+    Key points:<br>
+    - These 3 principles drive EVERY product and technical decision<br>
+    - Offline-first is NON-NEGOTIABLE — not a nice-to-have<br>
+    - Academic outcomes are how we measure success, not engagement metrics<br>
+    - Stage-based UX: a 10-year-old learns differently than a 17-year-old<br><br>
+    Transition: "Islam will now share what we learned directly from students."<br><br>
+    DO NOT: Use buzzwords. Speak plainly about WHY each principle exists.
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 14: POC 4 — Anti-Cheating -->
+<!-- SLIDE 4: RESEARCH SECTION TITLE -->
 <!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 4: Technical De-Risking</div>
-  <div class="poc-header">
-    <span class="poc-badge">POC 4</span>
-    <h2 style="margin:0; font-size:1.3em;">Exam Integrity</h2>
+<section class="section-title" data-nav="▸ البحث الميداني">
+  <img src="logo-white.png" class="slide-logo-white" alt="">
+  <span class="block-label">المحور الثاني</span>
+  <h2>ما تعلمناه من البحث الميداني</h2>
+  <div class="deco-bars">
+    <div><div class="dot"></div><div class="bar" style="height:40px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:65px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:85px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:55px"></div></div>
   </div>
-  <div class="poc-grid">
-    <div class="poc-section">
-      <h4>Hypothesis</h4>
-      <p>Server-side time validation and session monitoring can prevent common cheating vectors.</p>
+  <aside class="notes">
+    Mohammad introduces Islam: "Islam will share what we learned directly from students."<br>
+    Transition slide — 10 seconds max.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: RESEARCH FINDINGS -->
+<!-- ============================================================ -->
+<section data-nav="نتائج البحث">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">المحور الثاني: البحث الميداني</span>
+    <h2>نتائج البحث الاستكشافي</h2>
+    <div style="margin:8px 0 12px;">
+      <span class="section-pill pill-orange" style="font-size:0.5em;">٧ مقابلات استكشافية — رؤى اتجاهية وليست إحصائية</span>
     </div>
-    <div class="poc-section result">
-      <h4>What We Tested</h4>
-      <ul>
-        <li>Server-authoritative timing (client cannot manipulate exam duration)</li>
-        <li>Session tracking (exam attempt lifecycle)</li>
-        <li>Schema supports exam timing and attempt tracking</li>
-      </ul>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card" style="border-right:4px solid var(--brand);">
+        <h4>النمط الأول: سلوك التعلم يختلف جذرياً حسب المرحلة</h4>
+        <p>الابتدائية: محتوى قصير ومرئي • المتوسطة: تنوع وتحفيز • الإعدادية: تركيز على الامتحانات والنتائج</p>
+      </div>
+      <div class="card" style="border-right:4px solid var(--brand);">
+        <h4>النمط الثاني: مدة الانتباه للفيديو تختلف بشكل كبير</h4>
+        <p>الأصغر سناً: ٥-١٠ دقائق كحد أقصى • الأكبر سناً: ٢٠-٣٠ دقيقة إذا كان المحتوى مرتبطاً بالامتحان</p>
+      </div>
+      <div class="card" style="border-right:4px solid var(--brand);">
+        <h4>النمط الثالث: الأهل يشترون النتائج</h4>
+        <p>قرار الشراء مرتبط بالأداء في الامتحانات وليس بساعات الاستخدام أو التفاعل</p>
+      </div>
     </div>
   </div>
-  <div style="margin-top: 12px;">
-    <div class="two-col">
-      <div class="card" style="border-left: 3px solid var(--success);">
-        <h4 style="color: var(--success);">What We Can Detect</h4>
-        <ul>
-          <li>Time manipulation (server is source of truth)</li>
-          <li>Multiple submission attempts</li>
-          <li>Session duration anomalies</li>
+  <aside class="notes">
+    Presenter: Islam — 3 min<br><br>
+    CRITICAL: Start by saying "We conducted 7 exploratory interviews. This gives us directional insight, not statistical certainty."<br><br>
+    Present ONLY these 3 patterns. For each, explain the design decision it changed.<br><br>
+    DO NOT: Overclaim from 7 interviews. DO NOT present as validated truth.<br>
+    DO NOT: Show more than 3 findings — compression is strength.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: DESIGN DECISIONS FROM RESEARCH -->
+<!-- ============================================================ -->
+<section data-nav="قرارات التصميم">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">المحور الثاني: البحث الميداني</span>
+    <h2>قرارات التصميم المبنية على البحث</h2>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
+      <div class="card" style="border-right:4px solid var(--success);background:#f0fdf4;">
+        <h4 style="color:var(--success);">قرار ١: تصميم واجهات مختلفة حسب المرحلة</h4>
+        <p>بدلاً من واجهة واحدة للجميع، صممنا تجارب مخصصة تراعي اختلاف السلوك التعليمي بين المراحل الدراسية</p>
+      </div>
+      <div class="card" style="border-right:4px solid var(--success);background:#f0fdf4;">
+        <h4 style="color:var(--success);">قرار ٢: أولوية محتوى الامتحانات</h4>
+        <p>المحتوى المرتبط مباشرة بالامتحانات يحصل على الأولوية القصوى في خطة الإطلاق</p>
+      </div>
+      <div class="card" style="border-right:4px solid var(--warning);background:#fffbeb;">
+        <h4 style="color:#92400e;">فرضية لم تُثبت بعد: التفاعل الاجتماعي</h4>
+        <p>لم نجد دليلاً كافياً على أن التفاعل الاجتماعي بين الطلاب داخل المنصة يحسّن التعلم — لذلك لم نبنِ ميزات اجتماعية</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Presenter: Islam — 2 min<br><br>
+    The unproven assumption card (amber) is CRUCIAL — it shows intellectual honesty.<br>
+    Saying "we chose NOT to build social features because research didn't support it" builds more trust than showing 10 features we did build.<br><br>
+    DO NOT: Skip the unproven assumption. It's the strongest credibility signal.<br><br>
+    Transition: Mohammad takes over: "Based on these insights, Mahmoud will explain the product decisions."
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: PRODUCT DECISIONS SECTION TITLE -->
+<!-- ============================================================ -->
+<section class="section-title" data-nav="▸ قرارات المنتج">
+  <img src="logo-white.png" class="slide-logo-white" alt="">
+  <span class="block-label">المحور الثالث</span>
+  <h2>القرارات الاستراتيجية للمنتج</h2>
+  <div class="deco-bars">
+    <div><div class="dot"></div><div class="bar" style="height:50px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:75px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:60px"></div></div>
+  </div>
+  <aside class="notes">
+    Mohammad introduces: "Based on research, Mahmoud will explain our concrete product decisions."<br>
+    Transition — 10 seconds.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: WHAT WE BUILD AND WHY -->
+<!-- ============================================================ -->
+<section data-nav="ماذا نبني ولماذا">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">المحور الثالث: قرارات المنتج</span>
+    <h2>ماذا نبني ولماذا</h2>
+    <div class="two-cols" style="margin-top:14px;">
+      <div>
+        <h3 style="color:var(--success);">✓ ما نبنيه</h3>
+        <ul class="check-list">
+          <li>منصة تعليمية تعمل بالكامل بدون إنترنت</li>
+          <li>نظام امتحانات ذكي بالذكاء الاصطناعي</li>
+          <li>محتوى فيديو متوافق مع المنهج العراقي</li>
+          <li>مساعد ذكي مرتبط بالمنهج الدراسي</li>
+          <li>تقارير أداء أسبوعية مخصصة للطالب</li>
         </ul>
       </div>
-      <div class="card" style="border-left: 3px solid var(--danger);">
-        <h4 style="color: var(--danger);">What We Cannot Detect (Yet)</h4>
-        <ul>
-          <li>Tab switching / app backgrounding on mobile</li>
-          <li>Screen sharing or external cameras</li>
-          <li>In-person collaboration</li>
-          <li style="font-weight:600;">These require policy mitigation, not technical prevention</li>
+      <div>
+        <h3 style="color:var(--danger);">✗ ما لا نبنيه</h3>
+        <ul class="cross-list">
+          <li>شبكة اجتماعية للطلاب</li>
+          <li>منصة فيديو عامة غير منهجية</li>
+          <li>تطبيق ألعاب تعليمية سطحية</li>
+          <li>نسخة من تطبيقات الخليج بدون توطين</li>
         </ul>
       </div>
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Robera</p>
-    <p><strong>Time:</strong> 2 minutes</p>
-    <ul>
-      <li>Frame honestly: "We can detect X. We cannot detect Y. Y requires policy mitigation, not technical prevention."</li>
-      <li>This is an architecture decision, not a complete anti-cheating solution.</li>
-      <li>The key message: server is the source of truth for timing. Students cannot manipulate exam duration on the client.</li>
-      <li>Policy decisions needed from client: What happens when cheating is detected? What happens when it is suspected but not confirmed?</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Claim we have a complete anti-cheating system. Be explicit about boundaries. This builds trust.</p>
+    Presenter: Mahmoud — 2 min<br><br>
+    The "What We Are NOT Building" column is AS IMPORTANT as the other.<br>
+    Say: "We made deliberate choices to exclude these because they don't serve our thesis."<br><br>
+    DO NOT: Use phrases like "golden opportunity" or "strategic gradient" — speak PLAINLY.<br>
+    DO NOT: Sound like a strategy memo. Sound like a product owner defending decisions.<br>
+    DO NOT: Spend more than 60 seconds on any point before getting concrete.
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 15: POC 5 — Video Delivery -->
+<!-- SLIDE 9: DELIVERY PROGRESS -->
 <!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 4: Technical De-Risking</div>
-  <div class="poc-header">
-    <span class="poc-badge">POC 5</span>
-    <h2 style="margin:0; font-size:1.3em;">Video Content Delivery</h2>
-  </div>
-  <div class="poc-grid">
-    <div class="poc-section">
-      <h4>Hypothesis</h4>
-      <p>Video content can be delivered efficiently on low-bandwidth Iraqi networks.</p>
+<section data-nav="تقدم التسليم">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">المحور الثالث: قرارات المنتج</span>
+    <h2>تقدم التسليم</h2>
+    <div style="text-align:center;margin:12px 0 8px;">
+      <div class="stat-number" style="font-size:2.4em;">٨٧ <span style="font-size:0.5em;opacity:0.6;">من</span> ٩٤</div>
+      <div class="stat-label" style="font-size:0.65em;">ميزة مكتملة</div>
     </div>
-    <div class="poc-section result">
-      <h4>What We Tested &amp; Result</h4>
-      <ul>
-        <li>Resume playback: 10s checkpoint caching — working on both platforms</li>
-        <li>Audio-only mode: bandwidth saving for poor connections</li>
-        <li>Al-Fihris book sync: textbook-video synchronization for unique study experience</li>
-        <li>Adaptive streaming: quality adjusts to network conditions</li>
-      </ul>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width:92.6%;">٩٢.٦٪</div>
     </div>
-    <div class="poc-section risk">
-      <h4>Limitations</h4>
-      <ul>
-        <li>Testing done in development environment, not on actual Iraqi network conditions</li>
-        <li>CDN configured (Cloud CDN, 7200s signed URL cache) but not load-tested</li>
-        <li>Production streaming cost model not yet finalized</li>
-      </ul>
+    <div class="status-row">
+      <div class="status-badge badge-green">٨٧ مكتملة</div>
+      <div class="status-badge badge-amber">١ قيد التنفيذ</div>
+      <div class="status-badge badge-gray">٦ في قائمة الانتظار</div>
     </div>
-    <div class="poc-section">
-      <h4>Production Implication</h4>
-      <ul>
-        <li>Client-side experience proven in dev environment</li>
-        <li>Server-side infrastructure configured: GCP Cloud Storage + CDN</li>
-        <li>Real-world Iraqi network testing needed before launch</li>
-      </ul>
+    <div style="margin-top:10px;">
+      <div class="feature-bar"><span class="feature-bar-label">تجربة الطالب</span><div class="feature-bar-track"><div class="feature-bar-fill" style="width:90%"></div></div><span class="feature-bar-count">١٨</span></div>
+      <div class="feature-bar"><span class="feature-bar-label">التقييم والامتحانات</span><div class="feature-bar-track"><div class="feature-bar-fill" style="width:80%"></div></div><span class="feature-bar-count">٨</span></div>
+      <div class="feature-bar"><span class="feature-bar-label">الذكاء الاصطناعي</span><div class="feature-bar-track"><div class="feature-bar-fill" style="width:85%"></div></div><span class="feature-bar-count">٨ وكلاء</span></div>
+      <div class="feature-bar"><span class="feature-bar-label">إدارة المحتوى</span><div class="feature-bar-track"><div class="feature-bar-fill" style="width:75%"></div></div><span class="feature-bar-count">١٢</span></div>
+      <div class="feature-bar"><span class="feature-bar-label">البنية التحتية</span><div class="feature-bar-track"><div class="feature-bar-fill" style="width:95%"></div></div><span class="feature-bar-count">١٤</span></div>
+      <div class="feature-bar"><span class="feature-bar-label">تطبيقات الجوال</span><div class="feature-bar-track"><div class="feature-bar-fill" style="width:70%"></div></div><span class="feature-bar-count">٢٧</span></div>
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Mubarak</p>
-    <p><strong>Time:</strong> 2 minutes</p>
-    <ul>
-      <li>Be brutally precise about test conditions. "We tested resume playback and audio mode in our development environment. We have NOT tested on actual Iraqi networks."</li>
-      <li>The Al-Fihris book sync is a differentiator — explain briefly: "Students can see the textbook page alongside the video, synced to the current topic."</li>
-      <li>Only claim what was actually proven in dev environment. Do NOT imply production readiness.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Say "works on Iraqi networks" — say "works in dev environment, needs real-world testing."</p>
+    Presenter: Mahmoud — 3 min<br><br>
+    Let the NUMBERS speak. 92.6% completion demonstrates execution capability.<br>
+    Don't rush — this is the strongest proof of delivery.<br>
+    Mention the 1 in-progress (AI Exam Corrector) briefly.<br><br>
+    DO NOT: Read every number. Let the visual do the work.<br>
+    DO NOT: Present features as a list — present as evidence of strategy execution.
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 16: POC 6 — Infrastructure -->
+<!-- SLIDE 10: PLATFORM COVERAGE -->
 <!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 4: Technical De-Risking</div>
-  <div class="poc-header">
-    <span class="poc-badge">POC 6</span>
-    <h2 style="margin:0; font-size:1.3em;">Production Infrastructure</h2>
-  </div>
-  <div class="two-col">
-    <div>
-      <h3>Architecture</h3>
-      <div class="stack-item"><span class="stack-tag" style="background:var(--accent)">Compute</span> Cloud Run (serverless, auto-scaling)</div>
-      <div class="stack-item"><span class="stack-tag" style="background:var(--accent)">Database</span> Cloud SQL (PostgreSQL 16)</div>
-      <div class="stack-item"><span class="stack-tag" style="background:var(--accent)">Cache</span> Memorystore (Redis 7.2)</div>
-      <div class="stack-item"><span class="stack-tag" style="background:var(--accent)">Storage</span> Cloud Storage + CDN</div>
-      <h3 style="margin-top:12px;">Environments</h3>
-      <div style="display:flex; gap:8px; margin-top:6px;">
-        <div class="stat-box" style="flex:1;"><div class="number" style="font-size:1em;">Dev</div></div>
-        <div class="stat-box" style="flex:1;"><div class="number" style="font-size:1em;">Staging</div></div>
-        <div class="stat-box" style="flex:1; background:#dcfce7;"><div class="number" style="font-size:1em;">Prod</div></div>
+<section data-nav="التغطية التقنية">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">المحور الثالث: قرارات المنتج</span>
+    <h2>التغطية التقنية الكاملة</h2>
+    <div class="card-grid grid-3x2" style="margin-top:12px;">
+      <div class="stat-card">
+        <div class="stat-number" style="font-size:1.1em;">الخادم الرئيسي</div>
+        <p style="font-size:0.5em;margin:4px 0;">Laravel 12 + React</p>
+        <p style="font-size:0.48em;color:var(--text-light);">+١٢٨ نقطة API • ١٤٧ اختبار</p>
       </div>
-    </div>
-    <div>
-      <h3>Operations</h3>
-      <div class="card" style="margin-bottom:8px;">
-        <h4>Monitoring</h4>
-        <p>Uptime checks, P0-P3 alert policies, dashboards, distributed tracing</p>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size:1.1em;">أندرويد</div>
+        <p style="font-size:0.5em;margin:4px 0;">Kotlin + Jetpack Compose</p>
+        <p style="font-size:0.48em;color:var(--text-light);">١٣ ميزة • PowerSync</p>
       </div>
-      <div class="card" style="margin-bottom:8px;">
-        <h4>CI/CD Pipeline</h4>
-        <p>GitHub Actions &rarr; Docker &rarr; Artifact Registry &rarr; Cloud Run<br>Zero-secret auth via Workload Identity Federation</p>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size:1.1em;">iOS</div>
+        <p style="font-size:0.5em;margin:4px 0;">Swift + SwiftUI</p>
+        <p style="font-size:0.48em;color:var(--text-light);">١٣ ميزة • ٨ اختبارات تكامل</p>
       </div>
-      <div class="card" style="margin-bottom:8px;">
-        <h4>Security</h4>
-        <p>Private VPC, no public database access, Secret Manager, signed URLs for media</p>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size:1.1em;">الذكاء الاصطناعي</div>
+        <p style="font-size:0.5em;margin:4px 0;">Go + Gemini 2.5</p>
+        <p style="font-size:0.48em;color:var(--text-light);">٨ وكلاء ذكاء اصطناعي</p>
       </div>
-      <div class="card" style="background:#f0fdf4;">
-        <h4>Estimated Production Cost</h4>
-        <p style="font-size:1.2em; font-weight:700; color:var(--primary);">~$500/month</p>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size:1.1em;">الاتصال الفوري</div>
+        <p style="font-size:0.5em;margin:4px 0;">Go + WebSocket + Redis</p>
+        <p style="font-size:0.48em;color:var(--text-light);">رسائل فورية وحضور مباشر</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size:1.1em;">البنية التحتية</div>
+        <p style="font-size:0.5em;margin:4px 0;">GCP: Cloud Run + SQL + CDN</p>
+        <p style="font-size:0.48em;color:var(--text-light);">٣ بيئات • CI/CD كامل</p>
       </div>
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Fadi or Ali Traboulsi</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>This slide proves production readiness of infrastructure. The platform choices are deliberate.</li>
-      <li>Cloud Run = no server management, auto-scaling, pay-per-use.</li>
-      <li>Workload Identity Federation = no secrets stored in CI/CD. Most secure auth pattern.</li>
-      <li>$500/month is the estimate for initial production load. This scales with usage.</li>
-      <li>Three environments mean we can test safely before deploying to production.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Promise exact costs. Say "estimated at approximately $500/month for initial load, scaling with usage."</p>
+    Presenter: Mahmoud — 3 min<br><br>
+    This shows a COMPLETE system, not a prototype.<br>
+    6 repos, 3 platforms, full CI/CD.<br>
+    Don't read every detail — let them absorb the grid visually.<br><br>
+    Transition: Mohammad takes over for Block 4 intro.
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 17: Work Remaining -->
+<!-- SLIDE 11: TECHNICAL DE-RISKING SECTION TITLE -->
 <!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 5: What Remains Open</div>
-  <h2>Work Remaining</h2>
-  <div class="two-col">
-    <div>
-      <h3>In Progress (1 feature)</h3>
-      <div class="card" style="border-left: 3px solid var(--warning);">
-        <h4>AI Exam Corrector</h4>
-        <p>Multi-image full exam grading with step-by-step partial credit. Student photographs entire exam, AI grades each question with rubric-based scoring.</p>
-      </div>
-      <h3 style="margin-top:14px;">iOS Feature Gap</h3>
-      <div class="card" style="border-left: 3px solid var(--warning);">
-        <h4>iOS Needs</h4>
-        <ul>
-          <li>Video player integration</li>
-          <li>Notes hub</li>
-          <li>Exams screen</li>
-        </ul>
-        <p>Core offline sync and navigation are complete. UI features need to catch up to Android.</p>
-      </div>
-    </div>
-    <div>
-      <h3>Backlog (6 features)</h3>
-      <div class="card">
-        <ul>
-          <li>Geo-leaderboards (regional competition)</li>
-          <li>Badges (achievement system)</li>
-          <li>Live Session Notifications</li>
-          <li>Push Notifications infrastructure</li>
-          <li>Subject Completion Certificates</li>
-          <li>Topic Attached Files</li>
-        </ul>
-        <p style="margin-top:8px; color:#64748b; font-style:italic;">These are engagement features, intentionally prioritized below core learning and assessment features.</p>
-      </div>
-    </div>
+<section class="section-title" data-nav="▸ التحقق التقني">
+  <img src="logo-white.png" class="slide-logo-white" alt="">
+  <span class="block-label">المحور الرابع</span>
+  <h2>ما تم التحقق منه تقنياً</h2>
+  <p style="opacity:0.8;font-size:0.7em;margin-top:8px;">٦ مخاطر تقنية أساسية — ما أثبتناه وما يحتاج مزيداً من التحقق</p>
+  <div class="deco-bars">
+    <div><div class="dot"></div><div class="bar" style="height:45px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:70px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:90px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:60px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:40px"></div></div>
   </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Mohammad (Meeting Lead)</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>Be transparent: "We have 1 feature in active development and 6 in the backlog."</li>
-      <li>Frame the backlog items as engagement features that were deliberately deprioritized in favor of core learning.</li>
-      <li>iOS gap: "Android is our feature-complete reference platform. iOS has the hardest part done (offline sync) and needs UI feature parity."</li>
-      <li>Ask: "We would like your input on prioritization of these backlog items."</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Minimize remaining work. Be honest about the iOS gap and the backlog.</p>
+    Presenter: Fadi — 30 seconds intro<br>
+    Say: "We identified 6 core technical risks. Each presenter will share: hypothesis, test, result, limitation."<br><br>
+    DO NOT: Present slides yourself — delegate to specialists.
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 18: Open Risks -->
+<!-- SLIDE 12: POC 1 — OFFLINE SYNC -->
 <!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 5: What Remains Open</div>
-  <h2>Open Risks &amp; Validation Needs</h2>
-  <div class="risk-item">
-    <div class="risk-marker high"></div>
-    <div>
-      <strong>AI Accuracy Validation</strong>
-      <p style="font-size:0.55em; margin:2px 0; color:#64748b;">Need formal validation framework with curriculum experts. AI-generated questions and scores must be benchmarked against human expert baselines before deployment.</p>
+<section data-nav="المزامنة بدون إنترنت">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">إثبات المفهوم ١</span>
+    <span class="presenter-tag">روبيرا</span>
+    <h2>المزامنة بدون إنترنت</h2>
+    <div class="poc-card" style="margin-top:10px;">
+      <div class="poc-row"><span class="poc-label">الفرضية:</span><span class="poc-value">يمكن للطلاب إكمال أنشطة التعلم بدون إنترنت والمزامنة تلقائياً عند عودة الاتصال</span></div>
+      <div class="poc-row"><span class="poc-label">الأهمية:</span><span class="poc-value">البنية التحتية في العراق لا تضمن اتصالاً مستقراً — التعلم لا يمكن أن يعتمد على الإنترنت</span></div>
+      <div class="poc-row"><span class="poc-label">ما اختبرناه:</span><span class="poc-value">تكامل PowerSync على iOS و Android — ١٧ جدول بيانات — عمليات قراءة وكتابة بدون إنترنت — حل النزاعات (الخادم يفوز)</span></div>
+      <div class="poc-row result"><span class="poc-label">النتيجة:</span><span class="poc-value">قراءة وكتابة كاملة بدون إنترنت مع مزامنة تلقائية. iOS يملك ٨ اختبارات تكامل تثبت سلامة البيانات وسلامة التسلسل الهرمي</span></div>
+      <div class="poc-row limitation"><span class="poc-label">القيود:</span><span class="poc-value">حل النزاعات يعتمد على أولوية الخادم. النزاعات المعقدة لم تُعالج بعد. مسار الرفع في Android يحتاج استكمال</span></div>
+      <div class="poc-row"><span class="poc-label">الأثر الإنتاجي:</span><span class="poc-value">البنية مثبتة للاستخدام كثيف القراءة. نزاعات الكتابة تحتاج قرارات سياسة لتسليم الامتحانات</span></div>
     </div>
-  </div>
-  <div class="risk-item">
-    <div class="risk-marker high"></div>
-    <div>
-      <strong>Real-World Network Testing</strong>
-      <p style="font-size:0.55em; margin:2px 0; color:#64748b;">All testing done in development environments. Video streaming, offline sync, and AI features need testing on actual Iraqi network conditions (intermittent connectivity, low bandwidth).</p>
-    </div>
-  </div>
-  <div class="risk-item">
-    <div class="risk-marker medium"></div>
-    <div>
-      <strong>Exam Integrity Policies</strong>
-      <p style="font-size:0.55em; margin:2px 0; color:#64748b;">Technical detection has limits. Need policy decisions: What happens when cheating is detected? What about suspected but unconfirmed cases?</p>
-    </div>
-  </div>
-  <div class="risk-item">
-    <div class="risk-marker medium"></div>
-    <div>
-      <strong>Content Pipeline</strong>
-      <p style="font-size:0.55em; margin:2px 0; color:#64748b;">Curriculum content must be indexed for AI grounding. No automated extraction from PDFs yet. Manual content indexing is a bottleneck.</p>
-    </div>
-  </div>
-  <div class="risk-item">
-    <div class="risk-marker low"></div>
-    <div>
-      <strong>Scale Testing</strong>
-      <p style="font-size:0.55em; margin:2px 0; color:#64748b;">No load testing done yet. Infrastructure is designed for scale (Cloud Run auto-scaling) but not yet proven under concurrent student load.</p>
-    </div>
-  </div>
-  <div style="margin-top:10px; display:flex; gap:14px; font-size:0.5em; color:#94a3b8;">
-    <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--danger);margin-right:4px;"></span> High Priority</span>
-    <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--warning);margin-right:4px;"></span> Medium Priority</span>
-    <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--success);margin-right:4px;"></span> Lower Priority</span>
   </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Mohammad (Meeting Lead)</p>
-    <p><strong>Time:</strong> 3 minutes</p>
-    <ul>
-      <li>Present risks by priority. The client should leave this slide knowing exactly what needs attention.</li>
-      <li>AI Accuracy and Network Testing are the two highest risks. Frame them as "validation needs" not "failures."</li>
-      <li>For each risk, state what we need to resolve it. This sets up Block 6.</li>
-      <li>Content Pipeline: "We need access to curriculum materials to index. Without this, the AI cannot be grounded."</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Downplay risks. The whole point of this slide is to build trust by being transparent about what is not yet proven.</p>
+    Presenter: Robera — 2.5 min<br><br>
+    Use SCENARIO narration: "Student opens app at home with WiFi → downloads lessons → goes to school with no internet → studies offline → reconnects → everything syncs automatically."<br><br>
+    Key data: 17 tables synced, 8 iOS integration tests, server-wins conflict strategy.<br><br>
+    DO NOT: Describe architecture internals (Redis, PowerSync SDK, VPC).<br>
+    DO NOT: Say "3-5 seconds sync time" without stating conditions.<br>
+    BE: Calm, bounded, precise, scenario-based.
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 19: Decisions We Need -->
+<!-- SLIDE 13: POC 2 — AI CURRICULUM ASSISTANT -->
 <!-- ============================================================ -->
-<section>
-  <div class="block-label">Block 6: What We Need from the Client</div>
-  <h2>Decisions We Need</h2>
-  <div class="decision-item">
-    <div class="decision-num">1</div>
-    <div class="decision-content">
-      <strong>Content Access</strong>
-      <p>Access to official curriculum materials for AI indexing, or confirmation of the content pipeline approach we should follow.</p>
-    </div>
-  </div>
-  <div class="decision-item">
-    <div class="decision-num">2</div>
-    <div class="decision-content">
-      <strong>Validation Partners</strong>
-      <p>Access to curriculum experts who can validate AI-generated questions and scoring accuracy against expected standards.</p>
-    </div>
-  </div>
-  <div class="decision-item">
-    <div class="decision-num">3</div>
-    <div class="decision-content">
-      <strong>Pilot Scope</strong>
-      <p>Which grades and subjects should we target for the initial launch? This determines content indexing priority and testing focus.</p>
-    </div>
-  </div>
-  <div class="decision-item">
-    <div class="decision-num">4</div>
-    <div class="decision-content">
-      <strong>Exam Integrity Policies</strong>
-      <p>What should happen when cheating is detected vs. suspected? Technical detection has limits — policy decisions are needed.</p>
-    </div>
-  </div>
-  <div class="decision-item">
-    <div class="decision-num">5</div>
-    <div class="decision-content">
-      <strong>Backlog Prioritization</strong>
-      <p>Priority order for remaining features: certificates, badges, geo-leaderboards, push notifications, live session notifications.</p>
+<section data-nav="المساعد الذكي">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">إثبات المفهوم ٢</span>
+    <span class="presenter-tag">علي</span>
+    <h2>المساعد الذكي للمنهج</h2>
+    <div class="poc-card" style="margin-top:10px;">
+      <div class="poc-row"><span class="poc-label">الفرضية:</span><span class="poc-value">يمكن للذكاء الاصطناعي تقديم دروس خصوصية مرتبطة بمحتوى المنهج الفعلي</span></div>
+      <div class="poc-row"><span class="poc-label">الأهمية:</span><span class="poc-value">الطلاب يحتاجون مساعدة خارج ساعات الدوام — الذكاء الاصطناعي العام يعطي إجابات خاطئة عن المنهج العراقي</span></div>
+      <div class="poc-row"><span class="poc-label">ما اختبرناه:</span><span class="poc-value">روبوت محادثة مبني على RAG باستخدام Gemini 2.5 — بحث في المنهج — بث مباشر SSE — دعم عربي وإنجليزي</span></div>
+      <div class="poc-row result"><span class="poc-label">النتيجة:</span><span class="poc-value">روبوت محادثة يعمل مع ربط بالمنهج. يتراجع للبحث العام عند عدم توفر المحتوى. يرد بلغة الطالب تلقائياً</span></div>
+      <div class="poc-row limitation"><span class="poc-label">القيود:</span><span class="poc-value">الجودة تعتمد على اكتمال فهرسة المنهج. لا يوجد قياس رسمي للدقة بعد. التحكم بالأخطاء يعتمد على هندسة الأوامر فقط</span></div>
+      <div class="poc-row"><span class="poc-label">الأثر الإنتاجي:</span><span class="poc-value">واعد للمساعدة التكميلية. غير مُثبت بعد للإرشاد الأكاديمي عالي الأهمية. يحتاج قياس دقة مع خبراء المنهج</span></div>
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Mohammad (Meeting Lead)</p>
-    <p><strong>Time:</strong> 5 minutes (allow discussion)</p>
-    <ul>
-      <li>This is the most important slide. Every item is a concrete ask, not a vague request.</li>
-      <li>For each decision, explain why it blocks progress and what happens if it is delayed.</li>
-      <li>Content Access (#1) is the most critical — without curriculum materials, AI features cannot be validated.</li>
-      <li>Pilot Scope (#3) affects everything: which content to index, which features to polish first, where to do network testing.</li>
-      <li>Allow the client to discuss and ask questions. This is a conversation, not a lecture.</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Rush this slide. It is the call to action. Do not present these as optional — frame them as "decisions that will unblock the next phase."</p>
+    Presenter: Ali — 2.5 min<br><br>
+    Lead with the PROBLEM: "Students need help outside class hours."<br>
+    Self-ask: "Why should anyone trust this?"<br>
+    Answer: "For practice — yes. For high-stakes — needs expert validation."<br><br>
+    DO NOT: Say "the AI can do this" without "and here's why you should trust it."<br>
+    DO NOT: Use the word "hallucination" — say "accuracy boundary."
   </aside>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 20: Thank You / Q&A -->
+<!-- SLIDE 14: POC 3 — AI ASSESSMENT -->
 <!-- ============================================================ -->
-<section class="thankyou-slide">
-  <h1>Thank You</h1>
-  <div class="divider"></div>
-  <p>Questions &amp; Discussion</p>
-  <p style="font-size:0.65em; color:#94a3b8; margin-top:40px;">Istedamah LMS — Client Review | March 2026</p>
+<section data-nav="محرك التقييم">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">إثبات المفهوم ٣</span>
+    <span class="presenter-tag">علي</span>
+    <h2>محرك التقييم بالذكاء الاصطناعي</h2>
+    <div class="poc-card" style="margin-top:10px;">
+      <div class="poc-row"><span class="poc-label">الفرضية:</span><span class="poc-value">يمكن للذكاء الاصطناعي توليد أسئلة متوافقة مع المنهج وتصحيح إجابات مكتوبة بخط اليد</span></div>
+      <div class="poc-row"><span class="poc-label">الأهمية:</span><span class="poc-value">تقليل عبء المعلمين، منع الحفظ الأعمى، تمكين التدريب على نطاق واسع</span></div>
+      <div class="poc-row"><span class="poc-label">ما اختبرناه:</span><span class="poc-value">توليد أسئلة (اختيارات، صح/خطأ، إجابة مكتوبة، صورة) — توزيع الصعوبة ٤٠/٤٠/٢٠ — تصحيح الصور بـ Gemini 2.5 Pro</span></div>
+      <div class="poc-row result"><span class="poc-label">النتيجة:</span><span class="poc-value">التوليد يعمل بتغطية اختبارية ٧٨.٤٪. تصحيح الصور بتغطية ٩٢.٢٪ مع مقياس ثقة (٠.٠-١.٠). يدعم التصحيح بمعايير متعددة</span></div>
+      <div class="poc-row limitation"><span class="poc-label">القيود:</span><span class="poc-value">الموثوقية على نطاق واسع لم تُتحقق مع خبراء المنهج. لا فحوصات تناسق تلقائية. تصحيح الصور يعتمد على وضوح الخط</span></div>
+      <div class="poc-row"><span class="poc-label">الأثر الإنتاجي:</span><span class="poc-value">مناسب للتدريب حالياً. يحتاج إطار تحقق منظم ومراجعة خبراء قبل الاعتماد في الامتحانات الرسمية</span></div>
+    </div>
+  </div>
   <aside class="notes">
-    <p><strong>Presenter:</strong> Mohammad (Meeting Lead)</p>
-    <p><strong>Time:</strong> Remaining time (~10-15 minutes for Q&amp;A)</p>
-    <ul>
-      <li>Thank the client for their time and attention.</li>
-      <li>Open the floor for questions. Have the relevant team member answer technical questions.</li>
-      <li>If questions come up that require follow-up, note them explicitly: "We will follow up on that by [date]."</li>
-      <li>End with next steps: "We will send a summary of today's discussion and the 5 decisions we need. We would appreciate responses by [date]."</li>
-    </ul>
-    <p><strong>Do NOT:</strong> Let Q&amp;A go off-track. If a question requires deep technical discussion, offer to schedule a separate session.</p>
+    Presenter: Ali — 2.5 min<br><br>
+    Client will ask: "Can I trust this at scale?"<br>
+    Honest answer: "For practice quizzes — yes. For official exams — we need a validation framework with curriculum experts, which is one of our asks today."<br><br>
+    Key numbers: 78.4% test coverage (generation), 92.2% (photo scoring).<br><br>
+    DO NOT: Present as production-ready for high-stakes use.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: POC 4 — EXAM INTEGRITY -->
+<!-- ============================================================ -->
+<section data-nav="نزاهة الامتحانات">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">إثبات المفهوم ٤</span>
+    <span class="presenter-tag">روبيرا</span>
+    <h2>نزاهة الامتحانات</h2>
+    <div class="poc-card" style="margin-top:10px;">
+      <div class="poc-row"><span class="poc-label">الفرضية:</span><span class="poc-value">التحقق من التوقيت على الخادم ومراقبة الجلسات يمنعان أساليب الغش الشائعة</span></div>
+      <div class="poc-row"><span class="poc-label">ما اختبرناه:</span><span class="poc-value">توقيت مُعتمد على الخادم — تتبع الجلسات — تتبع المحاولات والتحقق من صلاحيتها</span></div>
+      <div class="poc-row result"><span class="poc-label">ما يمكننا كشفه:</span><span class="poc-value">التلاعب بالتوقيت، المحاولات المتعددة المتزامنة، تغيير بيانات الجهاز</span></div>
+      <div class="poc-row limitation"><span class="poc-label">ما لا يمكننا كشفه بعد:</span><span class="poc-value">التبديل بين التطبيقات، مشاركة الشاشة — تحتاج قرارات سياسة وليس حلول تقنية فقط</span></div>
+      <div class="poc-row"><span class="poc-label">الأثر الإنتاجي:</span><span class="poc-value">البنية جاهزة للتوقيت الموثوق. الكشف الكامل يحتاج مزيجاً من التقنية والسياسات المؤسسية</span></div>
+    </div>
+  </div>
+  <aside class="notes">
+    Presenter: Robera — 1.5 min<br><br>
+    This is where HONESTY builds MAXIMUM trust.<br>
+    Frame as: "We tested 5 cheating vectors. We can detect 3. 2 require policy rather than tech."<br><br>
+    DO NOT: Pretend exam integrity is fully solved.<br>
+    DO NOT: Go over 1.5 minutes.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: POC 5 — VIDEO DELIVERY -->
+<!-- ============================================================ -->
+<section data-nav="توصيل الفيديو">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">إثبات المفهوم ٥</span>
+    <span class="presenter-tag">مبارك</span>
+    <h2>توصيل محتوى الفيديو</h2>
+    <div class="poc-card" style="margin-top:10px;">
+      <div class="poc-row"><span class="poc-label">الفرضية:</span><span class="poc-value">يمكن توصيل محتوى الفيديو بكفاءة على شبكات العراق محدودة السرعة</span></div>
+      <div class="poc-row"><span class="poc-label">ما اختبرناه:</span><span class="poc-value">استئناف التشغيل (حفظ كل ١٠ ثوانٍ) — وضع الصوت فقط — مزامنة الفهرس مع الكتاب المدرسي — بث متكيف</span></div>
+      <div class="poc-row result"><span class="poc-label">النتيجة:</span><span class="poc-value">استئناف التشغيل يعمل على المنصتين. وضع الصوت يوفر النطاق. مزامنة الفهرس توفر تجربة دراسية فريدة تربط الفيديو بصفحات الكتاب</span></div>
+      <div class="poc-row limitation"><span class="poc-label">القيود:</span><span class="poc-value">الاختبار تم في بيئة التطوير وليس على شبكات العراق الفعلية. شبكة CDN مُهيأة لكن لم تُختبر تحت حمل. نموذج تكلفة البث لم يُحدد بعد</span></div>
+      <div class="poc-row"><span class="poc-label">الأثر الإنتاجي:</span><span class="poc-value">تجربة المستخدم مثبتة. البنية التحتية للبث جاهزة (GCP Cloud Storage + CDN). اختبار الشبكات الحقيقية مطلوب قبل الإطلاق</span></div>
+    </div>
+  </div>
+  <aside class="notes">
+    Presenter: Mubarak — 2 min<br><br>
+    Be PRECISE: "This was tested in development, not on Iraqi 3G networks."<br>
+    Al-Fihris (textbook-video sync) is a DIFFERENTIATOR — highlight it.<br><br>
+    DO NOT: Imply production streaming readiness.<br>
+    DO NOT: Do a generic feature tour — every feature shown must PROVE something.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: POC 6 — INFRASTRUCTURE -->
+<!-- ============================================================ -->
+<section data-nav="البنية التحتية">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-teal">إثبات المفهوم ٦</span>
+    <span class="presenter-tag">فادي</span>
+    <h2>البنية التحتية الإنتاجية</h2>
+    <div class="card-grid grid-3x2" style="margin-top:10px;">
+      <div class="infra-card"><h4>الحوسبة</h4><p>Cloud Run — تحجيم تلقائي</p><p>٠-١٠ مثيلات — بدون خوادم</p></div>
+      <div class="infra-card"><h4>قاعدة البيانات</h4><p>PostgreSQL 16</p><p>نسخ احتياطي ٣٠ يوم — شبكة خاصة</p></div>
+      <div class="infra-card"><h4>التخزين المؤقت</h4><p>Redis 7.2 — ٢ جيجابايت</p><p>جلسات ومزامنة فورية</p></div>
+      <div class="infra-card"><h4>التخزين والتوصيل</h4><p>Cloud Storage + CDN</p><p>روابط موقعة — أرشفة تلقائية</p></div>
+      <div class="infra-card"><h4>المراقبة</h4><p>فحوصات كل ٥ دقائق</p><p>تنبيهات P0-P3 — لوحات متابعة</p></div>
+      <div class="infra-card"><h4>النشر المستمر</h4><p>GitHub Actions → Docker</p><p>→ Cloud Run — بدون مفاتيح مكشوفة</p></div>
+    </div>
+    <div style="text-align:center;margin-top:12px;">
+      <span class="status-badge badge-green" style="font-size:0.55em;">التكلفة الشهرية المقدرة: ~٥٠٠$ للبيئة الإنتاجية</span>
+    </div>
+  </div>
+  <aside class="notes">
+    Presenter: Fadi — 2 min<br><br>
+    This proves OPERATIONAL maturity.<br>
+    Key: 3 environments, private network, no public DB, automated deploy, monitoring.<br>
+    Keep it business-level — don't dive into Terraform configs.<br><br>
+    Transition: Mohammad takes over for Block 5.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: WHAT REMAINS SECTION TITLE -->
+<!-- ============================================================ -->
+<section class="section-title" data-nav="▸ ما يحتاج استكمال">
+  <img src="logo-white.png" class="slide-logo-white" alt="">
+  <span class="block-label">المحور الخامس</span>
+  <h2>ما يحتاج إلى استكمال</h2>
+  <div class="deco-bars">
+    <div><div class="dot"></div><div class="bar" style="height:55px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:40px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:70px"></div></div>
+  </div>
+  <aside class="notes">
+    Mohammad: "Now let me share what remains — both work and validation needs."<br>
+    Transition — 10 seconds.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: REMAINING WORK & OPEN RISKS -->
+<!-- ============================================================ -->
+<section data-nav="المتبقي والمخاطر">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-orange">المحور الخامس: ما يحتاج استكمال</span>
+    <h2>العمل المتبقي والمخاطر المفتوحة</h2>
+    <div class="two-cols" style="margin-top:12px;">
+      <div>
+        <h3 style="font-size:0.75em;">قيد التنفيذ والانتظار</h3>
+        <div class="card" style="margin:6px 0;border-right:3px solid var(--warning);">
+          <h4 style="font-size:0.6em;">قيد التنفيذ</h4>
+          <p style="font-size:0.52em;">مصحح الامتحانات بالذكاء الاصطناعي — تصحيح امتحانات كاملة متعددة الصور مع درجات جزئية</p>
+        </div>
+        <div class="card" style="margin:6px 0;">
+          <h4 style="font-size:0.6em;">قائمة الانتظار (٦ ميزات)</h4>
+          <p style="font-size:0.52em;">لوحات متصدرين جغرافية • شارات تحفيزية • إشعارات الجلسات المباشرة • إشعارات الدفع • شهادات إتمام المواد • ملفات مرفقة</p>
+        </div>
+        <div class="card" style="margin:6px 0;border-right:3px solid var(--edu-orange);">
+          <h4 style="font-size:0.6em;">فجوة iOS</h4>
+          <p style="font-size:0.52em;">Android متقدم في واجهات المستخدم. iOS يحتاج استكمال مشغل الفيديو والملاحظات والامتحانات</p>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:0.75em;">مخاطر تحتاج تحقق</h3>
+        <div class="risk-item"><div class="risk-dot dot-red"></div><p><strong>دقة الذكاء الاصطناعي:</strong> يحتاج إطار تحقق رسمي مع خبراء المنهج</p></div>
+        <div class="risk-item"><div class="risk-dot dot-red"></div><p><strong>واقع الشبكات:</strong> يحتاج اختبار ميداني على شبكات العراق الفعلية</p></div>
+        <div class="risk-item"><div class="risk-dot dot-red"></div><p><strong>نزاهة الامتحانات:</strong> يحتاج قرارات سياسة للحالات غير القابلة للكشف تقنياً</p></div>
+        <div class="risk-item"><div class="risk-dot dot-amber"></div><p><strong>خط المحتوى:</strong> المنهج يجب أن يُفهرس — لا يوجد استخراج آلي من PDF بعد</p></div>
+        <div class="risk-item"><div class="risk-dot dot-amber"></div><p><strong>اختبار الحمل:</strong> لم يُجرَ اختبار أداء تحت حمل حقيقي بعد</p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Presenter: Mohammad — 3 min<br><br>
+    Be HONEST about gaps. Red items = need client help. Amber = we handle internally.<br>
+    This honesty differentiates a mature team.<br><br>
+    DO NOT: Minimize risks. DO NOT: Be defensive. Honesty builds trust.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: DECISIONS SECTION TITLE -->
+<!-- ============================================================ -->
+<section class="section-title" data-nav="▸ القرارات المطلوبة">
+  <img src="logo-white.png" class="slide-logo-white" alt="">
+  <span class="block-label">المحور السادس</span>
+  <h2>القرارات التي نحتاجها منكم</h2>
+  <div class="deco-bars">
+    <div><div class="dot"></div><div class="bar" style="height:60px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:80px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:50px"></div></div>
+    <div><div class="dot"></div><div class="bar" style="height:70px"></div></div>
+  </div>
+  <aside class="notes">
+    Mohammad: "Finally, the specific decisions we need from you."<br>
+    Transition — 10 seconds.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: DECISIONS NEEDED -->
+<!-- ============================================================ -->
+<section data-nav="ما نحتاجه منكم">
+  <div class="slide-content">
+    <img src="logo-horizontal.png" class="slide-logo" alt="">
+    <span class="section-pill pill-orange">المحور السادس: القرارات المطلوبة</span>
+    <h2>ما نحتاجه من العميل</h2>
+    <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;">
+      <div class="decision-card">
+        <div class="decision-num">١</div>
+        <p><strong>المحتوى:</strong> الوصول إلى مواد المنهج الرسمي لفهرستها في المنصة، أو تأكيد آلية خط المحتوى المناسبة</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-num">٢</div>
+        <p><strong>التحقق من الجودة:</strong> الوصول إلى خبراء المنهج للتحقق من دقة مخرجات الذكاء الاصطناعي (الأسئلة والتصحيح)</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-num">٣</div>
+        <p><strong>نطاق الإطلاق التجريبي:</strong> تحديد الصفوف والمواد الدراسية للإطلاق الأول</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-num">٤</div>
+        <p><strong>سياسات النزاهة:</strong> تحديد الإجراءات المطلوبة عند كشف غش أو الاشتباه به</p>
+      </div>
+      <div class="decision-card">
+        <div class="decision-num">٥</div>
+        <p><strong>أولويات المتبقي:</strong> ترتيب أولوية الميزات المتبقية (الشهادات، الشارات، لوحات المتصدرين الجغرافية)</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Presenter: Mohammad — 3 min<br><br>
+    These are SPECIFIC asks, not vague requests. Each unblocks a concrete next step.<br>
+    Don't rush — let the client absorb each one.<br>
+    If they commit to #1 and #2, we can have a validated AI framework within 4 weeks.<br><br>
+    DO NOT: Be apologetic. These are reasonable, professional asks.
+  </aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: THANK YOU -->
+<!-- ============================================================ -->
+<section class="thanks-slide" data-nav="شكراً / أسئلة">
+  <div class="title-deco right">
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:50px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:70px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:90px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:60px"></div></div>
+  </div>
+  <div class="title-deco left">
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:60px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:80px"></div></div>
+    <div class="i-shape"><div class="i-dot"></div><div class="i-bar" style="height:50px"></div></div>
+  </div>
+  <img src="logo-white.png" style="height:50px;margin-bottom:20px;" alt="">
+  <h1>شكراً لوقتكم</h1>
+  <p style="font-size:0.85em;opacity:0.9;margin:8px 0;">نرحب بأسئلتكم ومناقشتكم</p>
+  <p style="font-size:0.6em;opacity:0.6;margin-top:30px;">مؤسسة استدامة للتنمية — استدامة للتعليم</p>
+  <p style="font-size:0.55em;opacity:0.5;">www.istedamah.com</p>
+  <aside class="notes">
+    Presenter: Mohammad<br>
+    Time: 7 min for Q&A<br><br>
+    Park questions that need research: "Great question — let me confirm and get back within 48 hours."<br>
+    Redirect to specialists: "Ali can speak to that."<br><br>
+    Close: "Thank you for your time and trust. We'll send these slides and follow up on any open items within 48 hours."
   </aside>
 </section>
 
 </div><!-- /slides -->
 </div><!-- /reveal -->
 
+<!-- ===== SCRIPTS ===== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/notes/notes.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/zoom/zoom.min.js"></script>
 <script>
+// Initialize Reveal
 Reveal.initialize({
+  rtl: true,
   hash: true,
+  progress: true,
+  controls: true,
+  controlsLayout: 'edges',
   slideNumber: 'c/t',
-  showSlideNumber: 'all',
-  width: 1200,
-  height: 700,
-  margin: 0.04,
   transition: 'slide',
   transitionSpeed: 'default',
-  plugins: [ RevealNotes ],
-  // Keyboard shortcuts
-  keyboard: {
-    // S key opens speaker notes
-    83: function() { RevealNotes.open(); }
+  width: 1100,
+  height: 700,
+  margin: 0.04,
+  plugins: [RevealNotes, RevealZoom]
+});
+
+// Build navigator
+const navItems = document.getElementById('nav-items');
+const slides = document.querySelectorAll('.reveal .slides > section');
+const sectionLabels = {
+  0: 'السياق والتحدي',
+  3: 'البحث الميداني',
+  6: 'قرارات المنتج',
+  10: 'التحقق التقني',
+  17: 'ما يحتاج استكمال',
+  19: 'القرارات المطلوبة'
+};
+
+slides.forEach((slide, i) => {
+  // Section header
+  if (sectionLabels[i]) {
+    const sh = document.createElement('div');
+    sh.className = 'nav-item section-header';
+    sh.innerHTML = '<span class="nav-section-label">' + sectionLabels[i] + '</span>';
+    navItems.appendChild(sh);
+  }
+  const label = slide.getAttribute('data-nav') || ('شريحة ' + (i + 1));
+  const item = document.createElement('button');
+  item.className = 'nav-item';
+  item.setAttribute('data-index', i);
+  item.innerHTML = '<span class="nav-num">' + (i + 1) + '</span><span class="nav-label">' + label + '</span>';
+  item.onclick = function() {
+    Reveal.slide(i);
+    toggleNav();
+  };
+  navItems.appendChild(item);
+});
+
+// Update active state
+function updateNav() {
+  const current = Reveal.getIndices().h;
+  document.querySelectorAll('.nav-item[data-index]').forEach(item => {
+    item.classList.toggle('active', parseInt(item.getAttribute('data-index')) === current);
+  });
+  // Scroll active into view
+  const active = document.querySelector('.nav-item.active');
+  if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+Reveal.on('slidechanged', updateNav);
+updateNav();
+
+// Toggle navigator
+function toggleNav() {
+  document.getElementById('slide-nav').classList.toggle('open');
+  document.getElementById('slide-nav-overlay').classList.toggle('open');
+}
+
+// Keyboard shortcut: M to toggle nav
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'm' || e.key === 'M') {
+    if (!e.ctrlKey && !e.metaKey) toggleNav();
   }
 });
 </script>
