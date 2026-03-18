@@ -58,7 +58,7 @@
   display: flex !important;
   align-items: stretch;
 }
-.reveal .controls { color: var(--teal); }
+.reveal .controls { color: var(--teal); transform: scaleX(-1); }
 .reveal .progress { height: 5px; }
 .reveal .progress span { background: linear-gradient(90deg, var(--teal), var(--teal-deep)) !important; transition: width 0.8s cubic-bezier(0.22,1,0.36,1); }
 .reveal .slide-number { display: none !important; }
@@ -1458,7 +1458,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/zoom/zoom.min.js"></script>
 <script>
 Reveal.initialize({
-  rtl: true, hash: true, progress: true, controls: true,
+  rtl: false, hash: true, progress: true, controls: true,
   controlsLayout: 'edges',
   slideNumber: false,
   transition: 'slide',
