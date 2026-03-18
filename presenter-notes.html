@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Istedamah LMS — Client Review: Presenter Brief</title>
+<style>
+  :root {
+    --blue: #1a365d;
+    --blue-light: #2a4a7f;
+    --teal: #0d9488;
+    --teal-light: #14b8a6;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-500: #64748b;
+    --gray-700: #334155;
+    --gray-900: #0f172a;
+    --red: #dc2626;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--gray-900);
+    line-height: 1.6;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  @media print {
+    body { font-size: 11pt; }
+    .page-break { page-break-before: always; }
+    .no-print { display: none; }
+    .header-section { page-break-after: avoid; }
+    section { page-break-inside: avoid; }
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 32px;
+  }
+
+  /* Header */
+  .header-section {
+    text-align: center;
+    padding: 48px 32px 36px;
+    border-bottom: 4px solid var(--teal);
+    margin-bottom: 40px;
+  }
+
+  .header-section h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .header-section .subtitle {
+    font-size: 14px;
+    color: var(--red);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .header-section .duration {
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* Meeting Structure */
+  .structure-section {
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+
+  .block-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media print {
+    .block-grid { display: block; }
+    .block-card { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; padding: 8px 12px; }
+    .block-card .block-num { margin-bottom: 0; }
+  }
+
+  .block-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border-left: 4px solid var(--teal);
+  }
+
+  .block-num {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .block-card .block-title {
+    font-weight: 700;
+    color: var(--blue);
+    font-size: 14px;
+  }
+
+  .block-card .block-meta {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+
+  /* Rules */
+  .rules-section {
+    margin-bottom: 48px;
+  }
+
+  .rules-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .rules-list li {
+    padding: 10px 16px;
+    border-left: 3px solid var(--teal);
+    margin-bottom: 8px;
+    background: var(--gray-50);
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+  }
+
+  .rules-list li.do-rule {
+    border-left-color: var(--teal);
+  }
+
+  .rules-list li.dont-rule {
+    border-left-color: var(--red);
+    background: #fef2f2;
+  }
+
+  .rule-label {
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 6px;
+  }
+
+  .rule-label.do { color: var(--teal); }
+  .rule-label.dont { color: var(--red); }
+
+  /* Individual Briefs */
+  .person-section {
+    margin-bottom: 0;
+    padding-bottom: 32px;
+  }
+
+  .person-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 20px 24px;
+    background: var(--blue);
+    color: #fff;
+    border-radius: 10px;
+  }
+
+  .person-number {
+    font-size: 36px;
+    font-weight: 800;
+    opacity: 0.3;
+    line-height: 1;
+  }
+
+  .person-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .person-info .person-role {
+    font-size: 13px;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+
+  .person-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--gray-100);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-700);
+  }
+
+  .meta-tag .meta-label {
+    color: var(--gray-500);
+    font-weight: 400;
+  }
+
+  .brief-block {
+    margin-bottom: 20px;
+  }
+
+  .brief-block h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .brief-block ul, .brief-block ol {
+    padding-left: 20px;
+  }
+
+  .brief-block li {
+    margin-bottom: 6px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .brief-block p {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+
+  .donot-list li {
+    color: var(--red);
+    font-weight: 500;
+  }
+
+  .success-box {
+    background: linear-gradient(135deg, #f0fdfa, #e6fffa);
+    border: 1px solid #99f6e4;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 16px;
+  }
+
+  .success-box h4 {
+    color: var(--teal) !important;
+    margin-bottom: 8px;
+  }
+
+  .success-box p {
+    font-style: italic;
+    color: var(--gray-700);
+    font-size: 13px;
+  }
+
+  .talking-point {
+    background: var(--gray-50);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    border: 1px solid var(--gray-200);
+  }
+
+  .talking-point::before {
+    content: '\201C';
+    font-size: 18px;
+    color: var(--teal);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .data-point {
+    background: var(--gray-50);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    border: 1px solid var(--gray-200);
+  }
+
+  .data-point strong {
+    color: var(--blue);
+  }
+
+  .qa-block {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+  }
+
+  .qa-block .qa-q {
+    font-weight: 700;
+    color: var(--gray-900);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .qa-block .qa-a {
+    font-size: 13px;
+    color: var(--gray-700);
+  }
+
+  /* Support roles */
+  .support-section {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .support-section .person-header {
+    background: var(--gray-500);
+    margin: -24px -24px 20px -24px;
+    border-radius: 10px 10px 0 0;
+    padding: 16px 24px;
+  }
+
+  /* Checklist */
+  .checklist-section {
+    margin-top: 48px;
+  }
+
+  .checklist-group {
+    margin-bottom: 24px;
+  }
+
+  .checklist-group h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .checklist-group ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .checklist-group li {
+    padding: 8px 12px 8px 36px;
+    position: relative;
+    font-size: 13px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .checklist-group li::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 11px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--gray-300);
+    border-radius: 3px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--gray-200);
+    margin: 32px 0;
+  }
+
+  .slide-detail {
+    background: var(--gray-50);
+    border-left: 3px solid var(--blue-light);
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+  }
+
+  .slide-detail strong {
+    color: var(--blue);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header-section">
+    <h1>Istedamah LMS &mdash; Client Review: Presenter Brief</h1>
+    <div class="subtitle">Confidential &mdash; For Internal Team Only</div>
+    <div class="duration">Meeting Duration: ~45 minutes</div>
+  </div>
+
+  <!-- MEETING STRUCTURE -->
+  <div class="structure-section">
+    <h2 class="section-title">Meeting Structure Overview</h2>
+    <div class="block-grid">
+      <div class="block-card">
+        <span class="block-num">1</span>
+        <div class="block-title">Problem &amp; Context</div>
+        <div class="block-meta">5 min &mdash; Mohammad</div>
+      </div>
+      <div class="block-card">
+        <span class="block-num">2</span>
+        <div class="block-title">Research Findings</div>
+        <div class="block-meta">5 min &mdash; Islam</div>
+      </div>
+      <div class="block-card">
+        <span class="block-num">3</span>
+        <div class="block-title">Product Decisions</div>
+        <div class="block-meta">8 min &mdash; Mahmoud</div>
+      </div>
+      <div class="block-card">
+        <span class="block-num">4</span>
+        <div class="block-title">Technical De-Risking</div>
+        <div class="block-meta">15 min &mdash; Fadi (intro), Robera, Ali, Mubarak</div>
+      </div>
+      <div class="block-card">
+        <span class="block-num">5</span>
+        <div class="block-title">What Remains Open</div>
+        <div class="block-meta">5 min &mdash; Mohammad</div>
+      </div>
+      <div class="block-card">
+        <span class="block-num">6</span>
+        <div class="block-title">Client Decisions Needed + Q&amp;A</div>
+        <div class="block-meta">7 min &mdash; Mohammad</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULES FOR EVERYONE -->
+  <div class="rules-section">
+    <h2 class="section-title">Rules for Everyone</h2>
+    <ul class="rules-list">
+      <li class="do-rule"><span class="rule-label do">DO</span> Speak at the right abstraction level for the client &mdash; business impact, not implementation details</li>
+      <li class="do-rule"><span class="rule-label do">DO</span> Every statement must answer one of: Why this matters / What risk it removes / What we proved / What still needs validation / What decision we need</li>
+      <li class="dont-rule"><span class="rule-label dont">DO NOT</span> Answer questions outside your lane &mdash; redirect to the right person</li>
+      <li class="dont-rule"><span class="rule-label dont">DO NOT</span> Use technical jargon without framing the business meaning first</li>
+      <li class="dont-rule"><span class="rule-label dont">DO NOT</span> Continue talking after your point is made</li>
+      <li class="do-rule"><span class="rule-label do">IF UNSURE</span> Say: &ldquo;That&rsquo;s a great question &mdash; let me confirm the details and get back to you&rdquo;</li>
+      <li class="do-rule"><span class="rule-label do">ALWAYS</span> Never overstate what was proven &mdash; precision builds trust</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================== -->
+  <!-- INDIVIDUAL BRIEFS -->
+  <!-- ============================================== -->
+
+  <!-- 1. MOHAMMAD -->
+  <div class="page-break"></div>
+  <section class="person-section">
+    <div class="person-header">
+      <div class="person-number">01</div>
+      <div class="person-info">
+        <h3>Mohammad Al-Shaw</h3>
+        <div class="person-role">Meeting Lead / Moderator</div>
+      </div>
+    </div>
+
+    <div class="person-meta">
+      <span class="meta-tag"><span class="meta-label">Role:</span> Executive producer of the review, not just scheduler of speakers</span>
+      <span class="meta-tag"><span class="meta-label">Slides:</span> 1&ndash;3, 17&ndash;20</span>
+      <span class="meta-tag"><span class="meta-label">Time:</span> ~17 min total</span>
+    </div>
+
+    <div class="brief-block">
+      <h4>Your Job</h4>
+      <ul>
+        <li>Frame every section before the presenter starts with ONE sentence: &ldquo;This section proves X&rdquo;</li>
+        <li>After every section, summarize: &ldquo;What we proved / What remains open&rdquo;</li>
+        <li>Control the room &mdash; stop rambling, redirect cross-talk, protect time</li>
+        <li>If a presenter enters unstable territory, take the mic and re-anchor</li>
+        <li>Manage Q&amp;A &mdash; park questions that derail flow, address them at the end</li>
+      </ul>
+    </div>
+
+    <div class="brief-block">
+      <h4>Slides Detail</h4>
+      <div class="slide-detail"><strong>Slides 1&ndash;3:</strong> Set the stage. Iraq&rsquo;s challenge, our thesis, our approach. Speak plainly. Max 5 min.</div>
+      <div class="slide-detail"><strong>Slides 17&ndash;18:</strong> Transition from &ldquo;what we proved&rdquo; to &ldquo;what&rsquo;s still open.&rdquo; Be honest about gaps &mdash; it builds trust.</div>
+      <div class="slide-detail"><strong>Slides 19&ndash;20:</strong> The most important slides. These are the decisions we need. Be direct and specific.</div>
+    </div>
+
+    <div class="brief-block">
+      <h4>Do NOT</h4>
+      <ul class="donot-list">
+        <li>Let the meeting drift into internal debate</li>
+        <li>Allow presenters to run over time</li>
+        <li>Sound like an announcer &mdash; sound like a leader who controls the narrative</li>
+        <li>Let Q&amp;A spiral &mdash; park and redirect</li>
+      </ul>
+    </div>
+
+    <div class="success-box">
+      <h4>What Success Looks Like</h4>
+      <p>The client leaves feeling: &ldquo;This team knows what they&rsquo;re doing, they&rsquo;re honest about gaps, and they know exactly what they need from us.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- 2. MAHMOUD -->
+  <div class="page-break"></div>
+  <section class="person-section">
+    <div class="person-header">
+      <div class="person-number">02</div>
+      <div class="person-info">
+        <h3>Mahmoud</h3>
+        <div class="person-role">Product Manager</div>
+      </div>
+    </div>
+
+    <div class="person-meta">
+      <span class="meta-tag"><span class="meta-label">Role:</span> Translate strategy into concrete, defensible product decisions</span>
+      <span class="meta-tag"><span class="meta-label">Slides:</span> 7&ndash;10</span>
+      <span class="meta-tag"><span class="meta-label">Time:</span> ~8 min</span>
+    </div>
+
+    <div class="brief-block">
+      <h4>Your Job</h4>
+      <ul>
+        <li>Move FAST from insight to decision &mdash; max 1 minute on context, then land on the 3 concrete decisions</li>
+        <li>Be explicit: &ldquo;We are building X, not Y, in this order, for these reasons&rdquo;</li>
+        <li>Show delivery progress as evidence of execution (92.6% complete, 87/94 features)</li>
+        <li>Show platform coverage to demonstrate full-stack investment</li>
+      </ul>
+    </div>
+
+    <div class="brief-block">
+      <h4>Key Talking Points</h4>
+      <div class="talking-point">Based on research and market analysis, we made 3 core product decisions&hellip;</div>
+      <div class="talking-point">Offline-first is essential because Iraqi infrastructure cannot guarantee connectivity</div>
+      <div class="talking-point">We prioritize exam readiness and academic outcomes because parents buy results</div>
+      <div class="talking-point">We differentiate by stage because a 10-year-old learns differently than a 17-year-old</div>
+      <div class="talking-point">87 of 94 planned features are complete. 1 in progress. 6 in backlog.</div>
+    </div>
+
+    <div class="brief-block">
+      <h4>Do NOT</h4>
+      <ul class="donot-list">
+        <li>Use phrases like &ldquo;golden opportunity&rdquo; or &ldquo;strategic gradient&rdquo; &mdash; speak plainly</li>
+        <li>Sound like a strategy memo &mdash; sound like a product owner defending decisions</li>
+        <li>Spend more than 60 seconds on any point before getting concrete</li>
+        <li>Present features as a list &mdash; present them as evidence of a strategy</li>
+      </ul>
+    </div>
+
+    <div class="success-box">
+      <h4>What Success Looks Like</h4>
+      <p>The client thinks: &ldquo;They know what they&rsquo;re building, why they&rsquo;re building it, and they&rsquo;re almost done.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- 3. ISLAM -->
+  <div class="page-break"></div>
+  <section class="person-section">
+    <div class="person-header">
+      <div class="person-number">03</div>
+      <div class="person-info">
+        <h3>Islam</h3>
+        <div class="person-role">Design / UX Research</div>
+      </div>
+    </div>
+
+    <div class="person-meta">
+      <span class="meta-tag"><span class="meta-label">Role:</span> Bring the student voice into the room, with honest framing of evidence quality</span>
+      <span class="meta-tag"><span class="meta-label">Slides:</span> 4&ndash;6</span>
+      <span class="meta-tag"><span class="meta-label">Time:</span> ~5 min</span>
+    </div>
+
+    <div class="brief-block">
+      <h4>Your Job</h4>
+      <ul>
+        <li>State sample limitations OPENLY: &ldquo;We conducted 7 exploratory interviews. This gives us directional insight, not statistical certainty.&rdquo;</li>
+        <li>Present exactly 3 strongest patterns &mdash; no more</li>
+        <li>For each pattern, show the specific design decision it changed</li>
+        <li>Show 1 thing you intentionally did NOT design because research didn&rsquo;t support it</li>
+      </ul>
+    </div>
+
+    <div class="brief-block">
+      <h4>Key Talking Points</h4>
+      <div class="talking-point">Our research was exploratory. Here are the 3 most consistent patterns we found&hellip;</div>
+      <div class="talking-point"><strong>Pattern 1:</strong> Learning behavior varies by educational stage &rarr; led to stage-based UX design</div>
+      <div class="talking-point"><strong>Pattern 2:</strong> Video attention spans differ by age &rarr; led to shorter content units for younger students, longer for older</div>
+      <div class="talking-point"><strong>Pattern 3:</strong> Parents prioritize academic outcomes &rarr; led to exam-focused feature priority</div>
+      <div class="talking-point">One thing we chose NOT to build: heavy social features. Our research didn&rsquo;t support that student learning improves with social interaction in this context.</div>
+    </div>
+
+    <div class="brief-block">
+      <h4>Do NOT</h4>
+      <ul class="donot-list">
+        <li>Present findings as validated truth &mdash; they are directional insights</li>
+        <li>Show more than 3 findings &mdash; compression is strength</li>
+        <li>Skip the methodology slide &mdash; the honesty about 7 interviews builds credibility</li>
+        <li>Use academic UX jargon &mdash; speak in plain human terms</li>
+      </ul>
+    </div>
+
+    <div class="success-box">
+      <h4>What Success Looks Like</h4>
+      <p>The client thinks: &ldquo;They actually talked to students. They&rsquo;re honest about what they know and don&rsquo;t know. The research directly informed the product.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- 4. FADI -->
+  <div class="page-break"></div>
+  <section class="person-section">
+    <div class="person-header">
+      <div class="person-number">04</div>
+      <div class="person-info">
+        <h3>Fadi</h3>
+        <div class="person-role">Engineering Lead</div>
+      </div>
+    </div>
+
+    <div class="person-meta">
+      <span class="meta-tag"><span class="meta-label">Role:</span> Invisible force that makes every technical section feel battle-tested</span>
+      <span class="meta-tag"><span class="meta-label">Slides:</span> None directly (30-second intro to Block 4)</span>
+      <span class="meta-tag"><span class="meta-label">Time:</span> ~30 sec intro + Q&amp;A support</span>
+    </div>
+
+    <div class="brief-block">
+      <h4>Your Job</h4>
+      <ul>
+        <li>Introduce Block 4 with: &ldquo;We identified 6 core technical risks for this platform. Here&rsquo;s what we validated and what remains open.&rdquo;</li>
+        <li>Pre-brief every presenter on confidence boundaries BEFORE the meeting</li>
+        <li>During Q&amp;A, be the authoritative stabilizing voice on technical questions</li>
+        <li>If a presenter is asked something beyond their confidence, step in calmly</li>
+      </ul>
+    </div>
+
+    <div class="brief-block">
+      <h4>Pre-Meeting Responsibilities</h4>
+      <ul>
+        <li>Review every POC slide with its presenter beforehand</li>
+        <li>Ensure no one overstates what was proven</li>
+        <li>Prepare answers for likely client questions (see below)</li>
+      </ul>
+    </div>
+
+    <div class="brief-block">
+      <h4>Prepared Answers for Likely Questions</h4>
+      <div class="qa-block">
+        <div class="qa-q">&ldquo;How do you handle data privacy?&rdquo;</div>
+        <div class="qa-a">Private VPC, Secret Manager, no public DB access.</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">&ldquo;What&rsquo;s the uptime guarantee?&rdquo;</div>
+        <div class="qa-a">Monitoring with P0&ndash;P3 alerts, uptime checks every 5 min.</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">&ldquo;Can this scale?&rdquo;</div>
+        <div class="qa-a">Cloud Run auto-scales 0&ndash;10 instances, PostgreSQL HA available.</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">&ldquo;What&rsquo;s the production cost?&rdquo;</div>
+        <div class="qa-a">~$500/month estimated.</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <h4>Do NOT</h4>
+      <ul class="donot-list">
+        <li>Present slides yourself &mdash; delegate to specialists</li>
+        <li>Let weak demos reach the room &mdash; kill them before the meeting</li>
+        <li>Allow technical ambiguity to linger &mdash; resolve it immediately</li>
+        <li>Speak in architecture diagrams &mdash; speak in risk and confidence</li>
+      </ul>
+    </div>
+
+    <div class="success-box">
+      <h4>What Success Looks Like</h4>
+      <p>The client never realizes you&rsquo;re controlling things. They just feel that every technical answer was crisp, bounded, and trustworthy.</p>
+    </div>
+  </section>
+
+  <!-- 5. ROBERA -->
+  <div class="page-break"></div>
+  <section class="person-section">
+    <div class="person-header">
+      <div class="person-number">05</div>
+      <div class="person-info">
+        <h3>Robera</h3>
+        <div class="person-role">Offline Sync &amp; Exam Integrity</div>
+      </div>
+    </div>
+
+    <div class="person-meta">
+      <span class="meta-tag"><span class="meta-label">Role:</span> The most trustworthy engineer in the room &mdash; calm, bounded, precise</span>
+      <span class="meta-tag"><span class="meta-label">Slides:</span> 11 (Offline Sync), 14 (Exam Integrity)</span>
+      <span class="meta-tag"><span class="meta-label">Time:</span> ~4 min total</span>
+    </div>
+
+    <div class="brief-block">
+      <h4>Your Job &mdash; Use Scenario Narration</h4>
+      <div class="talking-point">Student opens app at home with WiFi &rarr; downloads lessons &rarr; goes to school with no internet &rarr; studies offline &rarr; opens app when WiFi returns &rarr; all progress syncs automatically</div>
+      <p style="margin-top: 12px;">State what happens in edge cases:</p>
+      <ul>
+        <li>&ldquo;If two devices submit different exam answers, server&rsquo;s record wins&rdquo;</li>
+        <li>&ldquo;If sync fails midway, the local queue retries automatically&rdquo;</li>
+      </ul>
+      <p style="margin-top: 12px;">For exam integrity, be HONEST about detection boundaries:</p>
+      <ul>
+        <li><strong>We can detect:</strong> server-time manipulation, multiple simultaneous attempts</li>
+        <li><strong>We cannot yet detect:</strong> app backgrounding on mobile, screen sharing</li>
+        <li>&ldquo;Those require policy decisions, not just technical solutions&rdquo;</li>
+      </ul>
+    </div>
+
+    <div class="brief-block">
+      <h4>Key Data Points</h4>
+      <div class="data-grid">
+        <div class="data-point"><strong>17 tables</strong> sync offline (full curriculum, progress, exam results)</div>
+        <div class="data-point"><strong>8 integration tests</strong> proving sync integrity on iOS</div>
+        <div class="data-point"><strong>Conflict strategy:</strong> server-wins (last-write-wins with server authority)</div>
+        <div class="data-point"><strong>PowerSync SDK</strong> handles automatic retry and queue management</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <h4>Do NOT</h4>
+      <ul class="donot-list">
+        <li>Describe architecture internals (Redis, PowerSync SDK, VPC) &mdash; describe user scenarios</li>
+        <li>Say &ldquo;3&ndash;5 seconds sync time&rdquo; without stating conditions</li>
+        <li>Present exam integrity as solved &mdash; present what&rsquo;s detected vs. what needs policy</li>
+        <li>Go over 2 minutes per slide</li>
+      </ul>
+    </div>
+
+    <div class="success-box">
+      <h4>What Success Looks Like</h4>
+      <p>The client thinks: &ldquo;They understand the real-world constraints. They&rsquo;re honest about what works and what needs decisions.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- 6. ALI -->
+  <div class="page-break"></div>
+  <section class="person-section">
+    <div class="person-header">
+      <div class="person-number">06</div>
+      <div class="person-info">
+        <h3>Ali</h3>
+        <div class="person-role">AI Features (Chatbot + Assessment)</div>
+      </div>
+    </div>
+
+    <div class="person-meta">
+      <span class="meta-tag"><span class="meta-label">Role:</span> Make AI feel practical and responsibly framed, not flashy</span>
+      <span class="meta-tag"><span class="meta-label">Slides:</span> 12 (AI Chatbot), 13 (AI Assessment)</span>
+      <span class="meta-tag"><span class="meta-label">Time:</span> ~5 min total</span>
+    </div>
+
+    <div class="brief-block">
+      <h4>Your Job</h4>
+      <ul>
+        <li>Frame EVERY AI feature with: problem &rarr; input &rarr; output &rarr; quality measure &rarr; limitation</li>
+        <li>Be explicit about what is experimental vs. dependable</li>
+        <li>Lead with the problem (&ldquo;Students need help outside class hours&rdquo;), not the technology</li>
+        <li>Prepare 2&ndash;3 harsh questions in advance and address them proactively</li>
+      </ul>
+    </div>
+
+    <div class="brief-block">
+      <h4>Key Data Points</h4>
+      <div class="data-grid">
+        <div class="data-point"><strong>Chatbot:</strong> RAG-based, curriculum search, SSE streaming, Arabic+English, web search fallback</div>
+        <div class="data-point"><strong>Exam gen:</strong> 78.4% test coverage, MCQ/T-F/typed/photo, difficulty distribution (40/40/20)</div>
+        <div class="data-point"><strong>Photo scoring:</strong> 92.2% test coverage, confidence 0.0&ndash;1.0, rubric-based criteria</div>
+        <div class="data-point"><strong>8 AI agents</strong> total (chatbot, exam gen, photo scorer, guidance, weekly report, video sections, popup quiz, exam corrector)</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <h4>Self-Asked Harsh Questions &mdash; Prepare These</h4>
+      <div class="qa-block">
+        <div class="qa-q">&ldquo;Why should anyone trust AI-generated exam questions?&rdquo;</div>
+        <div class="qa-a">Right now they shouldn&rsquo;t for high-stakes use. We need a validation framework with curriculum experts. For practice quizzes, the quality is sufficient.</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">&ldquo;How do you prevent inaccuracies?&rdquo;</div>
+        <div class="qa-a">Curriculum grounding through RAG retrieval. But we haven&rsquo;t formally measured accuracy yet &mdash; that&rsquo;s an open validation need.</div>
+      </div>
+      <div class="qa-block">
+        <div class="qa-q">&ldquo;What if the photo scoring is wrong?&rdquo;</div>
+        <div class="qa-a">Every score includes a confidence rating. Below 0.4 confidence, we flag for human review. For production high-stakes exams, we recommend expert oversight.</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <h4>Do NOT</h4>
+      <ul class="donot-list">
+        <li>Demo with a weak use case (like OCRing an already-digital textbook)</li>
+        <li>Say &ldquo;the AI can do this&rdquo; without saying &ldquo;and here&rsquo;s why you should trust it&rdquo;</li>
+        <li>Present AI as production-ready for high-stakes use &mdash; frame as &ldquo;validated for practice, needs expert validation for exams&rdquo;</li>
+        <li>Use the word &ldquo;hallucination&rdquo; &mdash; say &ldquo;accuracy boundary&rdquo; or &ldquo;confidence limit&rdquo;</li>
+      </ul>
+    </div>
+
+    <div class="success-box">
+      <h4>What Success Looks Like</h4>
+      <p>The client thinks: &ldquo;They&rsquo;re using AI seriously, not as a gimmick. They know its limits. They need our help to validate it properly.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- 7. MUBARAK -->
+  <div class="page-break"></div>
+  <section class="person-section">
+    <div class="person-header">
+      <div class="person-number">07</div>
+      <div class="person-info">
+        <h3>Mubarak</h3>
+        <div class="person-role">Video &amp; Mobile App</div>
+      </div>
+    </div>
+
+    <div class="person-meta">
+      <span class="meta-tag"><span class="meta-label">Role:</span> Make the app feel real and tangible, with precise test conditions</span>
+      <span class="meta-tag"><span class="meta-label">Slides:</span> 15 (Video Delivery)</span>
+      <span class="meta-tag"><span class="meta-label">Time:</span> ~3 min</span>
+    </div>
+
+    <div class="brief-block">
+      <h4>Your Job</h4>
+      <ul>
+        <li>Show what the video experience delivers: resume playback, audio-only mode, textbook sync, smart notes</li>
+        <li>Be BRUTALLY precise about test conditions: &ldquo;This was tested in development environment, not on Iraqi 3G networks&rdquo;</li>
+        <li>Connect features to user value: &ldquo;Audio mode saves bandwidth for students with limited data plans&rdquo;</li>
+        <li>Mention CDN is configured (Cloud Storage + CDN with signed URLs) but not load-tested</li>
+      </ul>
+    </div>
+
+    <div class="brief-block">
+      <h4>Key Data Points</h4>
+      <div class="data-grid">
+        <div class="data-point"><strong>Resume playback:</strong> saves position every 10 seconds (Room DB on Android, UserDefaults on iOS)</div>
+        <div class="data-point"><strong>Audio-only mode:</strong> waveform visualization, saves bandwidth</div>
+        <div class="data-point"><strong>Al-Fihris:</strong> textbook-video sync with timestamp-linked pages (unique feature)</div>
+        <div class="data-point"><strong>Smart notes:</strong> timestamp-linked notes with seek-on-click</div>
+        <div class="data-point"><strong>Android:</strong> full video player UI (all features working)</div>
+        <div class="data-point"><strong>iOS:</strong> video service ready, UI is backlog</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <h4>Do NOT</h4>
+      <ul class="donot-list">
+        <li>Imply production streaming readiness &mdash; say &ldquo;client-side experience proven, server-side needs load testing&rdquo;</li>
+        <li>Do a generic feature walkthrough &mdash; every feature shown must prove something</li>
+        <li>Spend time navigating menus &mdash; show outcomes, not navigation</li>
+        <li>Mention specific code line counts or technical details &mdash; show user value</li>
+      </ul>
+    </div>
+
+    <div class="success-box">
+      <h4>What Success Looks Like</h4>
+      <p>The client thinks: &ldquo;The app works. They know what&rsquo;s tested and what still needs real-world validation.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- SUPPORT ROLES -->
+  <div class="page-break"></div>
+  <section class="person-section">
+    <div class="support-section">
+      <div class="person-header">
+        <div class="person-number">08</div>
+        <div class="person-info">
+          <h3>Nasrallah &mdash; QA &amp; Testing</h3>
+          <div class="person-role">Support Role &mdash; NOT presenting separately</div>
+        </div>
+      </div>
+
+      <p style="font-size: 13px; margin-bottom: 12px;">Based on internal review feedback, QA/testing does not have its own section. Testing evidence is embedded in each POC slide (test coverage numbers) and in the delivery progress slide.</p>
+
+      <div class="brief-block">
+        <h4>If Asked About Testing During Q&amp;A</h4>
+        <div class="talking-point">We have 147 test cases across unit, integration, and end-to-end tests</div>
+        <div class="talking-point">Critical paths (authentication, curriculum browsing, notes, Q&amp;A) have full E2E coverage with Playwright</div>
+        <div class="talking-point">Our CI/CD pipeline runs all tests automatically before any deployment</div>
+        <div class="talking-point">This means every feature you see has been automatically verified</div>
+        <p style="margin-top: 8px;"><strong>Frame as:</strong> &ldquo;Faster releases, fewer regressions, stable delivery&rdquo; &mdash; NOT tooling details.</p>
+      </div>
+    </div>
+
+    <div class="support-section">
+      <div class="person-header">
+        <div class="person-number">09</div>
+        <div class="person-info">
+          <h3>Ahmed &mdash; Web / Admin</h3>
+          <div class="person-role">Support Role &mdash; NOT presenting separately</div>
+        </div>
+      </div>
+
+      <p style="font-size: 13px; margin-bottom: 12px;">Based on internal review feedback, admin demo does not have its own section unless it proves a critical governance point. The CMS is referenced in the product decisions section (Slide 10: Platform Coverage).</p>
+
+      <div class="brief-block">
+        <h4>If Asked About Admin Capabilities During Q&amp;A</h4>
+        <div class="talking-point">We have a full admin CMS for curriculum management, content moderation, teacher management, and student management</div>
+        <div class="talking-point">10 modular components with 68 controllers managing the entire content lifecycle</div>
+        <div class="talking-point">Teachers have their own portal for Q&amp;A and session management</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEETING FLOW CHECKLIST -->
+  <div class="page-break"></div>
+  <div class="checklist-section">
+    <h2 class="section-title">Meeting Flow Checklist</h2>
+
+    <div class="checklist-group">
+      <h4>Before the Meeting</h4>
+      <ul>
+        <li>Fadi reviews every POC slide with its presenter</li>
+        <li>Mohammad runs a 15-min dry run of transitions</li>
+        <li>Each presenter practices their section alone (timer running)</li>
+        <li>Demo environments are tested and stable</li>
+        <li>Backup: screenshots/recordings ready if live demo fails</li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <h4>During the Meeting</h4>
+      <ul>
+        <li>Mohammad frames each section transition</li>
+        <li>Presenters stay within time</li>
+        <li>Questions are parked if they derail flow</li>
+        <li>No internal cross-talk or debate</li>
+        <li>Mohammad summarizes after each block</li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <h4>After the Meeting</h4>
+      <ul>
+        <li>Send slides to client within 24 hours</li>
+        <li>Send follow-up on parked questions within 48 hours</li>
+        <li>Schedule next review based on client decisions</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
