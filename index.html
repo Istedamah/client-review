@@ -985,39 +985,53 @@ body, .reveal-viewport { background: var(--bg) !important; }
 <section data-nav="أجندة الجلسة" data-section="البداية">
   <div class="s-frame bg-cream grain">
     <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">مقدمة</span></div></div>
-    <h2 class="anim" style="color:var(--text);">أجندة الجلسة</h2>
-    <div style="margin-top:20px;flex:1;display:flex;gap:20px;">
-      <!-- القسم الأول -->
-      <div class="card anim anim-d1" style="flex:1;padding:20px;display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div class="card-icon" style="font-size:0.7em;flex-shrink:0;">1</div>
-          <h4 style="font-size:0.85em;color:var(--teal);margin:0;">فريق المنتج</h4>
+    <h2 class="anim" style="color:var(--text);">أجندة الجلسة وفريق المشروع</h2>
+    <div style="margin-top:14px;display:flex;gap:14px;flex:1;">
+      <!-- الأجندة -->
+      <div style="flex:1.2;display:flex;flex-direction:column;gap:10px;" class="anim anim-d1">
+        <div class="card" style="padding:14px 16px;flex:1;display:flex;flex-direction:column;">
+          <h4 style="font-size:0.75em;color:var(--teal);margin:0 0 8px;">1. فريق المنتج</h4>
+          <p style="font-size:0.6em;color:var(--text-70);line-height:1.6;margin:0;">التحدي التعليمي والمبادئ الأساسية<br>نتائج البحث الميداني<br>قرارات المنتج وتقدم التسليم</p>
+          <div style="margin-top:auto;padding-top:8px;"><span style="font-size:0.5em;color:var(--teal);">أسئلة ومناقشة</span></div>
         </div>
-        <p style="font-size:0.7em;color:var(--text-70);line-height:1.7;margin:0;">التحدي التعليمي في العراق<br>المبادئ الأساسية للمنصة<br>نتائج البحث الميداني<br>قرارات المنتج وتقدم التسليم</p>
-        <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--text-10);">
-          <span style="font-size:0.55em;color:var(--teal);">أسئلة ومناقشة بعد انتهاء هذا القسم</span>
+        <div class="card" style="padding:14px 16px;flex:1;display:flex;flex-direction:column;">
+          <h4 style="font-size:0.75em;color:var(--teal);margin:0 0 8px;">2. الفريق التقني</h4>
+          <p style="font-size:0.6em;color:var(--text-70);line-height:1.6;margin:0;">إثبات المفاهيم (POCs)<br>المزامنة، الذكاء الاصطناعي، الامتحانات<br>الفيديو، البنية التحتية</p>
+          <div style="margin-top:auto;padding-top:8px;"><span style="font-size:0.5em;color:var(--teal);">أسئلة بعد كل جزئية</span></div>
         </div>
-      </div>
-      <!-- القسم الثاني -->
-      <div class="card anim anim-d2" style="flex:1;padding:20px;display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div class="card-icon" style="font-size:0.7em;flex-shrink:0;">2</div>
-          <h4 style="font-size:0.85em;color:var(--teal);margin:0;">الفريق التقني</h4>
-        </div>
-        <p style="font-size:0.7em;color:var(--text-70);line-height:1.7;margin:0;">إثبات المفاهيم التقنية (POCs)<br>المزامنة بدون إنترنت<br>الذكاء الاصطناعي والتقييم<br>نزاهة الامتحانات والفيديو<br>البنية التحتية والنشر</p>
-        <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--text-10);">
-          <span style="font-size:0.55em;color:var(--teal);">أسئلة بعد كل جزئية تقنية</span>
+        <div class="card" style="padding:14px 16px;flex:1;display:flex;flex-direction:column;">
+          <h4 style="font-size:0.75em;color:var(--teal);margin:0 0 8px;">3. المتبقي والمطلوب</h4>
+          <p style="font-size:0.6em;color:var(--text-70);line-height:1.6;margin:0;">العمل المتبقي والمخاطر المفتوحة<br>القرارات المطلوبة من العميل</p>
+          <div style="margin-top:auto;padding-top:8px;"><span style="font-size:0.5em;color:var(--teal);">مناقشة مفتوحة</span></div>
         </div>
       </div>
-      <!-- القسم الثالث -->
-      <div class="card anim anim-d3" style="flex:1;padding:20px;display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div class="card-icon" style="font-size:0.7em;flex-shrink:0;">3</div>
-          <h4 style="font-size:0.85em;color:var(--teal);margin:0;">المتبقي والمطلوب</h4>
+      <!-- الفريق -->
+      <div style="flex:0.8;display:flex;flex-direction:column;gap:10px;" class="anim anim-d2">
+        <div class="card" style="padding:14px 16px;flex:1;">
+          <h4 style="font-size:0.7em;color:var(--teal);margin:0 0 10px;">الإدارة والمنتج</h4>
+          <div style="font-size:0.58em;color:var(--text-70);line-height:1.8;">
+            <div>محمد الشوا <span style="color:var(--text-35);">— Project Manager</span></div>
+            <div>محمود عبدالعال <span style="color:var(--text-35);">— Product Manager</span></div>
+            <div>إسلام هاني <span style="color:var(--text-35);">— Product Design Lead</span></div>
+          </div>
         </div>
-        <p style="font-size:0.7em;color:var(--text-70);line-height:1.7;margin:0;">العمل المتبقي<br>المخاطر المفتوحة<br>القرارات المطلوبة من العميل</p>
-        <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--text-10);">
-          <span style="font-size:0.55em;color:var(--teal);">مناقشة مفتوحة</span>
+        <div class="card" style="padding:14px 16px;flex:1.4;">
+          <h4 style="font-size:0.7em;color:var(--teal);margin:0 0 10px;">الفريق التقني</h4>
+          <div style="font-size:0.58em;color:var(--text-70);line-height:1.8;">
+            <div>فادي موندي <span style="color:var(--text-35);">— CTO / Tech Lead</span></div>
+            <div>علي طرابلسي <span style="color:var(--text-35);">— Full Stack / DevOps</span></div>
+            <div>نصر الله الفرا <span style="color:var(--text-35);">— Backend / Laravel</span></div>
+            <div>أحمد مبارك <span style="color:var(--text-35);">— Android / Kotlin</span></div>
+            <div>روبير راف <span style="color:var(--text-35);">— iOS / Swift</span></div>
+            <div>علي أحمد <span style="color:var(--text-35);">— Laravel / AI</span></div>
+          </div>
+        </div>
+        <div class="card" style="padding:14px 16px;">
+          <h4 style="font-size:0.7em;color:var(--teal);margin:0 0 10px;">فريق الجودة</h4>
+          <div style="font-size:0.58em;color:var(--text-70);line-height:1.8;">
+            <div>مي زيادة <span style="color:var(--text-35);">— QA Lead</span></div>
+            <div>ريهام تميم <span style="color:var(--text-35);">— QA Engineer</span></div>
+          </div>
         </div>
       </div>
     </div>
