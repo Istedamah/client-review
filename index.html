@@ -769,6 +769,37 @@ body, .reveal-viewport { background: var(--bg) !important; }
   margin-top: 30px;
   text-align: center;
 }
+/* Dual logo bar */
+.dual-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+.dual-logos img {
+  height: 55px;
+  opacity: 0.9;
+}
+.dual-logos .logo-separator {
+  width: 1px;
+  height: 40px;
+  background: var(--text-20);
+}
+/* Bottom partner line */
+.t-partner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 32px;
+  opacity: 0.4;
+  font-size: 0.7em;
+  color: var(--text-50);
+}
+.t-partner img {
+  height: 22px;
+}
 
 /* ===== THANKS SLIDE ===== */
 .s-thanks {
@@ -914,25 +945,19 @@ body, .reveal-viewport { background: var(--bg) !important; }
 <!-- S1: TITLE — DARK CINEMATIC -->
 <section data-nav="الغلاف" data-section="البداية">
   <div class="s-title">
-    <div class="col-bars right">
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:60px"></div></div>
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:90px"></div></div>
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:120px"></div></div>
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:95px"></div></div>
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:70px"></div></div>
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:50px"></div></div>
-    </div>
-    <div class="col-bars left">
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:50px"></div></div>
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:75px"></div></div>
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:110px"></div></div>
-      <div class="cb"><div class="cb-dot"></div><div class="cb-bar" style="height:80px"></div></div>
-    </div>
     <div class="t-content">
-      <img src="logo-white.png" class="t-logo" alt="استدامة للتنمية">
+      <div class="dual-logos">
+        <img src="logo-education.png" alt="استدامة للتعليم" style="height:60px;">
+        <div class="logo-separator"></div>
+        <img src="logo-onestudio.svg" alt="One Studio" style="height:45px;">
+      </div>
       <h1>استدامة للتعليم</h1>
       <h3>مراجعة المشروع — منصة إدارة التعلم المتكاملة للعراق</h3>
       <p class="t-date">مارس ٢٠٢٦</p>
+      <div class="t-partner">
+        <span>التطوير التقني بواسطة</span>
+        <img src="logo-onestudio.svg" alt="One Studio">
+      </div>
     </div>
   </div>
   <aside class="notes">Presenter: Mohammad — 30s. Welcome everyone. Total meeting ~45 min. Press S for speaker notes.</aside>
@@ -1350,19 +1375,22 @@ body, .reveal-viewport { background: var(--bg) !important; }
   <aside class="notes">Presenter: Mohammad — 3 min. SPECIFIC asks. Each unblocks next steps. If they commit to #1 + #2, validated AI in 4 weeks. DO NOT be apologetic.</aside>
 </section>
 
-<!-- S22: THANK YOU — DARK CINEMATIC -->
+<!-- S24: THANK YOU — DARK CINEMATIC -->
 <section data-nav="شكراً / أسئلة" data-section="الختام">
   <div class="s-thanks">
-    <div class="col-bars right" style="opacity:0.06;position:absolute;bottom:0;right:50px;display:flex;gap:22px;align-items:flex-end;">
-      <div class="cb" style="display:flex;flex-direction:column;align-items:center;"><div class="cb-dot" style="width:16px;height:16px;border-radius:50%;background:#fff;margin-bottom:7px;"></div><div class="cb-bar" style="width:16px;border-radius:8px;background:#fff;height:60px"></div></div>
-      <div class="cb" style="display:flex;flex-direction:column;align-items:center;"><div class="cb-dot" style="width:16px;height:16px;border-radius:50%;background:#fff;margin-bottom:7px;"></div><div class="cb-bar" style="width:16px;border-radius:8px;background:#fff;height:85px"></div></div>
-      <div class="cb" style="display:flex;flex-direction:column;align-items:center;"><div class="cb-dot" style="width:16px;height:16px;border-radius:50%;background:#fff;margin-bottom:7px;"></div><div class="cb-bar" style="width:16px;border-radius:8px;background:#fff;height:70px"></div></div>
-    </div>
     <div class="t-content">
-      <img src="logo-white.png" style="height:60px;margin-bottom:28px;opacity:0.95;" alt="">
+      <div class="dual-logos" style="margin-bottom:40px;">
+        <img src="logo-education.png" alt="استدامة للتعليم" style="height:50px;">
+        <div class="logo-separator"></div>
+        <img src="logo-onestudio.svg" alt="One Studio" style="height:38px;">
+      </div>
       <h1>شكراً لوقتكم</h1>
       <p style="margin:14px 0;font-size:1em;">نرحب بأسئلتكم ومناقشتكم</p>
-      <p style="font-size:0.75em;opacity:0.4;margin-top:36px;">مؤسسة استدامة للتنمية — www.istedamah.com</p>
+      <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.4;">
+        <p style="font-size:0.7em;">مؤسسة استدامة للتعليم — المالك</p>
+        <p style="font-size:0.7em;">One Studio — التطوير التقني</p>
+        <p style="font-size:0.65em;margin-top:4px;">www.istedamah.com</p>
+      </div>
     </div>
   </div>
   <aside class="notes">Presenter: Mohammad — 7 min Q&A. Park questions needing research: "Great question — we'll confirm within 48 hours." Redirect to specialists.</aside>

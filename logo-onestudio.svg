@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 100">
+  <!-- One Studio logo - light version for dark backgrounds -->
+  <!-- Coral accent bars -->
+  <rect x="155" y="5" width="12" height="70" rx="6" fill="#e8705a"/>
+  <rect x="175" y="15" width="12" height="55" rx="6" fill="#e8705a"/>
+  <circle cx="181" cy="8" r="8" fill="#e8705a"/>
+  <!-- Text -->
+  <text x="5" y="48" font-family="'Georgia','Times New Roman',serif" font-size="36" font-weight="400" fill="#f5f0e8" letter-spacing="-1">
+    <tspan>One</tspan>
+  </text>
+  <text x="5" y="85" font-family="'Georgia','Times New Roman',serif" font-size="36" font-weight="400" fill="#f5f0e8" letter-spacing="-0.5">
+    <tspan>Studio</tspan>
+  </text>
+</svg>
