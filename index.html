@@ -742,63 +742,79 @@ body, .reveal-viewport { background: var(--bg) !important; }
   text-align: center;
   padding: 30px;
 }
-.s-title .t-logo { height: 70px; margin-bottom: 32px; opacity: 0.9; }
+/* ===== TITLE SLIDE LAYOUT ===== */
+.s-title .t-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+/* Owner logo — top center */
+.t-owner-logo {
+  margin-bottom: 40px;
+}
+.t-owner-logo img {
+  height: 65px;
+}
+/* Main project title */
 .s-title h1 {
   font-family: 'Tajawal', sans-serif;
   color: var(--text) !important;
-  font-size: 3em;
+  font-size: 2.8em;
   font-weight: 900;
   text-align: center;
-  margin-bottom: 10px;
-  line-height: 1.15;
-  border-right: 6px solid var(--teal);
-  padding-right: 20px;
-  display: inline-block;
+  margin-bottom: 6px;
+  line-height: 1.2;
 }
+/* English subtitle */
+.s-title .t-subtitle-en {
+  font-size: 1.1em;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+/* Meeting type */
 .s-title h3 {
-  color: var(--text-70) !important;
-  font-size: 0.95em;
-  font-weight: 400;
+  color: var(--text) !important;
+  font-size: 1.15em;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 4px;
   line-height: 1.5;
 }
-.s-title .t-date {
-  font-size: 0.8em;
-  color: var(--text-35);
-  margin-top: 30px;
-  text-align: center;
+.s-title .t-subtitle-session {
+  color: var(--text-50) !important;
+  font-size: 0.85em;
+  font-weight: 400;
 }
-/* Dual logo bar */
-.dual-logos {
+/* Bottom metadata row */
+.t-meta {
+  margin-top: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px;
-  margin-bottom: 36px;
 }
-.dual-logos img {
-  height: 55px;
-  opacity: 0.9;
-}
-.dual-logos .logo-separator {
-  width: 1px;
-  height: 40px;
-  background: var(--text-20);
-}
-/* Bottom partner line */
-.t-partner {
+.t-meta-item {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  margin-top: 32px;
-  opacity: 0.4;
-  font-size: 0.7em;
   color: var(--text-50);
+  font-size: 0.72em;
 }
-.t-partner img {
-  height: 22px;
+.t-meta-item img {
+  height: 28px;
+}
+.t-meta-separator {
+  width: 1px;
+  height: 30px;
+  background: var(--text-15);
 }
 
 /* ===== THANKS SLIDE ===== */
@@ -942,21 +958,26 @@ body, .reveal-viewport { background: var(--bg) !important; }
 <div class="reveal">
 <div class="slides">
 
-<!-- S1: TITLE — DARK CINEMATIC -->
+<!-- S1: TITLE -->
 <section data-nav="الغلاف" data-section="البداية">
   <div class="s-title">
     <div class="t-content">
-      <div class="dual-logos">
-        <img src="Istedamah-Education.png" alt="استدامة للتعليم" style="height:60px;">
-        <div class="logo-separator"></div>
-        <img src="logo-onestudio.png" alt="One Studio" style="height:45px;">
+      <div class="t-owner-logo">
+        <img src="Istedamah-Education.png" alt="استدامة للتعليم">
       </div>
-      <h1>استدامة للتعليم</h1>
-      <h3>مراجعة المشروع — منصة إدارة التعلم المتكاملة للعراق</h3>
-      <p class="t-date">مارس ٢٠٢٦</p>
-      <div class="t-partner">
-        <span>التطوير التقني بواسطة</span>
-        <img src="logo-onestudio.png" alt="One Studio">
+      <h1>نظام إدارة التعلم</h1>
+      <div class="t-subtitle-en">Learning Management System</div>
+      <h3>جلسة مراجعة العميل</h3>
+      <div class="t-subtitle-session">مراجعة مراحل إنجاز المشروع</div>
+      <div class="t-meta">
+        <div class="t-meta-item">
+          <span>إعداد</span>
+          <img src="logo-onestudio.png" alt="One Studio">
+        </div>
+        <div class="t-meta-separator"></div>
+        <div class="t-meta-item">
+          <span>مارس ٢٠٢٦</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1375,21 +1396,24 @@ body, .reveal-viewport { background: var(--bg) !important; }
   <aside class="notes">Presenter: Mohammad — 3 min. SPECIFIC asks. Each unblocks next steps. If they commit to #1 + #2, validated AI in 4 weeks. DO NOT be apologetic.</aside>
 </section>
 
-<!-- S24: THANK YOU — DARK CINEMATIC -->
+<!-- S24: THANK YOU -->
 <section data-nav="شكراً / أسئلة" data-section="الختام">
   <div class="s-thanks">
     <div class="t-content">
-      <div class="dual-logos" style="margin-bottom:40px;">
-        <img src="Istedamah-Education.png" alt="استدامة للتعليم" style="height:50px;">
-        <div class="logo-separator"></div>
-        <img src="logo-onestudio.png" alt="One Studio" style="height:38px;">
+      <div style="margin-bottom:40px;">
+        <img src="Istedamah-Education.png" alt="استدامة للتعليم" style="height:55px;">
       </div>
       <h1>شكراً لوقتكم</h1>
-      <p style="margin:14px 0;font-size:1em;">نرحب بأسئلتكم ومناقشتكم</p>
-      <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.4;">
-        <p style="font-size:0.7em;">مؤسسة استدامة للتعليم — المالك</p>
-        <p style="font-size:0.7em;">One Studio — التطوير التقني</p>
-        <p style="font-size:0.65em;margin-top:4px;">www.istedamah.com</p>
+      <p style="margin:16px 0;font-size:1em;color:var(--text-70);">نرحب بأسئلتكم ومناقشتكم</p>
+      <div class="t-meta" style="margin-top:44px;">
+        <div class="t-meta-item">
+          <span>إعداد</span>
+          <img src="logo-onestudio.png" alt="One Studio">
+        </div>
+        <div class="t-meta-separator"></div>
+        <div class="t-meta-item">
+          <span>www.istedamah.com</span>
+        </div>
       </div>
     </div>
   </div>
