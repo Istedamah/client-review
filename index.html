@@ -10,42 +10,39 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
 <style>
 /* ================================================================
-   ISTEDAMAH CLIENT REVIEW — BOLD INSTITUTIONAL DESIGN
-   Apple keynote meets Middle Eastern government presentation
+   ISTEDAMAH CLIENT REVIEW — DARK NAVY MINIMAL DESIGN
+   Clean dark theme with teal accents
    ================================================================ */
 :root {
+  --bg: #0a1628;
+  --bg-card: #111b2e;
+  --bg-card-hover: #162238;
+  --bg-card-border: rgba(255,255,255,0.06);
   --teal: #1a9e8f;
   --teal-deep: #0d7a70;
-  --teal-dark: #063f3a;
-  --teal-light: #f0f9f7;
-  --teal-10: rgba(26,158,143,0.10);
+  --teal-dark: #0a1628;
+  --teal-10: rgba(26,158,143,0.12);
   --teal-15: rgba(26,158,143,0.15);
-  --cream: #f5f2ec;
-  --cream-dark: #e8e3d9;
-  --ink: #1a1a2e;
-  --ink-80: rgba(26,26,46,0.8);
-  --ink-60: rgba(26,26,46,0.6);
-  --ink-40: rgba(26,26,46,0.4);
-  --ink-15: rgba(26,26,46,0.15);
-  --ink-08: rgba(26,26,46,0.08);
-  --ink-04: rgba(26,26,46,0.04);
-  --red: #c0392b;
-  --amber: #d4920a;
-  --green: #1a7a5a;
-  --green-bg: #e5f5ed;
-  --amber-bg: #fdf3e0;
-  --glass-w: rgba(255,255,255,0.08);
-  --glass-w-border: rgba(255,255,255,0.12);
-  --glass-w-hover: rgba(255,255,255,0.14);
+  --red: #e74c3c;
+  --amber: #f0a500;
+  --green: #2ecc71;
+  --text: #ffffff;
+  --text-70: rgba(255,255,255,0.7);
+  --text-50: rgba(255,255,255,0.5);
+  --text-35: rgba(255,255,255,0.35);
+  --text-20: rgba(255,255,255,0.2);
+  --text-10: rgba(255,255,255,0.1);
+  --text-05: rgba(255,255,255,0.05);
 }
 
 /* ===== GLOBAL RESET ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body, .reveal-viewport { background: var(--bg) !important; }
 
 /* ===== REVEAL CORE ===== */
 .reveal {
   font-family: 'Readex Pro', 'Tajawal', sans-serif;
-  color: var(--ink);
+  color: var(--text);
   direction: rtl;
 }
 .reveal .slides {
@@ -60,7 +57,7 @@
 }
 .reveal .controls { color: var(--teal); transform: scaleX(-1); }
 .reveal .progress { height: 5px; }
-.reveal .progress span { background: linear-gradient(90deg, var(--teal), var(--teal-deep)) !important; transition: width 0.8s cubic-bezier(0.22,1,0.36,1); }
+.reveal .progress span { background: var(--teal) !important; transition: width 0.8s cubic-bezier(0.22,1,0.36,1); }
 .reveal .slide-number { display: none !important; }
 
 /* ===== TYPOGRAPHY ===== */
@@ -70,38 +67,19 @@
   letter-spacing: -0.01em;
   line-height: 1.2;
   text-align: right;
+  color: var(--text);
 }
 .reveal h1 { font-weight: 900; }
 .reveal h2 { font-weight: 900; font-size: 2em; margin-bottom: 0; }
 .reveal h3 { font-weight: 700; font-size: 1em; }
-.reveal p, .reveal li { font-size: 0.85em; line-height: 1.6; }
+.reveal p, .reveal li { font-size: 0.85em; line-height: 1.6; color: var(--text-70); }
 .reveal ul { list-style: none; padding: 0; }
 
-/* ===== NOISE TEXTURE SVG ===== */
-.grain::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E") repeat;
-  pointer-events: none;
-  z-index: 0;
-}
+/* grain class is now a no-op */
+.grain::before { display: none; }
 
-/* ===== SLIDE FRAME — LIGHT ===== */
-.s-frame {
-  width: 100%;
-  height: 100%;
-  padding: 40px 50px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.s-frame.bg-cream { background: var(--cream); }
-.s-frame.bg-light-teal { background: var(--teal-light); }
-.s-frame > * { position: relative; z-index: 1; }
-
-/* ===== SLIDE FRAME — DARK ===== */
+/* ===== SLIDE FRAME — UNIFIED DARK ===== */
+.s-frame,
 .s-frame-dark {
   width: 100%;
   height: 100%;
@@ -110,22 +88,28 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background: var(--teal-dark);
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
 }
-.s-frame-dark::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(26,158,143,0.25) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 20%, rgba(26,158,143,0.15) 0%, transparent 50%);
-  z-index: 0;
-}
+.s-frame > * { position: relative; z-index: 1; }
 .s-frame-dark > * { position: relative; z-index: 1; }
-.s-frame-dark h2 { color: #fff !important; }
-.s-frame-dark h3 { color: rgba(255,255,255,0.85) !important; }
-.s-frame-dark p { color: rgba(255,255,255,0.75) !important; }
+/* Override any light backgrounds */
+.s-frame.bg-cream,
+.s-frame.bg-light-teal { background: var(--bg); }
+/* Remove dark frame radial gradient */
+.s-frame-dark::before { display: none; }
+.s-frame-dark h2 { color: var(--text) !important; }
+.s-frame-dark h3 { color: var(--text-70) !important; }
+.s-frame-dark p { color: var(--text-70) !important; }
+
+/* Heading accent bar — green bar to the right of headings */
+.s-frame h2,
+.s-frame-dark h2 {
+  color: var(--text) !important;
+  display: inline-block;
+  border-right: 5px solid var(--teal);
+  padding-right: 16px;
+}
 
 /* Top bar */
 .s-topbar {
@@ -135,42 +119,30 @@
   margin-bottom: 16px;
   flex-shrink: 0;
 }
-.s-topbar img { height: 32px; opacity: 0.75; }
-.s-tag {
+.s-topbar img { height: 32px; opacity: 0.6; }
+/* Unify all tags to dark style */
+.s-tag,
+.s-tag-dark {
   font-size: 0.7em;
   font-weight: 600;
-  color: var(--teal-deep);
+  color: var(--teal);
   background: var(--teal-10);
   padding: 5px 18px;
   border-radius: 100px;
 }
-.s-tag-dark {
-  font-size: 0.7em;
-  font-weight: 600;
-  color: rgba(255,255,255,0.9);
-  background: rgba(255,255,255,0.1);
-  padding: 5px 18px;
-  border-radius: 100px;
-}
-.s-presenter {
-  font-size: 0.65em;
-  color: var(--ink-40);
-  background: var(--ink-04);
-  padding: 4px 14px;
-  border-radius: 100px;
-  margin-right: 8px;
-}
+.s-presenter,
 .s-presenter-dark {
   font-size: 0.65em;
-  color: rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.08);
+  color: var(--text-50);
+  background: var(--text-05);
   padding: 4px 14px;
   border-radius: 100px;
   margin-right: 8px;
 }
 
-/* Bottom footer */
-.s-footer {
+/* Bottom footer — unified */
+.s-footer,
+.s-footer-dark {
   margin-top: auto;
   padding-top: 12px;
   display: flex;
@@ -181,34 +153,30 @@
 .s-footer-line {
   flex: 1;
   height: 1px;
-  background: var(--ink-08);
+  background: var(--text-10);
   margin: 0 16px;
 }
-.s-footer span {
-  font-size: 0.6em;
-  color: var(--ink-40);
-  white-space: nowrap;
-}
-.s-footer-dark {
-  margin-top: auto;
-  padding-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-}
-.s-footer-dark .s-footer-line { background: rgba(255,255,255,0.1); }
+.s-footer span,
 .s-footer-dark span {
   font-size: 0.6em;
-  color: rgba(255,255,255,0.35);
+  color: var(--text-35);
   white-space: nowrap;
+}
+.s-footer-presenter {
+  display: block;
+  font-size: 0.55em;
+  color: var(--teal);
+  opacity: 0.7;
+  margin-top: 2px;
+  text-align: left;
+  direction: rtl;
 }
 
 /* ===== SECTION DIVIDER SLIDES ===== */
 .s-divider {
   width: 100%;
   height: 100%;
-  background: var(--teal-dark);
+  background: var(--bg);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -216,39 +184,10 @@
   justify-content: center;
   text-align: center;
 }
-.s-divider::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(26,158,143,0.45) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(26,158,143,0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 80%, rgba(6,63,58,0.5) 0%, transparent 50%);
-}
-.s-divider .i-bars {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  opacity: 0.08;
-}
-.s-divider .i-bar {
-  position: absolute;
-  width: 12px;
-  background: #fff;
-  border-radius: 6px;
-  animation: floatBar 8s ease-in-out infinite;
-}
-.s-divider .i-dot {
-  position: absolute;
-  width: 12px; height: 12px;
-  background: #fff;
-  border-radius: 50%;
-  animation: floatBar 8s ease-in-out infinite;
-}
-@keyframes floatBar {
-  0%, 100% { transform: translateY(0); opacity: 0.6; }
-  50% { transform: translateY(-20px); opacity: 1; }
-}
+/* Remove old radial gradients */
+.s-divider::before { display: none; }
+/* Hide animated bars/dots */
+.s-divider .i-bars { display: none; }
 .s-divider .d-content {
   position: relative; z-index: 2;
   padding: 40px;
@@ -257,21 +196,24 @@
   font-family: 'Tajawal', sans-serif;
   font-size: 0.85em;
   font-weight: 500;
-  color: rgba(255,255,255,0.5);
+  color: var(--text-50);
   letter-spacing: 0.1em;
   margin-bottom: 20px;
 }
 .s-divider h2 {
   font-family: 'Tajawal', sans-serif;
-  color: #fff !important;
+  color: var(--text) !important;
   font-size: 2.8em;
   font-weight: 900;
   text-align: center;
   line-height: 1.2;
   margin-bottom: 10px;
+  display: inline-block;
+  border-right: 5px solid var(--teal);
+  padding-right: 20px;
 }
 .s-divider p {
-  color: rgba(255,255,255,0.6) !important;
+  color: var(--text-50) !important;
   font-size: 0.9em;
   text-align: center;
 }
@@ -279,43 +221,39 @@
   position: absolute;
   top: 32px; right: 36px;
   height: 34px;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
-/* ===== CARD SYSTEM — LIGHT ===== */
+/* ===== CARD SYSTEM — ALL DARK ===== */
 .card {
-  background: #fff;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-right: 4px solid var(--teal);
+  border-radius: 10px;
   padding: 24px 26px;
-  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), background 0.3s;
   position: relative;
-  box-shadow: 0 2px 12px rgba(26,26,46,0.06);
   display: flex;
   flex-direction: column;
+  box-shadow: none;
 }
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  height: 4px;
-  background: var(--teal);
-  border-radius: 12px 12px 0 0;
-}
+/* Remove the old top bar accent */
+.card::before { display: none; }
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px -8px rgba(26,158,143,0.15);
+  background: var(--bg-card-hover);
 }
 .card h4 {
   font-family: 'Tajawal', sans-serif;
   font-size: 0.9em;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--text);
   margin-bottom: 8px;
   line-height: 1.3;
 }
 .card p {
   font-size: 0.75em;
-  color: var(--ink-60);
+  color: var(--text-70);
   margin: 0;
   line-height: 1.65;
   flex: 1;
@@ -324,7 +262,7 @@
   width: 40px; height: 40px;
   border-radius: 10px;
   background: var(--teal-10);
-  color: var(--teal-deep);
+  color: var(--teal);
   display: flex; align-items: center; justify-content: center;
   font-family: 'Tajawal', sans-serif;
   font-weight: 900;
@@ -333,11 +271,12 @@
   flex-shrink: 0;
 }
 
-/* ===== CARD SYSTEM — DARK ===== */
+/* ===== CARD SYSTEM — DARK (same as card now) ===== */
 .card-dark {
-  background: var(--glass-w);
-  border: 1px solid var(--glass-w-border);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-right: 4px solid var(--teal);
+  border-radius: 10px;
   padding: 24px 26px;
   transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), background 0.3s;
   position: relative;
@@ -346,19 +285,19 @@
 }
 .card-dark:hover {
   transform: translateY(-3px);
-  background: var(--glass-w-hover);
+  background: var(--bg-card-hover);
 }
 .card-dark h4 {
   font-family: 'Tajawal', sans-serif;
   font-size: 0.9em;
   font-weight: 800;
-  color: #fff;
+  color: var(--text);
   margin-bottom: 8px;
   line-height: 1.3;
 }
 .card-dark p {
   font-size: 0.75em;
-  color: rgba(255,255,255,0.65);
+  color: var(--text-70);
   margin: 0;
   line-height: 1.65;
   flex: 1;
@@ -368,19 +307,20 @@
 .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
-/* ===== PRINCIPLE CARDS — DARK ===== */
+/* ===== PRINCIPLE CARDS ===== */
 .principle-dark {
   display: flex;
   gap: 20px;
   align-items: flex-start;
   padding: 28px 30px;
-  background: var(--glass-w);
-  border: 1px solid var(--glass-w-border);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-right: 4px solid var(--teal);
+  border-radius: 10px;
   transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), background 0.3s;
   flex: 1;
 }
-.principle-dark:hover { transform: translateX(-4px); background: var(--glass-w-hover); }
+.principle-dark:hover { transform: translateX(-4px); background: var(--bg-card-hover); }
 .principle-dark .p-num {
   min-width: 52px; height: 52px;
   background: var(--teal);
@@ -396,38 +336,40 @@
   font-family: 'Tajawal', sans-serif;
   font-size: 1em;
   font-weight: 800;
-  color: #fff;
+  color: var(--text);
   margin-bottom: 6px;
   line-height: 1.3;
 }
-.principle-dark p { font-size: 0.78em; color: rgba(255,255,255,0.6); margin: 0; line-height: 1.6; }
+.principle-dark p { font-size: 0.78em; color: var(--text-50); margin: 0; line-height: 1.6; }
 
 /* ===== FINDING CARDS ===== */
 .finding {
-  background: #fff;
-  border: 1px solid var(--cream-dark);
-  border-radius: 12px;
-  padding: 24px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
   border-right: 4px solid var(--teal);
+  border-radius: 10px;
+  padding: 24px 28px;
   transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.finding:hover { transform: translateX(-4px); }
+.finding:hover { transform: translateX(-4px); background: var(--bg-card-hover); }
 .finding h4 {
   font-family: 'Tajawal', sans-serif;
   font-size: 0.88em;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--text);
   margin-bottom: 8px;
 }
-.finding p { font-size: 0.76em; color: var(--ink-60); margin: 0; line-height: 1.6; }
+.finding p { font-size: 0.76em; color: var(--text-70); margin: 0; line-height: 1.6; }
 
 /* ===== DESIGN DECISION CARDS ===== */
 .dd-card {
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 10px;
   padding: 24px 28px;
   border-right: 4px solid var(--green);
   transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
@@ -436,9 +378,9 @@
   flex-direction: column;
   justify-content: center;
 }
-.dd-card:hover { transform: translateX(-4px); }
-.dd-card.good { background: var(--green-bg); border-right-color: var(--green); }
-.dd-card.warn { background: var(--amber-bg); border-right-color: var(--amber); }
+.dd-card:hover { transform: translateX(-4px); background: var(--bg-card-hover); }
+.dd-card.good { background: var(--bg-card); border-right-color: var(--green); }
+.dd-card.warn { background: var(--bg-card); border-right-color: var(--amber); }
 .dd-card h4 {
   font-family: 'Tajawal', sans-serif;
   font-size: 0.88em;
@@ -447,9 +389,9 @@
 }
 .dd-card.good h4 { color: var(--green); }
 .dd-card.warn h4 { color: var(--amber); }
-.dd-card p { font-size: 0.76em; color: var(--ink-60); margin: 0; line-height: 1.6; }
+.dd-card p { font-size: 0.76em; color: var(--text-70); margin: 0; line-height: 1.6; }
 
-/* ===== BUILD / NOT BUILD — DARK ===== */
+/* ===== BUILD / NOT BUILD ===== */
 .build-col {
   display: flex;
   flex-direction: column;
@@ -463,8 +405,8 @@
   text-align: right;
 }
 .build-item {
-  background: var(--glass-w);
-  border: 1px solid var(--glass-w-border);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
   border-radius: 10px;
   padding: 14px 20px;
   display: flex;
@@ -472,7 +414,7 @@
   gap: 12px;
   transition: background 0.2s;
 }
-.build-item:hover { background: var(--glass-w-hover); }
+.build-item:hover { background: var(--bg-card-hover); }
 .build-item .bi-icon {
   font-size: 1.1em;
   font-weight: 700;
@@ -484,7 +426,7 @@
   font-size: 0.82em;
   margin: 0;
   line-height: 1.5;
-  color: rgba(255,255,255,0.8) !important;
+  color: var(--text-70) !important;
 }
 
 /* ===== STATS ===== */
@@ -500,12 +442,12 @@
 .big-stat-den {
   font-size: 0.32em;
   font-weight: 400;
-  color: var(--ink-40);
+  color: var(--text-50);
   vertical-align: baseline;
 }
 .big-stat-label {
   font-size: 0.85em;
-  color: var(--ink-40);
+  color: var(--text-50);
   margin-top: 4px;
 }
 
@@ -518,15 +460,15 @@
   font-size: 0.75em;
   font-weight: 600;
 }
-.sp-green { background: var(--green-bg); color: var(--green); }
-.sp-amber { background: var(--amber-bg); color: var(--amber); }
-.sp-gray { background: var(--ink-04); color: var(--ink-40); }
+.sp-green { background: rgba(46,204,113,0.15); color: var(--green); }
+.sp-amber { background: rgba(240,165,0,0.15); color: var(--amber); }
+.sp-gray { background: var(--text-05); color: var(--text-50); }
 
 /* Progress bar */
 .pbar-wrap {
   width: 100%;
   height: 16px;
-  background: var(--ink-08);
+  background: var(--text-10);
   border-radius: 8px;
   overflow: hidden;
   margin: 10px 0;
@@ -534,69 +476,58 @@
 .pbar-fill {
   height: 100%;
   border-radius: 8px;
-  background: linear-gradient(90deg, var(--teal), var(--teal-deep));
+  background: var(--teal);
   position: relative;
   transition: width 1.5s cubic-bezier(0.22,1,0.36,1);
 }
-.pbar-fill::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.3));
-}
+.pbar-fill::after { display: none; }
 
 /* Feature bar rows */
 .fbar { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
-.fbar-name { font-size: 0.72em; font-weight: 600; color: var(--ink); min-width: 130px; text-align: right; }
-.fbar-track { flex: 1; height: 10px; background: var(--ink-08); border-radius: 5px; overflow: hidden; }
-.fbar-fill { height: 100%; border-radius: 5px; background: linear-gradient(90deg, var(--teal), var(--teal-deep)); transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
-.fbar-val { font-size: 0.65em; color: var(--ink-40); min-width: 45px; text-align: center; font-weight: 500; }
+.fbar-name { font-size: 0.72em; font-weight: 600; color: var(--text-70); min-width: 130px; text-align: right; }
+.fbar-track { flex: 1; height: 10px; background: var(--text-10); border-radius: 5px; overflow: hidden; }
+.fbar-fill { height: 100%; border-radius: 5px; background: var(--teal); transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
+.fbar-val { font-size: 0.65em; color: var(--text-50); min-width: 45px; text-align: center; font-weight: 500; }
 
 /* ===== PLATFORM GRID ===== */
 .plat-card {
-  background: #fff;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-right: 4px solid var(--teal);
+  border-radius: 10px;
   padding: 22px 20px;
   text-align: center;
-  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), background 0.3s;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(26,26,46,0.05);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.plat-card::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  height: 4px;
-  background: var(--teal);
-  border-radius: 12px 12px 0 0;
-}
-.plat-card.accent-blue::before { background: #2563eb; }
-.plat-card.accent-orange::before { background: #ea580c; }
-.plat-card.accent-purple::before { background: #7c3aed; }
-.plat-card.accent-green::before { background: var(--green); }
-.plat-card.accent-red::before { background: var(--red); }
-.plat-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(26,26,46,0.08); }
+.plat-card::before { display: none; }
+.plat-card.accent-blue { border-right-color: #2563eb; }
+.plat-card.accent-orange { border-right-color: #ea580c; }
+.plat-card.accent-purple { border-right-color: #7c3aed; }
+.plat-card.accent-green { border-right-color: var(--green); }
+.plat-card.accent-red { border-right-color: var(--red); }
+.plat-card:hover { transform: translateY(-3px); background: var(--bg-card-hover); }
 .plat-card h4 {
   font-family: 'Tajawal', sans-serif;
   font-size: 0.9em;
   font-weight: 900;
-  color: var(--teal-deep);
+  color: var(--teal);
   margin-bottom: 6px;
 }
 .plat-card .plat-tech {
   font-size: 0.7em;
-  color: var(--ink-40);
+  color: var(--text-50);
   font-weight: 400;
   margin-bottom: 8px;
 }
 .plat-card .plat-stat {
   font-size: 0.7em;
-  color: var(--ink-60);
+  color: var(--text-70);
   font-weight: 600;
 }
 
@@ -606,28 +537,25 @@
 .list-check li, .list-cross li {
   font-size: 0.82em;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.8);
+  border-bottom: 1px solid var(--text-05);
+  color: var(--text-70);
   line-height: 1.55;
 }
 .list-check li::before { content: '\2713\00a0\00a0'; color: #4ade80; font-weight: 700; font-size: 1.1em; }
 .list-cross li::before { content: '\2717\00a0\00a0'; color: #f87171; font-weight: 700; font-size: 1.1em; }
 
-/* ===== POC SLIDES ===== */
+/* ===== POC SLIDES — ALL DARK ===== */
 .poc {
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
-.poc-light {
-  background: #fff;
-  border: 1px solid var(--cream-dark);
-}
+.poc-light,
 .poc-dark-card {
-  background: var(--glass-w);
-  border: 1px solid var(--glass-w-border);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
 }
 .poc-header {
   padding: 16px 26px;
@@ -636,29 +564,27 @@
   align-items: center;
   flex-shrink: 0;
 }
-.poc-header-light {
-  background: var(--cream);
-  border-bottom: 1px solid var(--cream-dark);
-}
+.poc-header-light,
 .poc-header-dark {
-  background: rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: var(--text-05);
+  border-bottom: 1px solid var(--bg-card-border);
 }
 .poc-header h3 {
   font-size: 1em;
   font-weight: 800;
   margin: 0;
+  color: var(--text);
 }
-.poc-header-light h3 { color: var(--ink); }
-.poc-header-dark h3 { color: #fff; }
+.poc-header-light h3 { color: var(--text); }
+.poc-header-dark h3 { color: var(--text); }
 .poc-badge {
   font-size: 0.7em;
   padding: 4px 14px;
   border-radius: 100px;
   font-weight: 600;
 }
-.poc-badge-light { background: var(--teal-10); color: var(--teal-deep); }
-.poc-badge-dark { background: rgba(26,158,143,0.25); color: rgba(255,255,255,0.9); }
+.poc-badge-light,
+.poc-badge-dark { background: var(--teal-10); color: var(--teal); }
 .poc-body { padding: 0; flex: 1; display: flex; flex-direction: column; }
 .poc-row {
   padding: 14px 26px;
@@ -669,8 +595,8 @@
   flex: 1;
   min-height: 44px;
 }
-.poc-row-light { border-bottom: 1px solid var(--ink-04); }
-.poc-row-dark { border-bottom: 1px solid rgba(255,255,255,0.05); }
+.poc-row-light,
+.poc-row-dark { border-bottom: 1px solid var(--text-05); }
 .poc-row:last-child { border-bottom: none; }
 .poc-lbl {
   font-family: 'Tajawal', sans-serif;
@@ -679,26 +605,27 @@
   min-width: 100px;
   flex-shrink: 0;
 }
-.poc-lbl-light { color: var(--teal-deep); }
+.poc-lbl-light,
 .poc-lbl-dark { color: var(--teal); }
 .poc-val { font-size: 0.76em; line-height: 1.55; }
-.poc-val-light { color: var(--ink-60); }
-.poc-val-dark { color: rgba(255,255,255,0.7); }
+.poc-val-light,
+.poc-val-dark { color: var(--text-70); }
 /* Result/warning rows */
-.poc-row.r-good-light { background: var(--green-bg); }
-.poc-row.r-good-light .poc-lbl { color: var(--green); }
-.poc-row.r-good-dark { background: rgba(26,122,90,0.2); }
+.poc-row.r-good-light,
+.poc-row.r-good-dark { background: rgba(46,204,113,0.1); }
+.poc-row.r-good-light .poc-lbl,
 .poc-row.r-good-dark .poc-lbl { color: #4ade80; }
-.poc-row.r-warn-light { background: var(--amber-bg); }
-.poc-row.r-warn-light .poc-lbl { color: var(--amber); }
-.poc-row.r-warn-dark { background: rgba(212,146,10,0.15); }
+.poc-row.r-warn-light,
+.poc-row.r-warn-dark { background: rgba(240,165,0,0.1); }
+.poc-row.r-warn-light .poc-lbl,
 .poc-row.r-warn-dark .poc-lbl { color: #fbbf24; }
 
-/* ===== INFRA CARDS — DARK ===== */
+/* ===== INFRA CARDS ===== */
 .infra-dark {
-  background: var(--glass-w);
-  border: 1px solid var(--glass-w-border);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-right: 4px solid var(--teal);
+  border-radius: 10px;
   padding: 22px 20px;
   text-align: center;
   position: relative;
@@ -708,72 +635,69 @@
   flex-direction: column;
   justify-content: center;
 }
-.infra-dark::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  height: 4px;
-  background: var(--teal);
-}
-.infra-dark:hover { transform: translateY(-3px); background: var(--glass-w-hover); }
+.infra-dark::before { display: none; }
+.infra-dark:hover { transform: translateY(-3px); background: var(--bg-card-hover); }
 .infra-dark .infra-icon {
   width: 36px; height: 36px;
   border-radius: 10px;
-  background: rgba(26,158,143,0.2);
+  background: var(--teal-10);
   margin: 0 auto 10px;
   display: flex; align-items: center; justify-content: center;
   font-size: 0.9em;
+  color: var(--teal);
 }
 .infra-dark h4 {
   font-family: 'Tajawal', sans-serif;
   font-size: 0.85em;
   font-weight: 800;
-  color: #fff;
+  color: var(--text);
   margin-bottom: 6px;
 }
-.infra-dark p { font-size: 0.7em; color: rgba(255,255,255,0.55); margin: 2px 0; }
+.infra-dark p { font-size: 0.7em; color: var(--text-50); margin: 2px 0; }
 
 /* ===== RISK ITEMS ===== */
 .risk { display: flex; gap: 12px; align-items: flex-start; margin: 10px 0; }
 .risk-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
 .risk-dot.red { background: var(--red); }
 .risk-dot.amber { background: var(--amber); }
-.risk p { font-size: 0.78em; margin: 0; color: var(--ink-60); line-height: 1.55; }
-.risk strong { color: var(--ink); }
+.risk p { font-size: 0.78em; margin: 0; color: var(--text-70); line-height: 1.55; }
+.risk strong { color: var(--text); }
 
 /* Remaining work card */
 .rcard {
-  background: #fff;
-  border: 1px solid var(--cream-dark);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-right: 4px solid var(--teal);
+  border-radius: 10px;
   padding: 18px 22px;
   margin: 8px 0;
-  box-shadow: 0 2px 8px rgba(26,26,46,0.04);
+  box-shadow: none;
 }
 .rcard h4 {
   font-family: 'Tajawal', sans-serif;
   font-size: 0.82em;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--text);
   margin-bottom: 6px;
 }
-.rcard p { font-size: 0.73em; color: var(--ink-60); margin: 0; line-height: 1.55; }
+.rcard p { font-size: 0.73em; color: var(--text-70); margin: 0; line-height: 1.55; }
 .rcard.accent-amber { border-right: 4px solid var(--amber); }
 .rcard.accent-orange { border-right: 4px solid #e8752a; }
+.rcard.accent-green { border-right: 4px solid var(--green); }
 
-/* ===== DECISION CARDS — DARK ===== */
+/* ===== DECISION CARDS ===== */
 .dec-dark {
   display: flex;
   gap: 18px;
   align-items: flex-start;
   padding: 22px 26px;
-  background: var(--glass-w);
-  border: 1px solid var(--glass-w-border);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 10px;
   border-right: 4px solid var(--teal);
   transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), background 0.3s;
 }
-.dec-dark:hover { transform: translateX(-4px); background: var(--glass-w-hover); }
+.dec-dark:hover { transform: translateX(-4px); background: var(--bg-card-hover); }
 .dec-dark .dec-num {
   min-width: 40px; height: 40px;
   background: var(--teal);
@@ -785,16 +709,16 @@
   font-size: 1em;
   flex-shrink: 0;
 }
-.dec-dark p { font-size: 0.8em; margin: 0; color: rgba(255,255,255,0.75); line-height: 1.55; }
-.dec-dark strong { color: #fff; }
+.dec-dark p { font-size: 0.8em; margin: 0; color: var(--text-70); line-height: 1.55; }
+.dec-dark strong { color: var(--text); }
 
 /* Cost badge */
 .cost-badge {
   display: inline-block;
   padding: 8px 24px;
   border-radius: 100px;
-  background: rgba(26,158,143,0.2);
-  color: rgba(255,255,255,0.85);
+  background: var(--teal-10);
+  color: var(--teal);
   font-size: 0.75em;
   font-weight: 600;
 }
@@ -803,66 +727,36 @@
 .s-title {
   width: 100%;
   height: 100%;
-  background: var(--teal-dark);
+  background: var(--bg);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.s-title::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(26,158,143,0.5) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 70%, rgba(26,158,143,0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 40%);
-}
-.s-title .col-bars {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  gap: 22px;
-  align-items: flex-end;
-  opacity: 0.07;
-}
-.s-title .col-bars.right { right: 50px; }
-.s-title .col-bars.left { left: 50px; }
-.s-title .cb {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.s-title .cb-dot {
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: #fff;
-  margin-bottom: 7px;
-}
-.s-title .cb-bar {
-  width: 16px;
-  border-radius: 8px;
-  background: #fff;
-}
+.s-title::before { display: none; }
+.s-title .col-bars { display: none; }
 .s-title .t-content {
   position: relative;
   z-index: 2;
   text-align: center;
   padding: 30px;
 }
-.s-title .t-logo { height: 70px; margin-bottom: 32px; opacity: 0.95; }
+.s-title .t-logo { height: 70px; margin-bottom: 32px; opacity: 0.9; }
 .s-title h1 {
   font-family: 'Tajawal', sans-serif;
-  color: #fff !important;
+  color: var(--text) !important;
   font-size: 3em;
   font-weight: 900;
   text-align: center;
   margin-bottom: 10px;
   line-height: 1.15;
+  border-right: 6px solid var(--teal);
+  padding-right: 20px;
+  display: inline-block;
 }
 .s-title h3 {
-  color: rgba(255,255,255,0.7) !important;
+  color: var(--text-70) !important;
   font-size: 0.95em;
   font-weight: 400;
   text-align: center;
@@ -871,7 +765,7 @@
 }
 .s-title .t-date {
   font-size: 0.8em;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-35);
   margin-top: 30px;
   text-align: center;
 }
@@ -880,30 +774,27 @@
 .s-thanks {
   width: 100%;
   height: 100%;
-  background: var(--teal-dark);
+  background: var(--bg);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.s-thanks::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 40% 50%, rgba(26,158,143,0.45) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 30%, rgba(26,158,143,0.2) 0%, transparent 50%);
-}
+.s-thanks::before { display: none; }
+.s-thanks .col-bars { display: none; }
 .s-thanks .t-content { position: relative; z-index: 2; text-align: center; }
 .s-thanks h1 {
   font-family: 'Tajawal', sans-serif;
-  color: #fff !important;
+  color: var(--text) !important;
   font-size: 3em;
   font-weight: 900;
   text-align: center;
+  border-right: 6px solid var(--teal);
+  padding-right: 20px;
+  display: inline-block;
 }
-.s-thanks p { color: rgba(255,255,255,0.7) !important; font-size: 0.95em; text-align: center; }
+.s-thanks p { color: var(--text-70) !important; font-size: 0.95em; text-align: center; }
 
 /* ===== ENTRANCE ANIMATIONS ===== */
 @keyframes slideUp {
@@ -926,21 +817,21 @@
   bottom: 18px; left: 18px;
   width: 44px; height: 44px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--teal-dark), var(--teal-deep));
-  color: #fff;
-  border: none;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  color: var(--teal);
   cursor: pointer;
   z-index: 200;
   font-size: 18px;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   transition: transform 0.2s, background 0.2s;
 }
-#nav-btn:hover { transform: scale(1.08); background: var(--teal); }
+#nav-btn:hover { transform: scale(1.08); background: var(--teal); color: #fff; }
 
 #nav-overlay {
   position: fixed; inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.6);
   backdrop-filter: blur(6px);
   z-index: 198;
   opacity: 0;
@@ -953,7 +844,8 @@
   position: fixed;
   top: 0; left: 0;
   width: 260px; height: 100vh;
-  background: var(--teal-dark);
+  background: var(--bg);
+  border-right: 1px solid var(--bg-card-border);
   z-index: 199;
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
@@ -962,20 +854,20 @@
 }
 #nav-panel.open { transform: translateX(0); }
 #nav-panel::-webkit-scrollbar { width: 3px; }
-#nav-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+#nav-panel::-webkit-scrollbar-thumb { background: var(--text-20); border-radius: 3px; }
 
 .np-header {
   padding: 22px 22px 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--bg-card-border);
 }
-.np-header img { height: 28px; opacity: 0.85; }
+.np-header img { height: 28px; opacity: 0.7; }
 
 .np-section {
   padding: 16px 22px 6px;
   font-family: 'Tajawal', sans-serif;
   font-size: 0.65em;
   font-weight: 700;
-  color: rgba(255,255,255,0.35);
+  color: var(--text-35);
   letter-spacing: 0.05em;
 }
 .np-item {
@@ -988,24 +880,24 @@
   transition: background 0.2s;
   font-family: 'Readex Pro', sans-serif;
 }
-.np-item:hover { background: rgba(255,255,255,0.06); }
-.np-item.act { background: rgba(26,158,143,0.3); }
+.np-item:hover { background: var(--text-05); }
+.np-item.act { background: var(--teal-10); }
 .np-n {
   min-width: 24px; height: 24px;
   border-radius: 7px;
-  background: rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.6);
+  background: var(--text-05);
+  color: var(--text-50);
   font-size: 0.65em; font-weight: 600;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .np-item.act .np-n { background: var(--teal); color: #fff; }
 .np-l {
-  color: rgba(255,255,255,0.7);
+  color: var(--text-70);
   font-size: 0.72em;
   line-height: 1.3;
 }
-.np-item.act .np-l { color: #fff; font-weight: 500; }
+.np-item.act .np-l { color: var(--text); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -1049,8 +941,8 @@
 <!-- S2: THE CHALLENGE — LIGHT CREAM -->
 <section data-nav="التحدي التعليمي" data-section="السياق والتحدي">
   <div class="s-frame bg-cream grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag">المحور الأول</span><span class="s-presenter">محمد الشوا</span></div></div>
-    <h2 class="anim" style="color:var(--ink);">التحدي التعليمي في العراق</h2>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الأول</span></div></div>
+    <h2 class="anim" style="color:var(--text);">التحدي التعليمي في العراق</h2>
     <div class="card-grid g2 anim anim-d1" style="margin-top:16px;flex:1;">
       <div class="card" style="justify-content:flex-start;">
         <div class="card-icon">١</div>
@@ -1073,7 +965,7 @@
         <p>الأهل يستثمرون في النتائج الأكاديمية والتحصيل الدراسي، لا في مجرد "التفاعل"</p>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٢ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٢ / ٢٤<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 3 min. These are real constraints, not assumptions. Each shaped a product decision. Transition: "These challenges led us to conduct direct research with students..."</aside>
 </section>
@@ -1081,14 +973,14 @@
 <!-- S3: THREE PRINCIPLES — DARK TEAL -->
 <section data-nav="مقاربتنا" data-section="السياق والتحدي">
   <div class="s-frame-dark grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الأول</span><span class="s-presenter-dark">محمود عبدالعال</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الأول</span></div></div>
     <h2 class="anim" style="font-size:2.2em;">ثلاثة مبادئ أساسية</h2>
     <div style="display:flex;flex-direction:column;gap:16px;margin-top:18px;flex:1;">
       <div class="principle-dark anim anim-d1"><div class="p-num">١</div><div><h4>العمل بدون إنترنت أولاً</h4><p>المنصة تعمل بالكامل بدون اتصال، والمزامنة تحدث تلقائياً عند توفر الإنترنت</p></div></div>
       <div class="principle-dark anim anim-d2"><div class="p-num">٢</div><div><h4>التركيز على الأداء الأكاديمي</h4><p>محتوى مرتبط بالمنهج، اختبارات ذكية، تقييم بالذكاء الاصطناعي — لا ألعاب سطحية</p></div></div>
       <div class="principle-dark anim anim-d3"><div class="p-num">٣</div><div><h4>تجربة مخصصة حسب المرحلة الدراسية</h4><p>تجربة مختلفة لكل مرحلة دراسية بناءً على سلوك التعلم الفعلي للطالب</p></div></div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٣ / ٢٤</span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٣ / ٢٤<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 2 min. These 3 drive EVERY decision. Offline-first is non-negotiable. Transition: "Islam will share what we learned from students."</aside>
 </section>
@@ -1118,15 +1010,15 @@
 <!-- S5: RESEARCH FINDINGS — LIGHT TEAL -->
 <section data-nav="نتائج البحث" data-section="البحث الميداني">
   <div class="s-frame bg-light-teal grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag">المحور الثاني</span><span class="s-presenter">إسلام هاني</span></div></div>
-    <h2 class="anim" style="color:var(--ink);">نتائج البحث الاستكشافي</h2>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثاني</span></div></div>
+    <h2 class="anim" style="color:var(--text);">نتائج البحث الاستكشافي</h2>
     <div style="margin:8px 0 16px;"><span class="stat-pill sp-amber anim anim-d1">٧ مقابلات استكشافية — رؤى اتجاهية وليست إحصائية</span></div>
     <div style="display:flex;flex-direction:column;gap:14px;flex:1;">
       <div class="finding anim anim-d2"><h4>النمط الأول: سلوك التعلم يختلف جذرياً حسب المرحلة</h4><p>الابتدائية: محتوى قصير ومرئي • المتوسطة: تنوع وتحفيز • الإعدادية: تركيز على الامتحانات والنتائج</p></div>
       <div class="finding anim anim-d3"><h4>النمط الثاني: مدة الانتباه للفيديو تختلف بشكل كبير</h4><p>الأصغر سناً: ٥-١٠ دقائق كحد أقصى • الأكبر سناً: ٢٠-٣٠ دقيقة إذا كان المحتوى مرتبطاً بالامتحان</p></div>
       <div class="finding anim anim-d4"><h4>النمط الثالث: الأهل يشترون النتائج</h4><p>قرار الشراء مرتبط بالأداء في الامتحانات وليس بساعات الاستخدام أو مقاييس التفاعل</p></div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٥ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٥ / ٢٤<span class="s-footer-presenter">إسلام هاني</span></span></div>
   </div>
   <aside class="notes">Presenter: Islam — 3 min. CRITICAL: Start with "7 exploratory interviews — directional insight, not statistical certainty." Only 3 patterns. DO NOT overclaim.</aside>
 </section>
@@ -1134,14 +1026,14 @@
 <!-- S6: DESIGN DECISIONS — CREAM -->
 <section data-nav="قرارات التصميم" data-section="البحث الميداني">
   <div class="s-frame bg-cream grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag">المحور الثاني</span><span class="s-presenter">إسلام هاني</span></div></div>
-    <h2 class="anim" style="color:var(--ink);">قرارات التصميم المبنية على البحث</h2>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثاني</span></div></div>
+    <h2 class="anim" style="color:var(--text);">قرارات التصميم المبنية على البحث</h2>
     <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px;flex:1;">
       <div class="dd-card good anim anim-d1"><h4>قرار ١: تصميم واجهات مختلفة حسب المرحلة</h4><p>بدلاً من واجهة واحدة للجميع، صممنا تجارب مخصصة تراعي اختلاف السلوك التعليمي بين المراحل الدراسية</p></div>
       <div class="dd-card good anim anim-d2"><h4>قرار ٢: أولوية محتوى الامتحانات</h4><p>المحتوى المرتبط مباشرة بالامتحانات يحصل على الأولوية القصوى في خطة الإطلاق الأول</p></div>
       <div class="dd-card warn anim anim-d3"><h4>فرضية لم تُثبت بعد: التفاعل الاجتماعي</h4><p>لم نجد دليلاً كافياً على أن التفاعل الاجتماعي بين الطلاب داخل المنصة يحسّن التعلم — لذلك لم نبنِ ميزات اجتماعية</p></div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٦ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٦ / ٢٤<span class="s-footer-presenter">إسلام هاني</span></span></div>
   </div>
   <aside class="notes">Presenter: Islam — 2 min. The amber card is CRUCIAL — shows intellectual honesty. "We chose NOT to build social features because research didn't support it."</aside>
 </section>
@@ -1164,7 +1056,7 @@
 <!-- S8: BUILD/NOT BUILD — DARK -->
 <section data-nav="ماذا نبني ولماذا" data-section="قرارات المنتج">
   <div class="s-frame-dark grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الثالث</span><span class="s-presenter-dark">محمود عبدالعال</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الثالث</span></div></div>
     <h2 class="anim" style="font-size:2.2em;">ماذا نبني ولماذا</h2>
     <div class="cols2" style="margin-top:18px;flex:1;">
       <div class="build-col anim anim-d1">
@@ -1183,7 +1075,7 @@
         <div class="build-item"><span class="bi-icon" style="color:#f87171;">&#10007;</span><p>نسخة من تطبيقات الخليج بدون توطين</p></div>
       </div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٨ / ٢٤</span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٨ / ٢٤<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mahmoud — 2 min. The "NOT building" column is as important. Shows strategic discipline. DO NOT use buzzwords — speak plainly.</aside>
 </section>
@@ -1191,8 +1083,8 @@
 <!-- S9: DELIVERY PROGRESS — LIGHT TEAL -->
 <section data-nav="تقدم التسليم" data-section="قرارات المنتج">
   <div class="s-frame bg-light-teal grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag">المحور الثالث</span><span class="s-presenter">محمود عبدالعال</span></div></div>
-    <h2 class="anim" style="color:var(--ink);">تقدم التسليم</h2>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثالث</span></div></div>
+    <h2 class="anim" style="color:var(--text);">تقدم التسليم</h2>
     <div class="big-stat anim anim-d1"><div class="big-stat-num">٨٧ <span class="big-stat-den">من ٩٤</span></div><div class="big-stat-label">ميزة مكتملة</div></div>
     <div class="pbar-wrap anim anim-d2"><div class="pbar-fill" style="width:92.6%"></div></div>
     <div style="display:flex;gap:12px;justify-content:center;margin:12px 0;" class="anim anim-d2">
@@ -1208,7 +1100,7 @@
       <div class="fbar"><span class="fbar-name">البنية التحتية</span><div class="fbar-track"><div class="fbar-fill" style="width:95%"></div></div><span class="fbar-val">١٤</span></div>
       <div class="fbar"><span class="fbar-name">تطبيقات الجوال</span><div class="fbar-track"><div class="fbar-fill" style="width:70%"></div></div><span class="fbar-val">٢٧</span></div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٩ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٩ / ٢٤<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mahmoud — 3 min. Let numbers speak. 92.6% = execution proof. Don't rush this slide.</aside>
 </section>
@@ -1216,8 +1108,8 @@
 <!-- S10: PLATFORM COVERAGE — CREAM -->
 <section data-nav="التغطية التقنية" data-section="قرارات المنتج">
   <div class="s-frame bg-cream grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag">المحور الثالث</span><span class="s-presenter">محمود عبدالعال</span></div></div>
-    <h2 class="anim" style="color:var(--ink);">التغطية التقنية الكاملة</h2>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثالث</span></div></div>
+    <h2 class="anim" style="color:var(--text);">التغطية التقنية الكاملة</h2>
     <div class="card-grid g3" style="margin-top:16px;flex:1;">
       <div class="plat-card anim anim-d1"><h4>الخادم الرئيسي</h4><div class="plat-tech">Laravel 12 + React</div><div class="plat-stat">+١٢٨ نقطة API • ١٤٧ اختبار</div></div>
       <div class="plat-card accent-green anim anim-d2"><h4>أندرويد</h4><div class="plat-tech">Kotlin + Jetpack Compose</div><div class="plat-stat">١٣ ميزة • PowerSync</div></div>
@@ -1226,7 +1118,7 @@
       <div class="plat-card accent-orange anim anim-d5"><h4>الاتصال الفوري</h4><div class="plat-tech">Go + WebSocket + Redis</div><div class="plat-stat">رسائل فورية وحضور مباشر</div></div>
       <div class="plat-card accent-red anim anim-d6"><h4>البنية التحتية</h4><div class="plat-tech">GCP: Cloud Run + SQL + CDN</div><div class="plat-stat">٣ بيئات • CI/CD كامل</div></div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٠ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٠ / ٢٤<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mahmoud — 3 min. Shows COMPLETE system, not prototype. Let them absorb the grid visually.</aside>
 </section>
@@ -1262,7 +1154,7 @@
 <!-- S12: POC 1 — OFFLINE SYNC (DARK) -->
 <section data-nav="المزامنة بدون إنترنت" data-section="التحقق التقني">
   <div class="s-frame-dark grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">إثبات المفهوم ١</span><span class="s-presenter-dark">روبير سلوانس</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">إثبات المفهوم ١</span></div></div>
     <div class="poc poc-dark-card anim" style="flex:1;">
       <div class="poc-header poc-header-dark"><h3>المزامنة بدون إنترنت</h3><span class="poc-badge poc-badge-dark">Offline Sync</span></div>
       <div class="poc-body">
@@ -1274,7 +1166,7 @@
         <div class="poc-row poc-row-dark"><span class="poc-lbl poc-lbl-dark">الأثر الإنتاجي:</span><span class="poc-val poc-val-dark">البنية مثبتة للاستخدام كثيف القراءة. نزاعات الكتابة تحتاج قرارات سياسة لتسليم الامتحانات</span></div>
       </div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٣ / ٢٤</span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٣ / ٢٤<span class="s-footer-presenter">روبير سلوانس</span></span></div>
   </div>
   <aside class="notes">Presenter: Robera — 2.5 min. Use SCENARIO: "Student opens app at home → downloads → school without internet → studies offline → reconnects → syncs." Be calm, precise.</aside>
 </section>
@@ -1282,7 +1174,7 @@
 <!-- S13: POC 2 — AI CHATBOT (LIGHT) -->
 <section data-nav="المساعد الذكي" data-section="التحقق التقني">
   <div class="s-frame bg-light-teal grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag">إثبات المفهوم ٢</span><span class="s-presenter">علي طرابلسي</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">إثبات المفهوم ٢</span></div></div>
     <div class="poc poc-light anim" style="flex:1;">
       <div class="poc-header poc-header-light"><h3>المساعد الذكي للمنهج</h3><span class="poc-badge poc-badge-light">AI Chatbot</span></div>
       <div class="poc-body">
@@ -1294,7 +1186,7 @@
         <div class="poc-row poc-row-light"><span class="poc-lbl poc-lbl-light">الأثر الإنتاجي:</span><span class="poc-val poc-val-light">واعد للمساعدة التكميلية. يحتاج قياس دقة مع خبراء المنهج قبل الإرشاد الأكاديمي عالي الأهمية</span></div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٤ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٤ / ٢٤<span class="s-footer-presenter">علي طرابلسي</span></span></div>
   </div>
   <aside class="notes">Presenter: Ali — 2.5 min. Lead with PROBLEM: "Students need help outside class." Self-ask: "Why trust this?" For practice — yes. High-stakes — needs expert validation.</aside>
 </section>
@@ -1302,7 +1194,7 @@
 <!-- S14: POC 3 — AI ASSESSMENT (LIGHT) -->
 <section data-nav="محرك التقييم" data-section="التحقق التقني">
   <div class="s-frame bg-cream grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag">إثبات المفهوم ٣</span><span class="s-presenter">علي طرابلسي</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">إثبات المفهوم ٣</span></div></div>
     <div class="poc poc-light anim" style="flex:1;">
       <div class="poc-header poc-header-light"><h3>محرك التقييم بالذكاء الاصطناعي</h3><span class="poc-badge poc-badge-light">AI Assessment</span></div>
       <div class="poc-body">
@@ -1314,7 +1206,7 @@
         <div class="poc-row poc-row-light"><span class="poc-lbl poc-lbl-light">الأثر الإنتاجي:</span><span class="poc-val poc-val-light">مناسب للتدريب حالياً. يحتاج إطار تحقق ومراجعة خبراء قبل الاعتماد في الامتحانات الرسمية</span></div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٥ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٥ / ٢٤<span class="s-footer-presenter">علي طرابلسي</span></span></div>
   </div>
   <aside class="notes">Presenter: Ali — 2.5 min. Client asks "Can I trust this?" Honest: "Practice — yes. Official exams — needs validation framework." Key: 78.4% gen, 92.2% photo.</aside>
 </section>
@@ -1322,7 +1214,7 @@
 <!-- S15: POC 4 — EXAM INTEGRITY (DARK) -->
 <section data-nav="نزاهة الامتحانات" data-section="التحقق التقني">
   <div class="s-frame-dark grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">إثبات المفهوم ٤</span><span class="s-presenter-dark">روبير سلوانس</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">إثبات المفهوم ٤</span></div></div>
     <div class="poc poc-dark-card anim" style="flex:1;">
       <div class="poc-header poc-header-dark"><h3>نزاهة الامتحانات</h3><span class="poc-badge poc-badge-dark">Exam Integrity</span></div>
       <div class="poc-body">
@@ -1333,7 +1225,7 @@
         <div class="poc-row poc-row-dark"><span class="poc-lbl poc-lbl-dark">الأثر الإنتاجي:</span><span class="poc-val poc-val-dark">البنية جاهزة للتوقيت الموثوق. الكشف الكامل يحتاج مزيجاً من التقنية والسياسات المؤسسية</span></div>
       </div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٦ / ٢٤</span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٦ / ٢٤<span class="s-footer-presenter">روبير سلوانس</span></span></div>
   </div>
   <aside class="notes">Presenter: Robera — 1.5 min. HONESTY builds trust. "We detect 3 of 5 vectors. 2 need policy, not code."</aside>
 </section>
@@ -1341,7 +1233,7 @@
 <!-- S16: POC 5 — VIDEO (LIGHT) -->
 <section data-nav="توصيل الفيديو" data-section="التحقق التقني">
   <div class="s-frame bg-light-teal grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag">إثبات المفهوم ٥</span><span class="s-presenter">أحمد مبارك</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">إثبات المفهوم ٥</span></div></div>
     <div class="poc poc-light anim" style="flex:1;">
       <div class="poc-header poc-header-light"><h3>توصيل محتوى الفيديو</h3><span class="poc-badge poc-badge-light">Video Delivery</span></div>
       <div class="poc-body">
@@ -1352,7 +1244,7 @@
         <div class="poc-row poc-row-light"><span class="poc-lbl poc-lbl-light">الأثر الإنتاجي:</span><span class="poc-val poc-val-light">تجربة المستخدم مثبتة. البنية التحتية جاهزة (GCP Cloud Storage + CDN). اختبار الشبكات مطلوب قبل الإطلاق</span></div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٧ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٧ / ٢٤<span class="s-footer-presenter">أحمد مبارك</span></span></div>
   </div>
   <aside class="notes">Presenter: Mubarak — 2 min. Be PRECISE: "Tested in dev, not Iraqi 3G." Al-Fihris (book sync) is a differentiator. DO NOT imply production readiness.</aside>
 </section>
@@ -1360,7 +1252,7 @@
 <!-- S17: INFRASTRUCTURE — DARK -->
 <section data-nav="البنية التحتية" data-section="التحقق التقني">
   <div class="s-frame-dark grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">إثبات المفهوم ٦</span><span class="s-presenter-dark">فادي موندي</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">إثبات المفهوم ٦</span></div></div>
     <h2 class="anim" style="margin-bottom:16px;font-size:2.2em;">البنية التحتية الإنتاجية</h2>
     <div class="card-grid g3 anim anim-d1" style="flex:1;">
       <div class="infra-dark"><div class="infra-icon">&#9729;</div><h4>الحوسبة</h4><p>Cloud Run — تحجيم تلقائي</p><p>٠-١٠ مثيلات • بدون خوادم</p></div>
@@ -1371,7 +1263,7 @@
       <div class="infra-dark"><div class="infra-icon">&#10148;</div><h4>النشر المستمر</h4><p>GitHub Actions → Docker</p><p>→ Cloud Run • بدون مفاتيح مكشوفة</p></div>
     </div>
     <div style="text-align:center;margin-top:14px;" class="anim anim-d2"><span class="cost-badge">التكلفة الشهرية المقدرة: ~٥٠٠$ للبيئة الإنتاجية</span></div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٨ / ٢٤</span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>١٨ / ٢٤<span class="s-footer-presenter">فادي موندي</span></span></div>
   </div>
   <aside class="notes">Presenter: Fadi — 2 min. Proves operational maturity. 3 environments, private network, automated deploy, monitoring. Keep business-level.</aside>
 </section>
@@ -1405,17 +1297,17 @@
 <!-- S19: REMAINING & RISKS — CREAM WITH URGENCY -->
 <section data-nav="المتبقي والمخاطر" data-section="ما يحتاج استكمال">
   <div class="s-frame bg-cream grain">
-    <div class="s-topbar"><img src="logo-horizontal.png" alt=""><div><span class="s-tag" style="background:#fef3e8;color:#e8752a;">المحور الخامس</span><span class="s-presenter">محمود عبدالعال</span></div></div>
-    <h2 class="anim" style="color:var(--ink);">العمل المتبقي والمخاطر المفتوحة</h2>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag" style="background:rgba(232,117,42,0.15);color:#e8752a;">المحور الخامس</span></div></div>
+    <h2 class="anim" style="color:var(--text);">العمل المتبقي والمخاطر المفتوحة</h2>
     <div class="cols2" style="margin-top:16px;flex:1;">
       <div class="anim anim-d1" style="display:flex;flex-direction:column;">
-        <h3 style="margin-bottom:10px;color:var(--teal-deep);">قيد التنفيذ والانتظار</h3>
+        <h3 style="margin-bottom:10px;color:var(--teal);">قيد التنفيذ والانتظار</h3>
         <div class="rcard accent-amber"><h4>قيد التنفيذ</h4><p>مصحح الامتحانات بالذكاء الاصطناعي — تصحيح امتحانات كاملة متعددة الصور مع درجات جزئية</p></div>
         <div class="rcard"><h4>قائمة الانتظار (٦ ميزات)</h4><p>لوحات متصدرين جغرافية • شارات تحفيزية • إشعارات جلسات مباشرة • إشعارات دفع • شهادات إتمام • ملفات مرفقة</p></div>
         <div class="rcard accent-green"><h4>تحديث iOS</h4><p>تم سد الفجوة — مشغل الفيديو والملاحظات والعلامات المرجعية ومزامنة الفهرس مكتملة على كلا النظامين. المتبقي: واجهة الامتحانات فقط</p></div>
       </div>
       <div class="anim anim-d2" style="display:flex;flex-direction:column;">
-        <h3 style="margin-bottom:10px;color:var(--teal-deep);">مخاطر تحتاج تحقق</h3>
+        <h3 style="margin-bottom:10px;color:var(--teal);">مخاطر تحتاج تحقق</h3>
         <div class="risk"><div class="risk-dot red"></div><p><strong>دقة الذكاء الاصطناعي:</strong> يحتاج إطار تحقق رسمي مع خبراء المنهج</p></div>
         <div class="risk"><div class="risk-dot red"></div><p><strong>واقع الشبكات:</strong> يحتاج اختبار ميداني على شبكات العراق الفعلية</p></div>
         <div class="risk"><div class="risk-dot red"></div><p><strong>نزاهة الامتحانات:</strong> يحتاج قرارات سياسة للحالات غير القابلة للكشف تقنياً</p></div>
@@ -1423,7 +1315,7 @@
         <div class="risk"><div class="risk-dot amber"></div><p><strong>اختبار الحمل:</strong> لم يُجرَ اختبار أداء تحت حمل حقيقي بعد</p></div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٢١ / ٢٤</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٢١ / ٢٤<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mahmoud — 3 min. Be HONEST. Red = need client help. Amber = we handle internally. Honesty builds trust.</aside>
 </section>
@@ -1444,7 +1336,7 @@
 <!-- S21: DECISIONS NEEDED — DARK -->
 <section data-nav="ما نحتاجه منكم" data-section="القرارات المطلوبة">
   <div class="s-frame-dark grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark" style="background:rgba(232,117,42,0.2);color:#fbbf24;">المحور السادس</span><span class="s-presenter-dark">محمود عبدالعال</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark" style="background:rgba(232,117,42,0.2);color:#fbbf24;">المحور السادس</span></div></div>
     <h2 class="anim" style="font-size:2.2em;">ما نحتاجه من العميل</h2>
     <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;flex:1;">
       <div class="dec-dark anim anim-d1"><div class="dec-num">١</div><p><strong>المحتوى:</strong> الوصول إلى مواد المنهج الرسمي لفهرستها في المنصة، أو تأكيد آلية خط المحتوى المناسبة</p></div>
@@ -1453,7 +1345,7 @@
       <div class="dec-dark anim anim-d4"><div class="dec-num">٤</div><p><strong>سياسات النزاهة:</strong> تحديد الإجراءات المطلوبة عند كشف غش أو الاشتباه به</p></div>
       <div class="dec-dark anim anim-d5"><div class="dec-num">٥</div><p><strong>أولويات المتبقي:</strong> ترتيب أولوية الميزات المتبقية (الشهادات، الشارات، لوحات المتصدرين الجغرافية)</p></div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٢٣ / ٢٤</span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>٢٣ / ٢٤<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 3 min. SPECIFIC asks. Each unblocks next steps. If they commit to #1 + #2, validated AI in 4 weeks. DO NOT be apologetic.</aside>
 </section>
