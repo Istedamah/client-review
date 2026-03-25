@@ -381,6 +381,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
 }
 .dd-card:hover { transform: translateX(-4px); background: var(--bg-card-hover); }
 .dd-card.good { background: var(--bg-card); border-right-color: var(--green); }
+.dd-card.bad { background: var(--bg-card); border-right-color: var(--red); }
 .dd-card.warn { background: var(--bg-card); border-right-color: var(--amber); }
 .dd-card h4 {
   font-family: 'Tajawal', sans-serif;
@@ -389,6 +390,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
   margin-bottom: 6px;
 }
 .dd-card.good h4 { color: var(--green); }
+.dd-card.bad h4 { color: var(--red); }
 .dd-card.warn h4 { color: var(--amber); }
 .dd-card p { font-size: 0.76em; color: var(--text-70); margin: 0; line-height: 1.6; }
 
@@ -859,6 +861,113 @@ body, .reveal-viewport { background: var(--bg) !important; }
 .reveal .slides section.present .anim-d5 { animation-delay: 0.5s; }
 .reveal .slides section.present .anim-d6 { animation-delay: 0.6s; }
 
+/* ===== FOOTER FULL-WIDTH IN FRAMES ===== */
+.s-frame > .s-footer,
+.s-frame > .s-footer-dark,
+.s-frame-dark > .s-footer,
+.s-frame-dark > .s-footer-dark {
+  margin-left: -50px;
+  margin-right: -50px;
+  margin-bottom: -20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* ===== DEMO BRIDGE SLIDES ===== */
+.demo-bridge {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 40px 50px;
+  color: var(--text);
+}
+.demo-bridge h2 {
+  font-family: 'Tajawal', sans-serif;
+  color: var(--text) !important;
+  font-size: 2.2em;
+  font-weight: 900;
+  text-align: center;
+  border: none;
+  padding: 0;
+  display: block;
+  margin-bottom: 12px;
+}
+.demo-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+.demo-live-badge::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: liveBlink 1.5s ease-in-out infinite;
+}
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.demo-play-btn {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: demoPulse 2s ease-in-out infinite;
+  margin-bottom: 28px;
+  border: none;
+  outline: none;
+}
+.demo-play-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 40px rgba(26,158,143,0.5);
+  animation: none;
+}
+.demo-play-btn::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 34px solid #fff;
+  margin-left: 6px;
+}
+@keyframes demoPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26,158,143,0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(26,158,143,0); }
+}
+.demo-points {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+  max-width: 420px;
+  margin-top: 8px;
+}
+.demo-points div {
+  color: var(--text-70);
+  font-size: 0.78em;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--text-10);
+}
+.demo-points div:last-child { border-bottom: none; }
+
 /* ===== NAVIGATOR ===== */
 #nav-btn {
   position: fixed;
@@ -978,7 +1087,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <span style="font-size:0.65em;color:var(--text-35);">مارس 2026</span>
       </div>
     </div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>1 / 26<span class="s-footer-presenter">محمد الشوا</span></span></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>1 / 38<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 30s. Welcome everyone. Total meeting ~45 min. Press S for speaker notes.</aside>
 </section>
@@ -990,48 +1099,48 @@ body, .reveal-viewport { background: var(--bg) !important; }
     <h2 class="anim" style="color:var(--text);">أجندة الجلسة وفريق المشروع</h2>
     <div style="margin-top:14px;display:flex;gap:14px;flex:1;">
       <!-- الأجندة — 6 محاور -->
-      <div style="flex:1;display:flex;flex-direction:column;gap:8px;justify-content:center;" class="anim anim-d1">
-        <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--teal);font-weight:700;font-size:0.8em;min-width:20px;">1</span>
-          <div><div style="font-size:0.7em;font-weight:600;">السياق والتحدي</div><div style="font-size:0.5em;color:var(--text-50);margin-top:2px;">التحدي التعليمي والمبادئ الأساسية</div></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px;" class="anim anim-d1">
+        <div class="card" style="padding:10px 16px;display:flex;flex-direction:row;flex:1;align-items:center;gap:10px;">
+          <span style="color:var(--teal);font-weight:700;font-size:0.95em;min-width:22px;">1</span>
+          <div><div style="font-size:0.82em;font-weight:600;">السياق والتحدي</div><div style="font-size:0.6em;color:var(--text-50);margin-top:2px;">التحدي التعليمي والمبادئ الأساسية</div></div>
         </div>
-        <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--teal);font-weight:700;font-size:0.8em;min-width:20px;">2</span>
-          <div><div style="font-size:0.7em;font-weight:600;">البحث الميداني</div><div style="font-size:0.5em;color:var(--text-50);margin-top:2px;">نتائج البحث وقرارات التصميم</div></div>
+        <div class="card" style="padding:10px 16px;display:flex;flex-direction:row;flex:1;align-items:center;gap:10px;">
+          <span style="color:var(--teal);font-weight:700;font-size:0.95em;min-width:22px;">2</span>
+          <div><div style="font-size:0.82em;font-weight:600;">البحث الميداني</div><div style="font-size:0.6em;color:var(--text-50);margin-top:2px;">نتائج البحث وقرارات التصميم</div></div>
         </div>
-        <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--teal);font-weight:700;font-size:0.8em;min-width:20px;">3</span>
-          <div><div style="font-size:0.7em;font-weight:600;">قرارات المنتج</div><div style="font-size:0.5em;color:var(--text-50);margin-top:2px;">ما نبنيه، تقدم التسليم، التغطية التقنية</div></div>
+        <div class="card" style="padding:10px 16px;display:flex;flex-direction:row;flex:1;align-items:center;gap:10px;">
+          <span style="color:var(--teal);font-weight:700;font-size:0.95em;min-width:22px;">3</span>
+          <div><div style="font-size:0.82em;font-weight:600;">قرارات المنتج</div><div style="font-size:0.6em;color:var(--text-50);margin-top:2px;">ما نبنيه، تقدم التسليم، التغطية التقنية</div></div>
         </div>
-        <div style="padding:0 16px;text-align:center;"><span style="font-size:0.45em;color:var(--teal);opacity:0.6;">── أسئلة ومناقشة ──</span></div>
-        <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--teal);font-weight:700;font-size:0.8em;min-width:20px;">4</span>
-          <div><div style="font-size:0.7em;font-weight:600;">التحقق التقني</div><div style="font-size:0.5em;color:var(--text-50);margin-top:2px;">البنية التحتية، AI، الامتحانات، المزامنة، الفيديو</div></div>
+        <div style="padding:0 16px;text-align:center;"><span style="font-size:0.55em;color:var(--teal);opacity:0.6;">── أسئلة ومناقشة ──</span></div>
+        <div class="card" style="padding:10px 16px;display:flex;flex-direction:row;flex:1;align-items:center;gap:10px;">
+          <span style="color:var(--teal);font-weight:700;font-size:0.95em;min-width:22px;">4</span>
+          <div><div style="font-size:0.82em;font-weight:600;">التحقق التقني</div><div style="font-size:0.6em;color:var(--text-50);margin-top:2px;">البنية التحتية، AI، الامتحانات، المزامنة، الفيديو</div></div>
         </div>
-        <div style="padding:0 16px;text-align:center;"><span style="font-size:0.45em;color:var(--teal);opacity:0.6;">── أسئلة بعد كل جزئية تقنية ──</span></div>
-        <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--teal);font-weight:700;font-size:0.8em;min-width:20px;">5</span>
-          <div><div style="font-size:0.7em;font-weight:600;">ما يحتاج استكمال</div><div style="font-size:0.5em;color:var(--text-50);margin-top:2px;">العمل المتبقي والمخاطر</div></div>
+        <div style="padding:0 16px;text-align:center;"><span style="font-size:0.55em;color:var(--teal);opacity:0.6;">── أسئلة بعد كل جزئية تقنية ──</span></div>
+        <div class="card" style="padding:10px 16px;display:flex;flex-direction:row;flex:1;align-items:center;gap:10px;">
+          <span style="color:var(--teal);font-weight:700;font-size:0.95em;min-width:22px;">5</span>
+          <div><div style="font-size:0.82em;font-weight:600;">ما يحتاج استكمال</div><div style="font-size:0.6em;color:var(--text-50);margin-top:2px;">العمل المتبقي والمخاطر</div></div>
         </div>
-        <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px;">
-          <span style="color:var(--teal);font-weight:700;font-size:0.8em;min-width:20px;">6</span>
-          <div><div style="font-size:0.7em;font-weight:600;">القرارات المطلوبة</div><div style="font-size:0.5em;color:var(--text-50);margin-top:2px;">ما نحتاجه من العميل</div></div>
+        <div class="card" style="padding:10px 16px;display:flex;flex-direction:row;flex:1;align-items:center;gap:10px;">
+          <span style="color:var(--teal);font-weight:700;font-size:0.95em;min-width:22px;">6</span>
+          <div><div style="font-size:0.82em;font-weight:600;">القرارات المطلوبة</div><div style="font-size:0.6em;color:var(--text-50);margin-top:2px;">ما نحتاجه من العميل</div></div>
         </div>
-        <div style="padding:0 16px;text-align:center;"><span style="font-size:0.45em;color:var(--teal);opacity:0.6;">── مناقشة مفتوحة ──</span></div>
+        <div style="padding:0 16px;text-align:center;"><span style="font-size:0.55em;color:var(--teal);opacity:0.6;">── مناقشة مفتوحة ──</span></div>
       </div>
       <!-- الفريق -->
       <div style="flex:0.8;display:flex;flex-direction:column;gap:10px;" class="anim anim-d2">
         <div class="card" style="padding:14px 16px;flex:1;">
-          <h4 style="font-size:0.7em;color:var(--teal);margin:0 0 10px;">الإدارة والمنتج</h4>
-          <div style="font-size:0.58em;color:var(--text-70);line-height:1.8;">
+          <h4 style="font-size:0.82em;color:var(--teal);margin:0 0 10px;">الإدارة والمنتج</h4>
+          <div style="font-size:0.68em;color:var(--text-70);line-height:1.8;">
             <div>محمد الشوا <span style="color:var(--text-35);">— Project Manager</span></div>
             <div>محمود عبدالعال <span style="color:var(--text-35);">— Product Manager</span></div>
             <div>إسلام هاني <span style="color:var(--text-35);">— Product Design Lead</span></div>
           </div>
         </div>
         <div class="card" style="padding:14px 16px;flex:1.4;">
-          <h4 style="font-size:0.7em;color:var(--teal);margin:0 0 10px;">الفريق التقني</h4>
-          <div style="font-size:0.58em;color:var(--text-70);line-height:1.8;">
+          <h4 style="font-size:0.82em;color:var(--teal);margin:0 0 10px;">الفريق التقني</h4>
+          <div style="font-size:0.68em;color:var(--text-70);line-height:1.8;">
             <div>فادي موندي <span style="color:var(--text-35);">— CTO / Tech Lead</span></div>
             <div>علي طرابلسي <span style="color:var(--text-35);">— Full Stack / DevOps</span></div>
             <div>نصر الله الفرا <span style="color:var(--text-35);">— Backend / Laravel</span></div>
@@ -1041,15 +1150,15 @@ body, .reveal-viewport { background: var(--bg) !important; }
           </div>
         </div>
         <div class="card" style="padding:14px 16px;">
-          <h4 style="font-size:0.7em;color:var(--teal);margin:0 0 10px;">فريق الجودة</h4>
-          <div style="font-size:0.58em;color:var(--text-70);line-height:1.8;">
+          <h4 style="font-size:0.82em;color:var(--teal);margin:0 0 10px;">فريق الجودة</h4>
+          <div style="font-size:0.68em;color:var(--text-70);line-height:1.8;">
             <div>مي زيادة <span style="color:var(--text-35);">— QA Lead</span></div>
             <div>ريهام تميم <span style="color:var(--text-35);">— QA Engineer</span></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>2 / 26<span class="s-footer-presenter">محمد الشوا</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>2 / 38<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 1 min. Walk through the agenda. Emphasize Q&A happens after each section, not just at the end.</aside>
 </section>
@@ -1081,7 +1190,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <p>الأهل يستثمرون في النتائج الأكاديمية والتحصيل الدراسي، لا في مجرد "التفاعل"</p>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>3 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>3 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 3 min. These are real constraints, not assumptions. Each shaped a product decision. Transition: "These challenges led us to conduct direct research with students..."</aside>
 </section>
@@ -1096,9 +1205,94 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="principle-dark anim anim-d2"><div class="p-num">2</div><div><h4>التركيز على الأداء الأكاديمي</h4><p>محتوى مرتبط بالمنهج، اختبارات ذكية، تقييم بالذكاء الاصطناعي — لا ألعاب سطحية</p></div></div>
       <div class="principle-dark anim anim-d3"><div class="p-num">3</div><div><h4>تجربة مخصصة حسب المرحلة الدراسية</h4><p>تجربة مختلفة لكل مرحلة دراسية بناءً على سلوك التعلم الفعلي للطالب</p></div></div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>4 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>4 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 2 min. These 3 drive EVERY decision. Offline-first is non-negotiable. Transition: "Islam will share what we learned from students."</aside>
+</section>
+
+<!-- MARKET LANDSCAPE DIVIDER -->
+<section data-nav="▸ المشهد السوقي" data-section="المشهد السوقي">
+  <div class="s-divider grain">
+    <div style="text-align:center;max-width:700px;">
+      <div style="font-size:0.85em;color:var(--teal);margin-bottom:12px;letter-spacing:1px;">المحور الثاني</div>
+      <h2 style="font-size:2.8em;margin-bottom:20px;">المشهد السوقي</h2>
+      <p style="color:var(--text-50);font-size:0.95em;line-height:1.8;">تحليل المنافسين والفرص المتاحة في سوق التعليم الإلكتروني</p>
+    </div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>5 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+  </div>
+  <aside class="notes">محمود عبدالعال introduces the market landscape section — 10 seconds.</aside>
+</section>
+
+<!-- MARKET: RESEARCH SCOPE -->
+<section data-nav="نطاق البحث" data-section="المشهد السوقي">
+  <div class="s-frame-dark grain">
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الثاني</span></div></div>
+    <h2 class="anim" style="font-size:2.2em;">نطاق البحث</h2>
+    <p class="anim anim-d1" style="color:var(--text-50);font-size:0.8em;margin-top:4px;">المنصات التعليمية العاملة في المنطقة وتحليلها</p>
+    <div class="card-grid g3 anim anim-d2" style="margin-top:20px;flex:1;">
+      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:20px;text-align:center;">
+        <h4 style="color:var(--text);margin-bottom:8px;">منصات عربية</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">نفهم، أبواب، كلاسيرا — منصات تستهدف المنهج العربي</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:20px;text-align:center;">
+        <h4 style="color:var(--text);margin-bottom:8px;">منصات عالمية</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">Khan Academy، Coursera — منصات عالمية بمحتوى عام</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:20px;text-align:center;">
+        <h4 style="color:var(--text);margin-bottom:8px;">حلول محلية</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">مبادرات محلية عراقية — محدودة التقنية والمحتوى</p>
+      </div>
+    </div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>6 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+  </div>
+  <aside class="notes">Presenter: Mahmoud — 1.5 min. Overview of the platforms we analyzed in each category.</aside>
+</section>
+
+<!-- MARKET: FINDINGS -->
+<section data-nav="نتائج السوق" data-section="المشهد السوقي">
+  <div class="s-frame bg-cream grain">
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثاني</span></div></div>
+    <h2 class="anim" style="color:var(--text);">ما وجدناه في السوق</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px;flex:1;">
+      <div class="dd-card bad anim anim-d1" style="display:flex;flex-direction:row;align-items:center;gap:16px;">
+        <div class="card-icon" style="min-width:40px;">1</div>
+        <div><h4>محتوى غير مخصص</h4><p>أغلب المنصات تقدم محتوى عام لا يتوافق مع المنهج العراقي الرسمي</p></div>
+      </div>
+      <div class="dd-card bad anim anim-d2" style="display:flex;flex-direction:row;align-items:center;gap:16px;">
+        <div class="card-icon" style="min-width:40px;">2</div>
+        <div><h4>تجربة غير مناسبة</h4><p>واجهات معقدة لا تراعي أعمار الطلاب ولا محدودية الأجهزة المستخدمة</p></div>
+      </div>
+      <div class="dd-card bad anim anim-d3" style="display:flex;flex-direction:row;align-items:center;gap:16px;">
+        <div class="card-icon" style="min-width:40px;">3</div>
+        <div><h4>لا تعمل بدون إنترنت</h4><p>جميع المنصات تتطلب اتصال مستمر — مشكلة أساسية في العراق</p></div>
+      </div>
+    </div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>7 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+  </div>
+  <aside class="notes">Presenter: Mahmoud — 1.5 min. Key gaps we found: content mismatch, bad UX for young students, no offline support.</aside>
+</section>
+
+<!-- MARKET: GOLDEN OPPORTUNITY -->
+<section data-nav="الفرصة الذهبية" data-section="المشهد السوقي">
+  <div class="s-frame-dark grain">
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الثاني</span></div></div>
+    <h2 class="anim" style="font-size:2.2em;">الفرصة الذهبية</h2>
+    <p class="anim anim-d1" style="color:var(--text-50);font-size:0.85em;margin-top:8px;line-height:1.8;max-width:700px;">لا توجد منصة واحدة تجمع بين: محتوى المنهج العراقي + تجربة مناسبة للأعمار + العمل بدون إنترنت + ذكاء اصطناعي مساعد</p>
+    <div class="card-grid g2 anim anim-d2" style="margin-top:24px;flex:1;">
+      <div class="card" style="background:rgba(26,158,143,0.1);border:1px solid rgba(26,158,143,0.3);padding:24px;text-align:center;">
+        <div style="font-size:1.5em;margin-bottom:10px;color:var(--teal);">&#10003;</div>
+        <h4 style="color:var(--teal);margin-bottom:8px;">ما نقدمه</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">منصة متكاملة مصممة خصيصاً للطالب العراقي — تعمل على أجهزته، بدون إنترنت، وبمنهجه الرسمي</p>
+      </div>
+      <div class="card" style="background:rgba(240,167,58,0.1);border:1px solid rgba(240,167,58,0.3);padding:24px;text-align:center;">
+        <div style="font-size:1.5em;margin-bottom:10px;color:var(--amber);">&#9733;</div>
+        <h4 style="color:var(--amber);margin-bottom:8px;">الميزة التنافسية</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">أول منصة تجمع بين الذكاء الاصطناعي والمنهج العراقي مع دعم كامل للعمل بدون اتصال</p>
+      </div>
+    </div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>8 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+  </div>
+  <aside class="notes">Presenter: Mahmoud — 1 min. The golden opportunity: no one is doing all four things together. That's our gap.</aside>
 </section>
 
 <!-- S4: DIVIDER — RESEARCH -->
@@ -1116,18 +1310,45 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="i-dot" style="left:35.5%;bottom:calc(15% + 87px);animation-delay:0.5s"></div>
     </div>
     <div class="d-content">
-      <div class="d-num">المحور الثاني</div>
+      <div class="d-num">المحور الثالث</div>
       <h2>ما تعلمناه من البحث الميداني</h2>
     </div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>5 / 26<span class="s-footer-presenter">إسلام هاني</span></span></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>9 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
-  <aside class="notes">إسلام هاني introduces the research section — 10 seconds.</aside>
+  <aside class="notes">محمود عبدالعال: الآن إسلام هاني تشاركنا نتائج البحث الميداني مع الطلاب.</aside>
+</section>
+
+<!-- RESEARCH: METHODOLOGY -->
+<section data-nav="منهجية البحث" data-section="البحث الميداني">
+  <div class="s-frame bg-cream grain">
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثالث</span></div></div>
+    <h2 class="anim" style="color:var(--text);">منهجية البحث</h2>
+    <div class="card-grid g3 anim anim-d1" style="margin-top:20px;flex:1;">
+      <div class="card" style="padding:20px;text-align:center;">
+        <div style="font-size:1.5em;margin-bottom:10px;">&#128269;</div>
+        <h4 style="margin-bottom:8px;">مقابلات ميدانية</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">مقابلات مع طلاب من مراحل مختلفة ومعلمين وأولياء أمور</p>
+      </div>
+      <div class="card" style="padding:20px;text-align:center;">
+        <div style="font-size:1.5em;margin-bottom:10px;">&#128200;</div>
+        <h4 style="margin-bottom:8px;">تحليل البيانات</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">تحليل أنماط الاستخدام والتحديات الشائعة في التعلم الإلكتروني</p>
+      </div>
+      <div class="card" style="padding:20px;text-align:center;">
+        <div style="font-size:1.5em;margin-bottom:10px;">&#128736;</div>
+        <h4 style="margin-bottom:8px;">اختبار المفاهيم</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">عرض نماذج أولية على الطلاب وجمع ملاحظاتهم المباشرة</p>
+      </div>
+    </div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>10 / 38<span class="s-footer-presenter">إسلام هاني</span></span></div>
+  </div>
+  <aside class="notes">Presenter: Islam — 1 min. Explain the research methodology: interviews, data analysis, concept testing.</aside>
 </section>
 
 <!-- S5: RESEARCH FINDINGS — LIGHT TEAL -->
 <section data-nav="نتائج البحث" data-section="البحث الميداني">
   <div class="s-frame bg-light-teal grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثاني</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثالث</span></div></div>
     <h2 class="anim" style="color:var(--text);">نتائج البحث الاستكشافي</h2>
     <div style="margin:8px 0 16px;"><span class="stat-pill sp-amber anim anim-d1">7 مقابلات استكشافية — رؤى اتجاهية وليست إحصائية</span></div>
     <div style="display:flex;flex-direction:column;gap:14px;flex:1;">
@@ -1135,7 +1356,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="finding anim anim-d3"><h4>النمط الثاني: مدة الانتباه للفيديو تختلف بشكل كبير</h4><p>الأصغر سناً: 5-10 دقائق كحد أقصى • الأكبر سناً: 20-30 دقيقة إذا كان المحتوى مرتبطاً بالامتحان</p></div>
       <div class="finding anim anim-d4"><h4>النمط الثالث: الأهل يشترون النتائج</h4><p>قرار الشراء مرتبط بالأداء في الامتحانات وليس بساعات الاستخدام أو مقاييس التفاعل</p></div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>6 / 26<span class="s-footer-presenter">إسلام هاني</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>11 / 38<span class="s-footer-presenter">إسلام هاني</span></span></div>
   </div>
   <aside class="notes">Presenter: Islam — 3 min. CRITICAL: Start with "7 exploratory interviews — directional insight, not statistical certainty." Only 3 patterns. DO NOT overclaim.</aside>
 </section>
@@ -1143,16 +1364,70 @@ body, .reveal-viewport { background: var(--bg) !important; }
 <!-- S6: DESIGN DECISIONS — CREAM -->
 <section data-nav="قرارات التصميم" data-section="البحث الميداني">
   <div class="s-frame bg-cream grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثاني</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثالث</span></div></div>
     <h2 class="anim" style="color:var(--text);">قرارات التصميم المبنية على البحث</h2>
     <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px;flex:1;">
-      <div class="dd-card good anim anim-d1"><h4>قرار 1: تصميم واجهات مختلفة حسب المرحلة</h4><p>بدلاً من واجهة واحدة للجميع، صممنا تجارب مخصصة تراعي اختلاف السلوك التعليمي بين المراحل الدراسية</p></div>
-      <div class="dd-card good anim anim-d2"><h4>قرار 2: أولوية محتوى الامتحانات</h4><p>المحتوى المرتبط مباشرة بالامتحانات يحصل على الأولوية القصوى في خطة الإطلاق الأول</p></div>
-      <div class="dd-card warn anim anim-d3"><h4>فرضية لم تُثبت بعد: التفاعل الاجتماعي</h4><p>لم نجد دليلاً كافياً على أن التفاعل الاجتماعي بين الطلاب داخل المنصة يحسّن التعلم — لذلك لم نبنِ ميزات اجتماعية</p></div>
+      <div class="dd-card good anim anim-d1" style="flex-direction:row;"><h4>قرار 1: تصميم واجهات مختلفة حسب المرحلة</h4><p>بدلاً من واجهة واحدة للجميع، صممنا تجارب مخصصة تراعي اختلاف السلوك التعليمي بين المراحل الدراسية</p></div>
+      <div class="dd-card good anim anim-d2" style="flex-direction:row;"><h4>قرار 2: أولوية محتوى الامتحانات</h4><p>المحتوى المرتبط مباشرة بالامتحانات يحصل على الأولوية القصوى في خطة الإطلاق الأول</p></div>
+      <div class="dd-card warn anim anim-d3" style="flex-direction:row;"><h4>فرضية لم تُثبت بعد: التفاعل الاجتماعي</h4><p>لم نجد دليلاً كافياً على أن التفاعل الاجتماعي بين الطلاب داخل المنصة يحسّن التعلم — لذلك لم نبنِ ميزات اجتماعية</p></div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>7 / 26<span class="s-footer-presenter">إسلام هاني</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>12 / 38<span class="s-footer-presenter">إسلام هاني</span></span></div>
   </div>
   <aside class="notes">Presenter: Islam — 2 min. The amber card is CRUCIAL — shows intellectual honesty. "We chose NOT to build social features because research didn't support it."</aside>
+</section>
+
+<!-- RESEARCH: STAGE DIFFERENCES -->
+<section data-nav="الفروقات بين المراحل" data-section="البحث الميداني">
+  <div class="s-frame bg-cream grain">
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثالث</span></div></div>
+    <h2 class="anim" style="color:var(--text);">الفروقات بين المراحل التعليمية</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:18px;flex:1;">
+      <div class="dd-card good anim anim-d1" style="display:flex;flex-direction:row;align-items:center;gap:16px;">
+        <div class="card-icon" style="min-width:40px;">1</div>
+        <div><h4>الابتدائي</h4><p>التعلم بدافع <strong>الفضول والمتعة</strong> — الطالب ينجذب بالاستكشاف والألعاب والمحتوى التفاعلي</p></div>
+      </div>
+      <div class="dd-card good anim anim-d2" style="display:flex;flex-direction:row;align-items:center;gap:16px;">
+        <div class="card-icon" style="min-width:40px;">2</div>
+        <div><h4>الإعدادي</h4><p>التركيز على <strong>النجاح والانتقال للمرحلة التالية</strong> — يبدأ الطالب بالإحساس بالضغط والحاجة للإثبات</p></div>
+      </div>
+      <div class="dd-card good anim anim-d3" style="display:flex;flex-direction:row;align-items:center;gap:16px;">
+        <div class="card-icon" style="min-width:40px;">3</div>
+        <div><h4>الثانوي</h4><p>التركيز على <strong>الدرجات والجامعة</strong> — المحرك الأساسي هو الأداء الأكاديمي والمستقبل</p></div>
+      </div>
+    </div>
+    <div style="margin-top:10px;text-align:center;" class="anim anim-d4"><span class="stat-pill sp-amber">تجربة التعلم يجب أن تتكيف مع كل مرحلة — لا يوجد حل واحد يناسب الجميع</span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>13 / 38<span class="s-footer-presenter">إسلام هاني</span></span></div>
+  </div>
+  <aside class="notes">Presenter: Islam — 1.5 min. Key message: one-size-fits-all doesn't work. Each stage has different motivations and needs different UX.</aside>
+</section>
+
+<!-- RESEARCH: STUDENT NEEDS -->
+<section data-nav="احتياجات الطلاب" data-section="البحث الميداني">
+  <div class="s-frame-dark grain">
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الثالث</span></div></div>
+    <h2 class="anim" style="font-size:2.2em;">ماذا يحتاج الطلاب</h2>
+    <p class="anim anim-d1" style="color:var(--text-50);font-size:0.8em;margin-top:4px;">بناءً على البحث، توصلنا إلى احتياجات واضحة يجب أن تكون أساس التصميم</p>
+    <div class="card-grid g3 anim anim-d2" style="margin-top:20px;flex:1;">
+      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:20px;text-align:center;">
+        <div style="font-size:1.2em;margin-bottom:8px;">&#9655;</div>
+        <h4 style="color:var(--text);margin-bottom:8px;">دروس فيديو قصيرة وسهلة</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">محتوى مرئي موجز وسهل الفهم يتناسب مع مدد التركيز المختلفة لكل مرحلة</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:20px;text-align:center;">
+        <div style="font-size:1.2em;margin-bottom:8px;">&#10003;</div>
+        <h4 style="color:var(--text);margin-bottom:8px;">أنشطة واختبارات قصيرة</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">تقييمات سريعة بعد كل درس تساعد الطالب على معرفة نقاط ضعفه وتعزيز ما تعلمه</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:20px;text-align:center;">
+        <div style="font-size:1.2em;margin-bottom:8px;">&#9776;</div>
+        <h4 style="color:var(--text);margin-bottom:8px;">مسار تعلم واضح</h4>
+        <p style="font-size:0.75em;color:var(--text-50);">خارطة طريق تعليمية تُعرّف الطالب دائماً بما درسه وما يجب أن يدرسه بعد ذلك</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:14px;" class="anim anim-d3"><p style="color:var(--teal);font-size:0.85em;">هدفنا النهائي: أن يشعر الطالب بالتقدم والثقة أثناء التعلم — تجربة تبني الإحساس بالإنجاز خطوة بخطوة</p></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>14 / 38<span class="s-footer-presenter">إسلام هاني</span></span></div>
+  </div>
+  <aside class="notes">Presenter: Islam — 1 min. Three key needs from research: short video lessons, quick assessments, clear learning path.</aside>
 </section>
 
 <!-- S7: DIVIDER — PRODUCT -->
@@ -1165,16 +1440,16 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="i-bar" style="height:55px;left:25%;bottom:25%;animation-delay:1.5s"></div>
       <div class="i-dot" style="left:25.5%;bottom:calc(25% + 62px);animation-delay:1.5s"></div>
     </div>
-    <div class="d-content"><div class="d-num">المحور الثالث</div><h2>القرارات الاستراتيجية للمنتج</h2></div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>8 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="d-content"><div class="d-num">المحور الرابع</div><h2>القرارات الاستراتيجية للمنتج</h2></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>15 / 38<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
-  <aside class="notes">محمود عبدالعال introduces the product decisions section — 10 seconds.</aside>
+  <aside class="notes">محمد الشوا: الآن محمود يشاركنا القرارات الاستراتيجية للمنتج.</aside>
 </section>
 
 <!-- S8: BUILD/NOT BUILD — DARK -->
 <section data-nav="ماذا نبني ولماذا" data-section="قرارات المنتج">
   <div class="s-frame-dark grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الثالث</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark">المحور الرابع</span></div></div>
     <h2 class="anim" style="font-size:2.2em;">ماذا نبني ولماذا</h2>
     <div class="cols2" style="margin-top:18px;flex:1;">
       <div class="build-col anim anim-d1">
@@ -1193,7 +1468,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <div class="build-item"><span class="bi-icon" style="color:#f87171;">&#10007;</span><p>نسخة من تطبيقات الخليج بدون توطين</p></div>
       </div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>9 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>16 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mahmoud — 2 min. The "NOT building" column is as important. Shows strategic discipline. DO NOT use buzzwords — speak plainly.</aside>
 </section>
@@ -1201,12 +1476,12 @@ body, .reveal-viewport { background: var(--bg) !important; }
 <!-- S9: DELIVERY PROGRESS — LIGHT TEAL -->
 <section data-nav="تقدم التسليم" data-section="قرارات المنتج">
   <div class="s-frame bg-light-teal grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثالث</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الرابع</span></div></div>
     <h2 class="anim" style="color:var(--text);">تقدم التسليم</h2>
-    <div class="big-stat anim anim-d1"><div class="big-stat-num">87 <span class="big-stat-den">من 94</span></div><div class="big-stat-label">ميزة مكتملة</div></div>
+    <div class="big-stat anim anim-d1"><div class="big-stat-num">88 <span class="big-stat-den">من 95</span></div><div class="big-stat-label">ميزة مكتملة</div></div>
     <div class="pbar-wrap anim anim-d2"><div class="pbar-fill" style="width:92.6%"></div></div>
     <div style="display:flex;gap:12px;justify-content:center;margin:12px 0;" class="anim anim-d2">
-      <span class="stat-pill sp-green">87 مكتملة</span>
+      <span class="stat-pill sp-green">88 مكتملة</span>
       <span class="stat-pill sp-amber">1 قيد التنفيذ</span>
       <span class="stat-pill sp-gray">6 في الانتظار</span>
     </div>
@@ -1218,7 +1493,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="fbar"><span class="fbar-name">البنية التحتية</span><div class="fbar-track"><div class="fbar-fill" style="width:95%"></div></div><span class="fbar-val">14</span></div>
       <div class="fbar"><span class="fbar-name">تطبيقات الجوال</span><div class="fbar-track"><div class="fbar-fill" style="width:70%"></div></div><span class="fbar-val">27</span></div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>10 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>17 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mahmoud — 3 min. Let numbers speak. 92.6% = execution proof. Don't rush this slide.</aside>
 </section>
@@ -1226,7 +1501,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
 <!-- S10: PLATFORM COVERAGE — CREAM -->
 <section data-nav="التغطية التقنية" data-section="قرارات المنتج">
   <div class="s-frame bg-cream grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الثالث</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag">المحور الرابع</span></div></div>
     <h2 class="anim" style="color:var(--text);">التغطية التقنية الكاملة</h2>
     <div class="card-grid g3" style="margin-top:16px;flex:1;">
       <div class="plat-card anim anim-d1"><h4>الخادم الرئيسي</h4><div class="plat-tech">Laravel 12 + React</div><div class="plat-stat">+128 نقطة API • 147 اختبار</div></div>
@@ -1236,23 +1511,21 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="plat-card accent-orange anim anim-d5"><h4>الاتصال الفوري</h4><div class="plat-tech">Go + WebSocket + Redis</div><div class="plat-stat">رسائل فورية وحضور مباشر</div></div>
       <div class="plat-card accent-red anim anim-d6"><h4>البنية التحتية</h4><div class="plat-tech">GCP: Cloud Run + SQL + CDN</div><div class="plat-stat">3 بيئات • CI/CD كامل</div></div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>11 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>18 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mahmoud — 3 min. Shows COMPLETE system, not prototype. Let them absorb the grid visually.</aside>
 </section>
 
-<!-- TRANSITION: PRODUCT → DEV HANDOFF -->
-<section data-nav="▸ من المنتج إلى التنفيذ" data-section="التحقق التقني">
-  <div class="s-divider">
-    <img src="logo-white.png" class="d-logo" alt="">
-    <div class="i-bars">
-      <div class="i-bar" style="height:70px;right:20%;bottom:15%;animation-delay:0s"></div><div class="i-dot" style="right:20.5%;bottom:calc(15% + 77px);animation-delay:0s"></div>
-      <div class="i-bar" style="height:90px;left:25%;bottom:10%;animation-delay:0.8s"></div><div class="i-dot" style="left:25.5%;bottom:calc(10% + 97px);animation-delay:0.8s"></div>
+<!-- Q&A: PRODUCT TO TECHNICAL -->
+<section data-nav="من المنتج إلى التنفيذ" data-section="التحقق التقني">
+  <div class="s-divider grain">
+    <div style="text-align:center;max-width:700px;">
+      <h2 style="font-size:2.8em;margin-bottom:20px;">من المنتج إلى التنفيذ</h2>
+      <p style="color:var(--text-50);font-size:0.95em;line-height:1.8;">قبل ما نعرض الجانب التقني — هل في أسئلة على ما تم عرضه حتى الآن؟</p>
     </div>
-    <div class="d-content"><div class="d-num">أسئلة ومناقشة</div><h2>من الرؤية إلى التنفيذ</h2><p>عرضنا المنتج والقرارات — الآن يشرح الفريق التقني كيف تحققنا من المخاطر الأساسية</p></div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>12 / 26<span class="s-footer-presenter">محمد الشوا</span></span></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>19 / 38<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
-  <aside class="notes">محمد الشوا: Q&A and intro to progress chart. "We've covered the product vision and decisions. Let me show you our project timeline before the technical team walks you through the validations." — 15 seconds max.</aside>
+  <aside class="notes">محمد الشوا — Q&A bridge. 2-3 minutes. Then transition to technical validation.</aside>
 </section>
 
 <!-- PROGRESS CHART -->
@@ -1265,7 +1538,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div style="position:relative;height:280px;margin:0 20px;">
         <!-- Y axis labels -->
         <div style="position:absolute;right:-10px;top:0;bottom:40px;display:flex;flex-direction:column;justify-content:space-between;font-size:0.5em;color:var(--text-35);text-align:left;width:30px;">
-          <span>94</span><span>70</span><span>45</span><span>20</span><span>0</span>
+          <span>95</span><span>70</span><span>45</span><span>20</span><span>0</span>
         </div>
         <!-- Grid lines -->
         <div style="position:absolute;left:0;right:40px;top:0;bottom:40px;">
@@ -1275,48 +1548,56 @@ body, .reveal-viewport { background: var(--bg) !important; }
           <div style="position:absolute;top:75%;left:0;right:0;height:1px;background:var(--text-10);"></div>
           <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--text-10);"></div>
         </div>
-        <!-- SVG Chart Line -->
+        <!-- SVG Chart (Feb 15 = x:0, Mar 24 = x:600, 37 days, ~16.2px/day) -->
         <svg style="position:absolute;left:0;right:40px;top:0;bottom:40px;" viewBox="0 0 600 240" preserveAspectRatio="none">
-          <!-- Gradient fill -->
           <defs>
             <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#1a9e8f" stop-opacity="0.3"/>
               <stop offset="100%" stop-color="#1a9e8f" stop-opacity="0.02"/>
             </linearGradient>
           </defs>
-          <!-- Area fill -->
-          <path d="M0,240 L0,240 L120,240 L180,240 L270,163 L300,135 L330,96 L390,80 L420,72 L450,57 L480,54 L600,17 L600,240 Z" fill="url(#chartGrad)"/>
+          <!-- Phase backgrounds: research Feb15-Mar1 (days 0-14), dev Mar2-Mar24 (days 15-37) — no gap -->
+          <rect x="0" y="0" width="235" height="240" fill="rgba(124,58,237,0.08)"/>
+          <rect x="235" y="0" width="365" height="240" fill="rgba(26,158,143,0.04)"/>
+          <!-- Phase labels with date ranges -->
+          <text x="113" y="14" text-anchor="middle" font-size="11" fill="rgba(124,58,237,0.7)" font-family="Tajawal,sans-serif" font-weight="700">مرحلة البحث والتحليل</text>
+          <text x="113" y="28" text-anchor="middle" font-size="9" fill="rgba(124,58,237,0.5)" font-family="Tajawal,sans-serif">15 فبراير — 1 مارس</text>
+          <text x="420" y="14" text-anchor="middle" font-size="11" fill="rgba(26,158,143,0.7)" font-family="Tajawal,sans-serif" font-weight="700">مرحلة التطوير التقني</text>
+          <text x="420" y="28" text-anchor="middle" font-size="9" fill="rgba(26,158,143,0.5)" font-family="Tajawal,sans-serif">2 مارس — 24 مارس</text>
+          <!-- Area fill: Feb15=0, Mar1=0, Mar2=2, Mar5=2, Mar10=42, Mar11=51, Mar12=67, Mar15=71, Mar16=77, Mar17=83, Mar18=87, Mar23=87, Mar24=88 -->
+          <path d="M0,220 L227,220 L243,216 L292,216 L373,129 L389,110 L405,75 L454,67 L470,54 L486,41 L503,32 L584,32 L600,30 L600,220 Z" fill="url(#chartGrad)"/>
           <!-- Line -->
-          <polyline points="0,240 120,240 180,240 270,163 300,135 330,96 390,80 420,72 450,57 480,54 600,17" fill="none" stroke="#1a9e8f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="0,220 227,220 243,216 292,216 373,129 389,110 405,75 454,67 470,54 486,41 503,32 584,32 600,30" fill="none" stroke="#1a9e8f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           <!-- Data points -->
-          <circle cx="0" cy="240" r="4" fill="#1a9e8f"/>
-          <circle cx="120" cy="240" r="4" fill="#1a9e8f"/>
-          <circle cx="180" cy="240" r="4" fill="#1a9e8f"/>
-          <circle cx="270" cy="163" r="5" fill="#1a9e8f"/>
-          <circle cx="300" cy="135" r="4" fill="#1a9e8f"/>
-          <circle cx="330" cy="96" r="5" fill="#1a9e8f"/>
-          <circle cx="390" cy="80" r="4" fill="#1a9e8f"/>
-          <circle cx="420" cy="72" r="4" fill="#1a9e8f"/>
-          <circle cx="450" cy="57" r="4" fill="#1a9e8f"/>
-          <circle cx="480" cy="54" r="4" fill="#1a9e8f"/>
-          <circle cx="600" cy="17" r="6" fill="#1a9e8f" stroke="#fff" stroke-width="2"/>
+          <circle cx="0" cy="220" r="4" fill="#7c3aed"/>
+          <circle cx="227" cy="220" r="4" fill="#7c3aed"/>
+          <circle cx="243" cy="216" r="4" fill="#1a9e8f"/>
+          <circle cx="292" cy="216" r="4" fill="#1a9e8f"/>
+          <circle cx="373" cy="129" r="5" fill="#1a9e8f"/>
+          <circle cx="389" cy="110" r="4" fill="#1a9e8f"/>
+          <circle cx="405" cy="75" r="5" fill="#1a9e8f"/>
+          <circle cx="454" cy="67" r="4" fill="#1a9e8f"/>
+          <circle cx="470" cy="54" r="4" fill="#1a9e8f"/>
+          <circle cx="486" cy="41" r="4" fill="#1a9e8f"/>
+          <circle cx="503" cy="32" r="4" fill="#1a9e8f"/>
+          <circle cx="584" cy="32" r="4" fill="#1a9e8f"/>
+          <circle cx="600" cy="30" r="6" fill="#1a9e8f" stroke="#fff" stroke-width="2"/>
         </svg>
-        <!-- X axis labels -->
-        <div style="position:absolute;left:0;right:40px;bottom:10px;display:flex;justify-content:space-between;font-size:0.45em;color:var(--text-35);">
-          <span>15 فبراير</span><span>28 فبراير</span><span>2 مارس</span><span>10</span><span>11</span><span>12</span><span>15</span><span>16</span><span>17</span><span>18</span><span>23 مارس</span>
+        <!-- X axis labels (LTR: left=Feb15, right=Mar24) -->
+        <div style="position:absolute;left:0;right:40px;bottom:10px;display:flex;justify-content:space-between;font-size:0.45em;color:var(--text-35);direction:ltr;">
+          <span>15 فبراير</span><span>22 فبراير</span><span>1 مارس</span><span>8 مارس</span><span>15 مارس</span><span>22 مارس</span><span>24</span>
         </div>
-        <!-- Annotations -->
-        <div style="position:absolute;left:5%;top:15%;font-size:0.45em;color:var(--text-35);text-align:center;">مرحلة البحث<br>والتحليل</div>
-        <div style="position:absolute;right:10%;top:5%;font-size:0.55em;color:var(--teal);font-weight:700;">87 / 94</div>
+        <!-- Top-right annotation -->
+        <div style="position:absolute;right:0;top:5%;font-size:0.55em;color:var(--teal);font-weight:700;">88 / 95</div>
       </div>
-      <!-- Bottom summary -->
-      <div style="display:flex;justify-content:center;gap:30px;margin-top:16px;font-size:0.55em;color:var(--text-50);">
-        <span>اجمالي الميزات: <strong style="color:var(--teal);">94</strong></span>
-        <span>المكتملة: <strong style="color:var(--teal);">87</strong></span>
+      <!-- Summary bottom-right, shifted left to avoid chart overlap -->
+      <div style="display:flex;justify-content:flex-start;gap:30px;margin-top:16px;font-size:0.55em;color:var(--text-50);padding-right:60px;">
+        <span>اجمالي الميزات: <strong style="color:var(--teal);">95</strong></span>
+        <span>المكتملة: <strong style="color:var(--teal);">88</strong></span>
         <span>نسبة الإنجاز: <strong style="color:var(--teal);">92.6%</strong></span>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>13 / 26<span class="s-footer-presenter">محمد الشوا</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>20 / 38<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 1 min. Show acceleration after infrastructure was set up. "We went from 0 to 87 features in 3 weeks." Then introduce the technical team.</aside>
 </section>
@@ -1331,11 +1612,12 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="i-bar" style="height:100px;left:18%;bottom:8%;animation-delay:1.5s"></div><div class="i-dot" style="left:18.5%;bottom:calc(8% + 107px);animation-delay:1.5s"></div>
       <div class="i-bar" style="height:70px;left:40%;bottom:18%;animation-delay:0.3s"></div><div class="i-dot" style="left:40.5%;bottom:calc(18% + 77px);animation-delay:0.3s"></div>
     </div>
-    <div class="d-content"><div class="d-num">المحور الرابع</div><h2>ما تم التحقق منه تقنياً</h2><p>6 مخاطر تقنية — ما أثبتناه وما يحتاج مزيداً من التحقق</p></div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>14 / 26<span class="s-footer-presenter">فادي موندي</span></span></div>
+    <div class="d-content"><div class="d-num">المحور الخامس</div><h2>ما تم التحقق منه تقنياً</h2><p>6 مخاطر تقنية — ما أثبتناه وما يحتاج مزيداً من التحقق</p></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>21 / 38<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
-  <aside class="notes">فادي موندي — 30s intro. "We identified 6 core technical risks. Format: hypothesis, test, result, limitation."</aside>
+  <aside class="notes">محمد الشوا: الآن الفريق التقني بقيادة فادي يعرض لكم ما تم التحقق منه تقنياً.</aside>
 </section>
+
 
 <!-- POC 1 — INFRASTRUCTURE (DARK) -->
 <section data-nav="البنية التحتية" data-section="التحقق التقني">
@@ -1350,10 +1632,26 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="infra-dark"><div class="infra-icon">&#9673;</div><h4>المراقبة</h4><p>فحوصات كل 5 دقائق</p><p>تنبيهات P0-P3 • لوحات متابعة</p></div>
       <div class="infra-dark"><div class="infra-icon">&#10148;</div><h4>النشر المستمر</h4><p>GitHub Actions → Docker</p><p>→ Cloud Run • بدون مفاتيح مكشوفة</p></div>
     </div>
-    <div style="text-align:center;margin-top:14px;" class="anim anim-d2"><span class="cost-badge">التكلفة الشهرية المقدرة: ~500$ للبيئة الإنتاجية</span></div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>15 / 26<span class="s-footer-presenter">فادي موندي</span></span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>22 / 38<span class="s-footer-presenter">فادي موندي</span></span></div>
   </div>
   <aside class="notes">Presenter: Fadi — 2 min. Proves operational maturity. 3 environments, private network, automated deploy, monitoring. Keep business-level.</aside>
+</section>
+
+<!-- DEMO BRIDGE 2 — AI CHATBOT -->
+<section data-nav="عرض: المساعد الذكي" data-section="التحقق التقني">
+  <div class="demo-bridge">
+    <div class="demo-live-badge">عرض مباشر</div>
+    <button class="demo-play-btn" onclick="event.stopPropagation()" title="ابدأ العرض المباشر"></button>
+    <h2>المساعد الذكي للمنهج</h2>
+    <p style="color:var(--text-50);font-size:0.85em;line-height:1.7;margin-bottom:20px;text-align:center;">سنعرض لكم روبوت المحادثة الذكي وهو يتفاعل مع أسئلة من المنهج العراقي</p>
+    <div class="demo-points">
+      <div>&#9656; طرح سؤال من المنهج والحصول على إجابة</div>
+      <div>&#9656; ربط الإجابة بمحتوى الدرس الفعلي</div>
+      <div>&#9656; الدعم بالعربي والإنجليزي</div>
+    </div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>23 / 38<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
+  </div>
+  <aside class="notes">علي أحمد داعر: "Let me switch to the live demo." [Alt+Tab]. Then return to slides.</aside>
 </section>
 
 <!-- POC 2 — AI CHATBOT (LIGHT) -->
@@ -1371,9 +1669,26 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <div class="poc-row poc-row-light"><span class="poc-lbl poc-lbl-light">الأثر الإنتاجي:</span><span class="poc-val poc-val-light">واعد للمساعدة التكميلية. يحتاج قياس دقة مع خبراء المنهج قبل الإرشاد الأكاديمي عالي الأهمية</span></div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>16 / 26<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>24 / 38<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
   </div>
   <aside class="notes">Presenter: Ali — 2.5 min. Lead with PROBLEM: "Students need help outside class." Self-ask: "Why trust this?" For practice — yes. High-stakes — needs expert validation.</aside>
+</section>
+
+<!-- DEMO BRIDGE 3 — AI ASSESSMENT -->
+<section data-nav="عرض: محرك التقييم" data-section="التحقق التقني">
+  <div class="demo-bridge">
+    <div class="demo-live-badge">عرض مباشر</div>
+    <button class="demo-play-btn" onclick="event.stopPropagation()" title="ابدأ العرض المباشر"></button>
+    <h2>محرك التقييم بالذكاء الاصطناعي</h2>
+    <p style="color:var(--text-50);font-size:0.85em;line-height:1.7;margin-bottom:20px;text-align:center;">سنعرض لكم كيف يولد النظام أسئلة امتحانية ويصحح إجابات مكتوبة بخط اليد</p>
+    <div class="demo-points">
+      <div>&#9656; توليد أسئلة متنوعة من المنهج</div>
+      <div>&#9656; تصحيح صورة امتحان بخط اليد</div>
+      <div>&#9656; عرض مقياس الثقة ومعايير التصحيح</div>
+    </div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>25 / 38<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
+  </div>
+  <aside class="notes">علي أحمد داعر: "Let me switch to the live demo." [Alt+Tab]. Then return to slides.</aside>
 </section>
 
 <!-- POC 3 — AI ASSESSMENT (LIGHT) -->
@@ -1391,9 +1706,26 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <div class="poc-row poc-row-light"><span class="poc-lbl poc-lbl-light">الأثر الإنتاجي:</span><span class="poc-val poc-val-light">مناسب للتدريب حالياً. يحتاج إطار تحقق ومراجعة خبراء قبل الاعتماد في الامتحانات الرسمية</span></div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>17 / 26<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>26 / 38<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
   </div>
   <aside class="notes">Presenter: Ali — 2.5 min. Client asks "Can I trust this?" Honest: "Practice — yes. Official exams — needs validation framework." Key: 78.4% gen, 92.2% photo.</aside>
+</section>
+
+<!-- DEMO BRIDGE 4 — EXAM INTEGRITY -->
+<section data-nav="عرض: نزاهة الامتحانات" data-section="التحقق التقني">
+  <div class="demo-bridge">
+    <div class="demo-live-badge">عرض مباشر</div>
+    <button class="demo-play-btn" onclick="event.stopPropagation()" title="ابدأ العرض المباشر"></button>
+    <h2>نزاهة الامتحانات</h2>
+    <p style="color:var(--text-50);font-size:0.85em;line-height:1.7;margin-bottom:20px;text-align:center;">سنعرض لكم آليات الحماية المدمجة في نظام الامتحانات</p>
+    <div class="demo-points">
+      <div>&#9656; التحقق من التوقيت على الخادم</div>
+      <div>&#9656; تتبع الجلسات والمحاولات</div>
+      <div>&#9656; كشف التلاعب بالتوقيت</div>
+    </div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>27 / 38<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
+  </div>
+  <aside class="notes">علي أحمد داعر: "Let me switch to the live demo." [Alt+Tab]. Then return to slides.</aside>
 </section>
 
 <!-- POC 4 — EXAM INTEGRITY (DARK) -->
@@ -1410,9 +1742,26 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <div class="poc-row poc-row-dark"><span class="poc-lbl poc-lbl-dark">الأثر الإنتاجي:</span><span class="poc-val poc-val-dark">البنية جاهزة للتوقيت الموثوق. الكشف الكامل يحتاج مزيجاً من التقنية والسياسات المؤسسية</span></div>
       </div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>18 / 26<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>28 / 38<span class="s-footer-presenter">علي أحمد داعر</span></span></div>
   </div>
   <aside class="notes">Presenter: Ali — 1.5 min. HONESTY builds trust. "We detect 3 of 5 vectors. 2 need policy, not code."</aside>
+</section>
+
+<!-- DEMO BRIDGE 5 — OFFLINE SYNC -->
+<section data-nav="عرض: المزامنة بدون إنترنت" data-section="التحقق التقني">
+  <div class="demo-bridge">
+    <div class="demo-live-badge">عرض مباشر</div>
+    <button class="demo-play-btn" onclick="event.stopPropagation()" title="ابدأ العرض المباشر"></button>
+    <h2>المزامنة بدون إنترنت</h2>
+    <p style="color:var(--text-50);font-size:0.85em;line-height:1.7;margin-bottom:20px;text-align:center;">سنعرض لكم كيف يعمل التطبيق بدون اتصال ويتزامن تلقائياً عند عودة الإنترنت</p>
+    <div class="demo-points">
+      <div>&#9656; استخدام التطبيق بدون إنترنت</div>
+      <div>&#9656; إجراء أنشطة تعلم وحفظها محلياً</div>
+      <div>&#9656; إعادة الاتصال ومشاهدة المزامنة التلقائية</div>
+    </div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>29 / 38<span class="s-footer-presenter">أحمد مبارك</span></span></div>
+  </div>
+  <aside class="notes">أحمد مبارك: "Let me switch to the live demo." [Alt+Tab]. Then return to slides.</aside>
 </section>
 
 <!-- POC 5 — OFFLINE SYNC (DARK) -->
@@ -1430,9 +1779,26 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <div class="poc-row poc-row-dark"><span class="poc-lbl poc-lbl-dark">الأثر الإنتاجي:</span><span class="poc-val poc-val-dark">البنية مثبتة للاستخدام كثيف القراءة. نزاعات الكتابة تحتاج قرارات سياسة لتسليم الامتحانات</span></div>
       </div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>19 / 26<span class="s-footer-presenter">أحمد مبارك</span></span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>30 / 38<span class="s-footer-presenter">أحمد مبارك</span></span></div>
   </div>
   <aside class="notes">Presenter: Mubarak — 2.5 min. Use SCENARIO: "Student opens app at home → downloads → school without internet → studies offline → reconnects → syncs." Be calm, precise.</aside>
+</section>
+
+<!-- DEMO BRIDGE 6 — VIDEO -->
+<section data-nav="عرض: توصيل الفيديو" data-section="التحقق التقني">
+  <div class="demo-bridge">
+    <div class="demo-live-badge">عرض مباشر</div>
+    <button class="demo-play-btn" onclick="event.stopPropagation()" title="ابدأ العرض المباشر"></button>
+    <h2>توصيل محتوى الفيديو</h2>
+    <p style="color:var(--text-50);font-size:0.85em;line-height:1.7;margin-bottom:20px;text-align:center;">سنعرض لكم مشغل الفيديو مع ربط الفهرس بالكتاب المدرسي</p>
+    <div class="demo-points">
+      <div>&#9656; تشغيل فيديو مع استئناف من آخر نقطة</div>
+      <div>&#9656; وضع الصوت فقط لتوفير النطاق</div>
+      <div>&#9656; مزامنة الفهرس مع صفحات الكتاب</div>
+    </div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>31 / 38<span class="s-footer-presenter">أحمد مبارك</span></span></div>
+  </div>
+  <aside class="notes">أحمد مبارك: "Let me switch to the live demo." [Alt+Tab]. Then return to slides.</aside>
 </section>
 
 <!-- POC 6 — VIDEO (LIGHT) -->
@@ -1449,23 +1815,21 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <div class="poc-row poc-row-light"><span class="poc-lbl poc-lbl-light">الأثر الإنتاجي:</span><span class="poc-val poc-val-light">تجربة المستخدم مثبتة. البنية التحتية جاهزة (GCP Cloud Storage + CDN). اختبار الشبكات مطلوب قبل الإطلاق</span></div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>20 / 26<span class="s-footer-presenter">أحمد مبارك</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>32 / 38<span class="s-footer-presenter">أحمد مبارك</span></span></div>
   </div>
   <aside class="notes">Presenter: Mubarak — 2 min. Be PRECISE: "Tested in dev, not Iraqi 3G." Al-Fihris (book sync) is a differentiator. DO NOT imply production readiness.</aside>
 </section>
 
-<!-- TRANSITION: DEV → FINAL STATUS HANDOFF -->
-<section data-nav="▸ العودة للمنتج" data-section="ما يحتاج استكمال">
-  <div class="s-divider">
-    <img src="logo-white.png" class="d-logo" alt="">
-    <div class="i-bars">
-      <div class="i-bar" style="height:60px;right:18%;bottom:22%;animation-delay:0s"></div><div class="i-dot" style="right:18.5%;bottom:calc(22% + 67px);animation-delay:0s"></div>
-      <div class="i-bar" style="height:80px;left:22%;bottom:12%;animation-delay:0.6s"></div><div class="i-dot" style="left:22.5%;bottom:calc(12% + 87px);animation-delay:0.6s"></div>
+<!-- Q&A: BACK TO PRODUCT -->
+<section data-nav="العودة للمنتج" data-section="ما يحتاج استكمال">
+  <div class="s-divider grain">
+    <div style="text-align:center;max-width:700px;">
+      <h2 style="font-size:2.8em;margin-bottom:20px;">العودة للمنتج</h2>
+      <p style="color:var(--text-50);font-size:0.95em;line-height:1.8;">شاهدتم ما تم إنجازه تقنياً — الآن نعود للمنتج ونناقش المتبقي</p>
     </div>
-    <div class="d-content"><div class="d-num">أسئلة ومناقشة</div><h2>من التنفيذ إلى الوضع الحالي</h2><p>استعرض الفريق التقني ما تم التحقق منه — الآن محمود يستعرض ما تبقى وما نحتاجه منكم</p></div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>21 / 26<span class="s-footer-presenter">محمد الشوا</span></span></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>33 / 38<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
-  <aside class="notes">محمد الشوا: Q&A and intro to محمود. "The technical team has shown what's been validated. Now Mahmoud will walk you through what remains and the decisions we need from you." — 15 seconds max.</aside>
+  <aside class="notes">محمد الشوا — transition back to product. 30 seconds.</aside>
 </section>
 
 <!-- S18: DIVIDER — REMAINING -->
@@ -1476,16 +1840,16 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="i-bar" style="height:55px;right:15%;bottom:25%;animation-delay:0.5s"></div><div class="i-dot" style="right:15.5%;bottom:calc(25% + 62px);animation-delay:0.5s"></div>
       <div class="i-bar" style="height:75px;left:20%;bottom:15%;animation-delay:1.2s"></div><div class="i-dot" style="left:20.5%;bottom:calc(15% + 82px);animation-delay:1.2s"></div>
     </div>
-    <div class="d-content"><div class="d-num">المحور الخامس</div><h2>ما يحتاج إلى استكمال</h2></div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>22 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="d-content"><div class="d-num">المحور السادس</div><h2>ما يحتاج إلى استكمال</h2></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>34 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
-  <aside class="notes">محمود عبدالعال: "Here's what remains — work and decisions." 10 seconds.</aside>
+  <aside class="notes">محمود عبدالعال: هلأ نستعرض معكم العمل المتبقي والمخاطر المفتوحة.</aside>
 </section>
 
 <!-- S19: REMAINING & RISKS — CREAM WITH URGENCY -->
 <section data-nav="المتبقي والمخاطر" data-section="ما يحتاج استكمال">
   <div class="s-frame bg-cream grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag" style="background:rgba(232,117,42,0.15);color:#e8752a;">المحور الخامس</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag" style="background:rgba(232,117,42,0.15);color:#e8752a;">المحور السادس</span></div></div>
     <h2 class="anim" style="color:var(--text);">العمل المتبقي والمخاطر المفتوحة</h2>
     <div class="cols2" style="margin-top:16px;flex:1;">
       <div class="anim anim-d1" style="display:flex;flex-direction:column;">
@@ -1503,7 +1867,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
         <div class="risk"><div class="risk-dot amber"></div><p><strong>اختبار الحمل:</strong> لم يُجرَ اختبار أداء تحت حمل حقيقي بعد</p></div>
       </div>
     </div>
-    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>23 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="s-footer"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>35 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mahmoud — 3 min. Be HONEST. Red = need client help. Amber = we handle internally. Honesty builds trust.</aside>
 </section>
@@ -1516,8 +1880,8 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="i-bar" style="height:65px;right:18%;bottom:20%;animation-delay:0s"></div><div class="i-dot" style="right:18.5%;bottom:calc(20% + 72px);animation-delay:0s"></div>
       <div class="i-bar" style="height:90px;left:22%;bottom:12%;animation-delay:0.7s"></div><div class="i-dot" style="left:22.5%;bottom:calc(12% + 97px);animation-delay:0.7s"></div>
     </div>
-    <div class="d-content"><div class="d-num">المحور السادس</div><h2>القرارات التي نحتاجها منكم</h2></div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>24 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="d-content"><div class="d-num">المحور السابع</div><h2>القرارات التي نحتاجها منكم</h2></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>36 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">محمود عبدالعال: "Finally — the specific decisions we need." 10 seconds.</aside>
 </section>
@@ -1525,7 +1889,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
 <!-- S21: DECISIONS NEEDED — DARK -->
 <section data-nav="ما نحتاجه منكم" data-section="القرارات المطلوبة">
   <div class="s-frame-dark grain">
-    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark" style="background:rgba(232,117,42,0.2);color:#fbbf24;">المحور السادس</span></div></div>
+    <div class="s-topbar"><img src="logo-white.png" alt="" style="opacity:0.5;"><div><span class="s-tag-dark" style="background:rgba(232,117,42,0.2);color:#fbbf24;">المحور السابع</span></div></div>
     <h2 class="anim" style="font-size:2.2em;">ما نحتاجه من العميل</h2>
     <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;flex:1;">
       <div class="dec-dark anim anim-d1"><div class="dec-num">1</div><p><strong>المحتوى:</strong> الوصول إلى مواد المنهج الرسمي لفهرستها في المنصة، أو تأكيد آلية خط المحتوى المناسبة</p></div>
@@ -1534,7 +1898,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
       <div class="dec-dark anim anim-d4"><div class="dec-num">4</div><p><strong>سياسات النزاهة:</strong> تحديد الإجراءات المطلوبة عند كشف غش أو الاشتباه به</p></div>
       <div class="dec-dark anim anim-d5"><div class="dec-num">5</div><p><strong>أولويات المتبقي:</strong> ترتيب أولوية الميزات المتبقية (الشهادات، الشارات، لوحات المتصدرين الجغرافية)</p></div>
     </div>
-    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>25 / 26<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
+    <div class="s-footer-dark"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>37 / 38<span class="s-footer-presenter">محمود عبدالعال</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 3 min. SPECIFIC asks. Each unblocks next steps. If they commit to #1 + #2, validated AI in 4 weeks. DO NOT be apologetic.</aside>
 </section>
@@ -1555,7 +1919,7 @@ body, .reveal-viewport { background: var(--bg) !important; }
         </div>
       </div>
     </div>
-    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>26 / 26<span class="s-footer-presenter">محمد الشوا</span></span></div>
+    <div class="s-footer" style="position:absolute;bottom:20px;left:30px;right:30px;"><span>استدامة للتعليم</span><div class="s-footer-line"></div><span>38 / 38<span class="s-footer-presenter">محمد الشوا</span></span></div>
   </div>
   <aside class="notes">Presenter: Mohammad — 7 min Q&A. Park questions needing research: "Great question — we'll confirm within 48 hours." Redirect to specialists.</aside>
 </section>
